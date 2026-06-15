@@ -39,11 +39,15 @@
   .opt.sel .ico{background:var(--clay);color:#fff}
   .glasses{display:flex;gap:3px;color:var(--clay-d)}.glasses svg{width:17px;height:17px}
   .opt.sel .glasses{color:#fff}
+  .fieldlabel{font-size:12.5px;font-weight:600;color:var(--ink);margin:20px 0 10px;letter-spacing:.02em}
+  .optrow{display:flex;flex-wrap:wrap;gap:9px}
+  .pillopt{background:var(--paper);border:1.5px solid var(--line);border-radius:100px;padding:11px 17px;font-size:14.5px;font-weight:500;cursor:pointer;font-family:inherit;color:var(--ink);transition:all .15s}
+  .pillopt:hover{border-color:var(--clay)}.pillopt.sel{border-color:var(--clay);background:var(--clay);color:#fff}
   .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
   .chip{display:flex;align-items:center;gap:8px;background:var(--paper);border:1.5px solid var(--line);border-radius:100px;padding:11px 17px;font-size:15px;font-weight:500;cursor:pointer;transition:all .15s;font-family:inherit;color:var(--ink)}
   .chip svg{width:17px;height:17px}
   .chip.sel{border-color:var(--clay);background:var(--clay);color:#fff}
-  .btn{width:100%;background:var(--clay);color:#fff;font-size:17px;font-weight:600;border:none;border-radius:15px;padding:18px;cursor:pointer;font-family:inherit;transition:background .2s,transform .2s,box-shadow .2s;margin-top:8px;box-shadow:0 12px 30px rgba(184,83,58,.26)}
+  .btn{width:100%;background:var(--clay);color:#fff;font-size:17px;font-weight:600;border:none;border-radius:15px;padding:18px;cursor:pointer;font-family:inherit;transition:background .2s,transform .2s,box-shadow .2s;margin-top:14px;box-shadow:0 12px 30px rgba(184,83,58,.26)}
   .btn:hover{background:var(--clay-d);transform:translateY(-1px)}
   .btn.ghost{background:transparent;color:var(--muted);font-weight:500;font-size:14px;padding:10px;margin-top:6px;box-shadow:none}
   .note{font-size:13px;color:var(--muted);margin-top:18px;text-align:center}
@@ -86,6 +90,8 @@
   .teaser{text-align:center;margin-bottom:24px}
   .teaser .lab{font-size:13px;color:var(--muted);margin-top:6px}
   .tring{stroke-dasharray:214;stroke-dashoffset:30}
+  .bench{margin:18px auto 0;max-width:430px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 18px;font-size:13.5px;color:var(--muted);text-align:left}
+  .bench b{color:var(--clay-d)}
   .ring{display:flex;justify-content:center;margin:8px 0}
   .ringfg{stroke-dasharray:471;stroke-dashoffset:471;transition:stroke-dashoffset 1.6s var(--ease)}
   .center{text-align:center}
@@ -109,13 +115,13 @@
     <div class="panel active" data-step="0">
       <div class="eyebrow">Early access · Canada</div>
       <h1 class="serif">Find your number.</h1>
-      <p class="sub">Sixty seconds, six taps. See where you land and exactly what cutting back gives you back. No email until the end.</p>
+      <p class="sub">Sixty seconds, a few taps. See where you land and exactly what cutting back gives you back. No email until the end.</p>
       <button class="btn" onclick="next()">Start</button>
       <div class="note">No judgment. No 12 steps. Just your number.</div>
     </div>
 
     <div class="panel" data-step="1">
-      <div class="eyebrow">Question 1 of 5</div>
+      <div class="eyebrow">Your week</div>
       <div class="q serif">A typical week, how much do you drink?</div>
       <p class="sub">Roughly. Beer, wine, and spirits all count as one each.</p>
       <button class="opt" onclick="pick('drinks','1–3 drinks',2,this)"><span class="ico"><span class="glasses" data-g="1"></span></span> 1–3 drinks</button>
@@ -142,7 +148,7 @@
     </div>
 
     <div class="panel" data-step="2">
-      <div class="eyebrow">Question 2 of 5</div>
+      <div class="eyebrow">Your pattern</div>
       <div class="q serif">When does it usually happen?</div>
       <p class="sub">Pick the one that fits most.</p>
       <button class="opt" onclick="pick('when','Winding down after work',0,this)"><span class="ico"><i data-lucide="sofa"></i></span> Winding down after work</button>
@@ -152,7 +158,7 @@
     </div>
 
     <div class="panel" data-step="3">
-      <div class="eyebrow">Question 3 of 5</div>
+      <div class="eyebrow">Your history</div>
       <div class="q serif">Tried to cut back before?</div>
       <p class="sub">Here's the part no one tells you:</p>
       <div class="cmp">
@@ -167,7 +173,7 @@
     </div>
 
     <div class="panel" data-step="4">
-      <div class="eyebrow">Question 4 of 5</div>
+      <div class="eyebrow">Your target</div>
       <div class="q serif">Where do you want to land?</div>
       <p class="sub">Watch your number take shape.</p>
       <button class="opt" onclick="pick('goal','A little less',0.7,this,'Small and sustainable. That is how it lasts.')"><span class="ico"><i data-lucide="cloud-sun"></i></span> A little less</button>
@@ -184,7 +190,7 @@
     </div>
 
     <div class="panel" data-step="5">
-      <div class="eyebrow">Question 5 of 5</div>
+      <div class="eyebrow">Your why</div>
       <div class="q serif">What's pulling you?</div>
       <p class="sub">Tap all that matter. Watch your plan build.</p>
       <div class="chips" id="drivers">
@@ -199,6 +205,37 @@
       <button class="btn" onclick="next()">Almost there</button>
     </div>
 
+    <div class="panel" data-step="about">
+      <div class="eyebrow">A little about you</div>
+      <div class="q serif">So we can tailor your number.</div>
+      <p class="sub">Quick, and it stays private. It also tells us who Pace is for.</p>
+      <div class="fieldlabel">Your age</div>
+      <div class="optrow" id="agerow">
+        <button class="pillopt" onclick="selOne('agerow','age','Under 30',this)">Under 30</button>
+        <button class="pillopt" onclick="selOne('agerow','age','30–39',this)">30–39</button>
+        <button class="pillopt" onclick="selOne('agerow','age','40–49',this)">40–49</button>
+        <button class="pillopt" onclick="selOne('agerow','age','50–59',this)">50–59</button>
+        <button class="pillopt" onclick="selOne('agerow','age','60+',this)">60+</button>
+      </div>
+      <div class="fieldlabel">You are</div>
+      <div class="optrow" id="genderrow">
+        <button class="pillopt" onclick="selOne('genderrow','gender','Woman',this)">Woman</button>
+        <button class="pillopt" onclick="selOne('genderrow','gender','Man',this)">Man</button>
+        <button class="pillopt" onclick="selOne('genderrow','gender','Non-binary',this)">Non-binary</button>
+        <button class="pillopt" onclick="selOne('genderrow','gender','Prefer not to say',this)">Prefer not to say</button>
+      </div>
+      <div class="fieldlabel">Your province</div>
+      <select id="province">
+        <option value="" disabled selected>Choose your province</option>
+        <option>Alberta</option><option>British Columbia</option><option>Manitoba</option><option>New Brunswick</option>
+        <option>Newfoundland and Labrador</option><option>Nova Scotia</option><option>Ontario</option>
+        <option>Prince Edward Island</option><option>Quebec</option><option>Saskatchewan</option>
+        <option>Northwest Territories</option><option>Nunavut</option><option>Yukon</option>
+      </select>
+      <button class="btn" onclick="aboutNext()">Continue</button>
+      <p class="note" id="abouterr" style="display:none;color:var(--clay-d)">Pick your age and province to continue.</p>
+    </div>
+
     <div class="panel center" data-step="6">
       <div class="teaser">
         <svg width="84" height="84" viewBox="0 0 80 80">
@@ -211,6 +248,7 @@
       <div class="eyebrow">Last step</div>
       <div class="q serif">Where should we send it?</div>
       <p class="sub">Your number and early access, nothing else. We never share your data.</p>
+      <input type="text" id="fname" placeholder="First name (optional)" />
       <input type="email" id="email" placeholder="you@email.com" />
       <select id="price">
         <option value="" disabled selected>If Pace worked, what's it worth per month?</option>
@@ -245,6 +283,7 @@
         <div class="card"><div class="ic"><i data-lucide="wallet"></i></div><div class="n" id="r-money">$0</div><div class="l">back in your pocket a year</div></div>
         <div class="card"><div class="ic"><i data-lucide="trending-down"></i></div><div class="n" id="r-drinks">0</div><div class="l">fewer drinks a year</div></div>
       </div>
+      <div class="bench" id="bench" style="display:none"></div>
       <p class="sub" id="r-drivers" style="margin-top:14px"></p>
       <div style="background:#F6EAE3;border:1px solid #EAD7CC;border-radius:18px;padding:20px;margin-top:6px;max-width:430px;margin-left:auto;margin-right:auto">
         <b class="serif" style="font-size:19px">You're on the early-access list.</b>
@@ -255,10 +294,11 @@
   </div>
 
 <script>
-  var A={drinks:'',drinksVal:0,when:'',tried:'',goal:'',goalFactor:0.6,drivers:[],email:'',price:''};
-  var order=['0','1','1.5','2','3','4','5','6','6.5','7'];
+  var A={drinks:'',drinksVal:0,when:'',tried:'',goal:'',goalFactor:0.6,drivers:[],age:'',gender:'',province:'',fname:'',email:'',price:''};
+  var order=['0','1','1.5','2','3','4','5','about','6','6.5','7'];
   var idx=0, DRINK_COST=9, CAL=150;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var PROV={'Ontario':14,'Quebec':18,'Alberta':14,'New Brunswick':12,'Saskatchewan':13};
   function icons(){if(window.lucide)lucide.createIcons();}
   function glasses(){document.querySelectorAll('.glasses').forEach(function(g){var n=+g.dataset.g,h='';for(var i=0;i<n;i++)h+='<i data-lucide="wine"></i>';g.innerHTML=h;});}
   function pctFor(d){return Math.max(6,Math.min(95,d/18*90));}
@@ -277,6 +317,8 @@
     if(key==='goal'){renderGoalPreview();if(reaction)reactShow(reaction);setTimeout(next,1400);return;}
     setTimeout(function(){if(key==='drinks')renderDataMoment();next();if(reaction)reactShow(reaction);},320);
   }
+  function selOne(rowId,key,val,el){A[key]=val;document.getElementById(rowId).querySelectorAll('.pillopt').forEach(function(o){o.classList.remove('sel');});el.classList.add('sel');}
+  function aboutNext(){A.province=document.getElementById('province').value;if(!A.age||!A.province){document.getElementById('abouterr').style.display='block';return;}next();}
   function toggle(el,v){el.classList.toggle('sel');var i=A.drivers.indexOf(v);if(i>-1)A.drivers.splice(i,1);else A.drivers.push(v);renderPlan();}
   function animateNum(id,to,pre,suf){var el=document.getElementById(id);if(reduce){el.textContent=(pre||'')+Math.round(to).toLocaleString()+(suf||'');return;}var st=null;function step(ts){if(!st)st=ts;var p=Math.min((ts-st)/1100,1),e=1-Math.pow(1-p,3);el.textContent=(pre||'')+Math.round(to*e).toLocaleString()+(suf||'');if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
   function renderDataMoment(){
@@ -301,8 +343,8 @@
   function finish(){
     var email=document.getElementById('email').value.trim(),price=document.getElementById('price').value;
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){document.getElementById('emailerr').style.display='block';return;}
-    A.email=email;A.price=price;
-    var fd=new FormData();fd.append('email',email);fd.append('fair_price',price);fd.append('drinks',A.drinks);fd.append('when',A.when);fd.append('tried',A.tried);fd.append('goal',A.goal);fd.append('drivers',A.drivers.join(', '));fd.append('source','quiz_v1');
+    A.email=email;A.price=price;A.fname=document.getElementById('fname').value.trim();
+    var fd=new FormData();fd.append('first_name',A.fname);fd.append('email',email);fd.append('fair_price',price);fd.append('age',A.age);fd.append('gender',A.gender);fd.append('province',A.province);fd.append('drinks',A.drinks);fd.append('when',A.when);fd.append('tried',A.tried);fd.append('goal',A.goal);fd.append('drivers',A.drivers.join(', '));fd.append('source','quiz_v1');
     fetch('https://formspree.io/f/YOUR_FORMSPREE_ID',{method:'POST',body:fd,headers:{'Accept':'application/json'}}).catch(function(){});
     next();
     var steps=['Reading your week…','Mapping it to Canada’s scale…','Setting your number…'],s=0,ls=document.getElementById('lstep');
@@ -313,10 +355,12 @@
     var cur=A.drinksVal,target=targetNum();
     document.getElementById('targetN').textContent=target;
     var saved=Math.round((cur-target)*52*DRINK_COST),fewer=Math.round((cur-target)*52);
-    document.getElementById('resultline').textContent=target<=2?'Right at Canada’s low-risk line.':'A target that actually fits your life.';
+    var hi=A.fname?A.fname+', ':'';
+    document.getElementById('resultline').textContent=hi+(target<=2?'right at Canada’s low-risk line.':'a target that actually fits your life.');
     setTimeout(function(){animateNum('r-money',Math.max(0,saved),'$');animateNum('r-drinks',Math.max(0,fewer));},250);
     document.getElementById('ringfg').style.strokeDashoffset=471*(1-(cur>0?Math.min(target/cur,1):.5));
     setTimeout(function(){document.getElementById('bapinNow').style.left=pctFor(cur)+'%';document.getElementById('bapinGoal').style.left=pctFor(target)+'%';},200);
+    if(A.province){var pc=PROV[A.province]||15;var b=document.getElementById('bench');b.style.display='block';b.innerHTML='In '+A.province+', about <b>'+pc+'%</b> drink above Canada’s guideline. Your target lands well under it. <span style="color:#9a9082">(StatCan, 2023)</span>';}
     if(A.drivers.length){var m={Sleep:'deeper sleep',Energy:'more energy',Weight:'a leaner frame',Money:'real savings',Clarity:'a clearer head',Relationships:'being more present'};document.getElementById('r-drivers').textContent='Pace will help you get there, with '+A.drivers.map(function(x){return m[x]||x;}).slice(0,3).join(', ')+' along the way.';}
     icons();
   }

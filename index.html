@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Pace — The grown-up way to drink less.</title>
-<meta name="description" content="One number. A coach that knows your week. The version of you that drinks a little less and gets a lot back. Early access in Canada." />
+<meta name="description" content="Know your number. A coach that knows your week. The version of you that drinks a little less and gets a lot back. Early access in Canada." />
 <meta property="og:title" content="Pace — The grown-up way to drink less." />
 <meta property="og:description" content="We're not anti-alcohol. We're pro-you. Early access in Canada." />
 <meta property="og:type" content="website" />
@@ -16,15 +16,12 @@
     --hero:url('https://cdn.midjourney.com/0bbaa627-67d9-42c6-b112-e3e74cfe95a7/0_3.jpeg');
     --energy:url('https://cdn.midjourney.com/ed4ab0fa-d6f1-42e8-a38e-9bb09748d787/0_0.jpeg');
     --friends:url('https://cdn.midjourney.com/42cacc7d-64b4-4037-90e2-d0e867066531/0_2.jpeg');
-    --still:url('https://cdn.midjourney.com/7886b5c4-6e66-4282-bcc8-a67efbefb2ed/0_1.jpeg');
     --sect:clamp(76px,9vw,116px);--ease:cubic-bezier(.22,1,.36,1)}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--bone);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   .serif{font-family:'Fraunces',Georgia,serif}
   .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
-  .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--clay);outline-offset:3px;border-radius:8px}
   .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
   .reveal.in{opacity:1;transform:none}
   nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:saturate(140%) blur(12px);background:rgba(20,17,14,.22);transition:background .35s}
@@ -47,7 +44,7 @@
   .hsub{font-size:clamp(18px,2.2vw,21px);color:#EADFCD;max-width:480px;margin:26px 0 34px}
   .cta{display:inline-block;font-size:17px;font-weight:600;color:#fff;background:var(--clay);padding:17px 40px;border-radius:100px;text-decoration:none;transition:transform .2s,background .2s,box-shadow .2s;box-shadow:0 14px 36px rgba(0,0,0,.34)}
   .cta:hover{background:var(--clay-d);transform:translateY(-2px)}
-  .stage{display:flex;justify-content:center;padding:var(--sect) 0;background:radial-gradient(120% 70% at 50% 0%,#FCF9F3,var(--bone) 62%);position:relative}
+  .stage{display:flex;justify-content:center;padding:var(--sect) 0;background:radial-gradient(120% 70% at 50% 0%,#FCF9F3,var(--bone) 62%)}
   .phone{position:relative;width:316px;background:#100D0B;border-radius:48px;padding:13px;box-shadow:0 60px 110px rgba(20,17,14,.34),0 0 0 1px rgba(255,255,255,.04) inset}
   .phone::before{content:"";position:absolute;top:24px;left:50%;transform:translateX(-50%);width:92px;height:26px;background:#100D0B;border-radius:16px;z-index:3}
   .phone .screen{background:var(--paper);border-radius:36px;padding:30px 22px 24px;box-shadow:inset 0 0 0 1px rgba(20,17,14,.05)}
@@ -64,6 +61,7 @@
   .coach{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px}
   .coach .lab{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-d);margin-bottom:3px}
   .coach p{font-size:13.5px;color:var(--ink)}
+  .stagecta{text-align:center;margin-top:38px}
   .moment{padding:var(--sect) 0;text-align:center}
   .moment.dark{background:linear-gradient(180deg,#1B1712,var(--ink) 16%);color:#F3ECE0}
   .ey{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);margin-bottom:16px}
@@ -80,29 +78,18 @@
   .split .left p{font-size:18px;color:var(--muted);margin-top:22px;max-width:380px}
   .splitstat{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
   .splitstat b{font-family:'Fraunces',serif;font-size:30px;color:var(--clay);font-weight:600;letter-spacing:-1px;margin-right:8px}
-  .band,.stillband{background-size:cover;background-position:center;filter:saturate(.95) contrast(1.01)}
-  .band{min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background-image:linear-gradient(rgba(20,17,14,.46),rgba(20,17,14,.58)),var(--friends)}
+  .band{min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background-image:linear-gradient(rgba(20,17,14,.46),rgba(20,17,14,.58)),var(--friends);background-size:cover;background-position:center;filter:saturate(.95) contrast(1.01)}
   .band h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(34px,5.2vw,52px);letter-spacing:-1.3px;max-width:760px;line-height:1.07;text-shadow:0 1px 30px rgba(0,0,0,.3)}
   .band .ey{color:var(--gold-l)}
-  .feature{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:var(--sect) 0}
-  .feature .txt{text-align:left}
-  .feature h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(34px,4.6vw,46px);line-height:1.02;letter-spacing:-1.2px;margin-bottom:16px}
-  .feature p{font-size:18px;color:var(--muted);max-width:420px}
-  .feature .phone{margin:0 auto}
-  .chart-cap{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:8px}
-  .cline{fill:none;stroke:var(--clay);stroke-width:3.5;stroke-linecap:round}
-  .carea{opacity:0;transition:opacity 1.4s ease .4s}.in .carea{opacity:1}
-  .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:940px;margin:46px auto 30px;text-align:left}
+  .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:940px;margin:46px auto 36px;text-align:left}
   .pbox{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
   .in .pbox{opacity:1;transform:none}
   .in .pbox:nth-child(2){transition-delay:.09s}.in .pbox:nth-child(3){transition-delay:.18s}.in .pbox:nth-child(4){transition-delay:.27s}
   .pbox .num{font-family:'Fraunces',serif;font-size:clamp(40px,5vw,52px);font-weight:500;color:var(--gold-l);letter-spacing:-1.5px;line-height:1}
   .pbox .lab{font-size:13.5px;color:#C7BDAC;margin-top:10px}
   .pnote{font-size:12px;color:#9a9082;margin-top:14px}
-  .midcta{display:inline-block;margin-top:34px;font-size:16px;font-weight:600;color:#fff;background:var(--clay);padding:15px 34px;border-radius:100px;text-decoration:none;transition:transform .2s,background .2s}
+  .midcta{display:inline-block;margin-top:36px;font-size:16px;font-weight:600;color:#fff;background:var(--clay);padding:16px 36px;border-radius:100px;text-decoration:none;transition:transform .2s,background .2s}
   .midcta:hover{background:var(--clay-d);transform:translateY(-2px)}
-  .stillband{min-height:56vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background-image:linear-gradient(rgba(20,17,14,.36),rgba(20,17,14,.4)),var(--still)}
-  .stillband h2{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:clamp(34px,5.4vw,56px);letter-spacing:-1px;text-shadow:0 1px 30px rgba(0,0,0,.3)}
   .linebar{display:flex;height:10px;border-radius:6px;overflow:hidden;max-width:640px;margin:34px auto 0}
   .linebar div{transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease)}
   .in .linebar div{transform:scaleX(1)}
@@ -110,55 +97,51 @@
   .linebar div:nth-child(3){background:var(--gold-l);flex:0 0 28%;transition-delay:.25s}.linebar div:nth-child(4){background:var(--clay);flex:1;transition-delay:.35s}
   .linelabels{display:flex;max-width:640px;margin:9px auto 0;font-size:12px;color:var(--muted)}
   .linelabels div{flex:1;text-align:center}.linelabels div:first-child{flex:0 0 14%;text-align:left}
-  .formsec{padding:var(--sect) 0}
-  .formcard{max-width:470px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:38px;text-align:center;box-shadow:0 34px 74px rgba(20,17,14,.12)}
-  .trust{font-size:12.5px;color:var(--muted);margin-bottom:18px;letter-spacing:.02em}
-  .formcard h2{font-family:'Fraunces',serif;font-weight:600;font-size:34px;letter-spacing:-.8px;margin-bottom:6px}
-  .formcard .s{font-size:15px;color:var(--muted);margin-bottom:24px}
-  .formcard input,.formcard select{width:100%;padding:15px;font-size:16px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--ink);margin-bottom:14px;font-family:inherit}
-  .formcard input:focus,.formcard select:focus{outline:none;border-color:var(--clay)}
-  .formcard .btn{width:100%;background:var(--clay);color:#fff;font-size:16px;font-weight:600;border:none;border-radius:13px;padding:16px;cursor:pointer;font-family:inherit;transition:background .2s,transform .2s}
-  .formcard .btn:hover{background:var(--clay-d);transform:translateY(-1px)}
-  .fine{font-size:11.5px;color:var(--muted);margin-top:12px}
-  .err{display:none;color:#9C4528;font-size:13px;margin-top:10px}
-  .thanks{display:none}.thanks h3{font-family:'Fraunces',serif;font-size:28px;margin-bottom:8px}.thanks p{color:var(--muted)}
+  .final{text-align:center;padding:var(--sect) 0}
+  .final h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(38px,5.6vw,56px);letter-spacing:-1.4px;margin-bottom:12px}
+  .final p{font-size:18px;color:var(--muted);max-width:520px;margin:0 auto 28px}
+  .final .cta2{display:inline-block;font-size:17px;font-weight:600;color:#fff;background:var(--clay);padding:18px 44px;border-radius:100px;text-decoration:none;transition:transform .2s,background .2s;box-shadow:0 16px 40px rgba(184,83,58,.28)}
+  .final .cta2:hover{background:var(--clay-d);transform:translateY(-2px)}
   footer{padding:30px 0 60px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}footer a{color:var(--muted)}
-  @media(max-width:760px){.split{grid-template-columns:1fr}.split .right{min-height:320px;margin:0 22px 0;border-radius:18px}.feature{grid-template-columns:1fr;gap:36px}.feature .txt{text-align:center}.feature p{margin:0 auto}.pgrid{grid-template-columns:1fr 1fr;gap:24px}}
+  @media(max-width:760px){.split{grid-template-columns:1fr}.split .right{min-height:320px;margin:0 22px 0;border-radius:18px}.pgrid{grid-template-columns:1fr 1fr;gap:24px}}
   @media(prefers-reduced-motion:reduce){.reveal,.pbox{opacity:1!important;transform:none!important;transition:none!important}.rot span,.bigrot span{transition:none!important}.linebar div{transform:scaleX(1)!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-  <nav id="nav"><div class="wrap navin"><div class="logo">Pace<span>.</span></div><a class="navcta" href="#get">Get early access</a></div></nav>
-  <a class="stickycta" id="sticky" href="#get">Get early access</a>
+  <nav id="nav"><div class="wrap navin"><div class="logo">Pace<span>.</span></div><a class="navcta" href="quiz.html">Find your number</a></div></nav>
+  <a class="stickycta" id="sticky" href="quiz.html">Find your number</a>
 
   <section class="hero"><div class="wrap"><div class="inner">
     <div class="kick">Early access · Canada</div>
     <h1>Drink less.
       <span class="rot" id="rot" aria-hidden="true"><span class="active">Sleep deeper.</span><span>Think sharper.</span><span>Feel stronger.</span><span>Live longer.</span><span>Save thousands.</span></span>
-      <span class="vh">Sleep deeper, think sharper, feel stronger.</span>
+      <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Sleep deeper, think sharper, feel stronger.</span>
     </h1>
     <p class="hsub">One number. A coach that knows your week. The version of you that drinks a little less and gets a lot back.</p>
-    <a class="cta" href="#get">Get early access</a>
+    <a class="cta" href="quiz.html">Find your number</a>
   </div></div></section>
 
   <div class="stage">
-    <div class="phone reveal" id="phone1"><div class="screen">
-      <div class="sc-top"><b>This week</b><span>Mon–Sun</span></div>
-      <div class="ring">
-        <svg width="186" height="186" viewBox="0 0 190 190" role="img" aria-label="4 of 6 drinks this week, 2 left">
-          <circle cx="95" cy="95" r="78" fill="none" stroke="#EAE2D2" stroke-width="14"/>
-          <circle class="ringfg" cx="95" cy="95" r="78" fill="none" stroke="#B8533A" stroke-width="14" stroke-linecap="round" transform="rotate(-90 95 95)"/>
-          <text x="95" y="90" text-anchor="middle" class="serif" font-size="46" font-weight="600" fill="#14110E">4</text>
-          <text x="95" y="116" text-anchor="middle" font-size="13" fill="#5E564B" font-family="Inter">of 6 this week</text>
-        </svg>
-      </div>
-      <div class="sc-cap">2 left. You're on pace.</div>
-      <div class="week">
-        <div class="day">M<div class="d on"></div></div><div class="day">T<div class="d"></div></div><div class="day">W<div class="d on"></div></div>
-        <div class="day">T<div class="d"></div></div><div class="day">F<div class="d today"></div></div><div class="day">S<div class="d"></div></div><div class="day">S<div class="d"></div></div>
-      </div>
-      <div class="coach"><div class="lab">Your coach</div><p>Friday usually gets away from you. Want a plan for tonight?</p></div>
-    </div></div>
+    <div style="text-align:center">
+      <div class="phone reveal" id="phone1"><div class="screen">
+        <div class="sc-top"><b>This week</b><span>Mon–Sun</span></div>
+        <div class="ring">
+          <svg width="186" height="186" viewBox="0 0 190 190" role="img" aria-label="4 of 6 drinks this week, 2 left">
+            <circle cx="95" cy="95" r="78" fill="none" stroke="#EAE2D2" stroke-width="14"/>
+            <circle class="ringfg" cx="95" cy="95" r="78" fill="none" stroke="#B8533A" stroke-width="14" stroke-linecap="round" transform="rotate(-90 95 95)"/>
+            <text x="95" y="90" text-anchor="middle" class="serif" font-size="46" font-weight="600" fill="#14110E">4</text>
+            <text x="95" y="116" text-anchor="middle" font-size="13" fill="#5E564B" font-family="Inter">of 6 this week</text>
+          </svg>
+        </div>
+        <div class="sc-cap">2 left. You're on pace.</div>
+        <div class="week">
+          <div class="day">M<div class="d on"></div></div><div class="day">T<div class="d"></div></div><div class="day">W<div class="d on"></div></div>
+          <div class="day">T<div class="d"></div></div><div class="day">F<div class="d today"></div></div><div class="day">S<div class="d"></div></div><div class="day">S<div class="d"></div></div>
+        </div>
+        <div class="coach"><div class="lab">Your coach</div><p>Friday usually gets away from you. Want a plan for tonight?</p></div>
+      </div></div>
+      <div class="stagecta reveal"><a class="cta" href="quiz.html">Find your number</a></div>
+    </div>
   </div>
 
   <div class="moment dark mission">
@@ -186,24 +169,6 @@
     </div>
   </div>
 
-  <div class="wrap feature">
-    <div class="txt reveal">
-      <div class="ey">See it add up</div>
-      <h2 class="serif">Proof you can feel.<br>And watch.</h2>
-      <p>Every week, fewer drinks and better numbers. Your sleep, your spend, and your streak all moving the right way.</p>
-    </div>
-    <div class="phone reveal" id="phone2"><div class="screen">
-      <div class="sc-top"><b>Your trend</b><span>8 weeks</span></div>
-      <svg width="100%" height="180" viewBox="0 0 260 180" preserveAspectRatio="none" role="img" aria-label="Weekly drinks trending down from 14 to 4 over 8 weeks">
-        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B8533A" stop-opacity=".22"/><stop offset="1" stop-color="#B8533A" stop-opacity="0"/></linearGradient></defs>
-        <path class="carea" d="M0,40 L37,55 L74,70 L111,86 L148,104 L185,120 L222,138 L260,150 L260,180 L0,180 Z" fill="url(#g)"/>
-        <path class="cline" d="M0,40 L37,55 L74,70 L111,86 L148,104 L185,120 L222,138 L260,150"/>
-      </svg>
-      <div class="chart-cap"><span>14 drinks/wk</span><span style="color:var(--clay);font-weight:600">4 drinks/wk</span></div>
-      <div class="coach" style="margin-top:14px"><div class="lab">This month</div><p>Sleep up 22%. $260 back in your pocket.</p></div>
-    </div></div>
-  </div>
-
   <div class="moment dark">
     <div class="wrap">
       <div class="ey reveal">The proof</div>
@@ -215,11 +180,9 @@
         <div class="pbox"><div class="num"><span data-count="49" data-suffix="%">0</span></div><div class="lab">of adults are already planning to drink less</div></div>
       </div>
       <p class="pnote reveal">One-month-off figures from controlled studies, shown as reported. Benefits scale with how much you cut back.</p>
-      <div class="reveal"><a class="midcta" href="#get">Find your number</a></div>
+      <div class="reveal"><a class="midcta" href="quiz.html">Find your number</a></div>
     </div>
   </div>
-
-  <div class="stillband"><div class="reveal"><h2 class="serif">Less, but better.</h2></div></div>
 
   <div class="moment">
     <div class="wrap">
@@ -231,23 +194,13 @@
     </div>
   </div>
 
-  <div class="formsec" id="get"><div class="formcard reveal">
-    <form id="waitlist" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-      <div class="trust">Early access · Canada · No spam, ever</div>
-      <h2 class="serif">Find your number</h2>
-      <p class="s">Be one of the first in when Pace opens.</p>
-      <input type="email" id="email" name="email" placeholder="you@email.com" required aria-label="Email" />
-      <select id="price" name="fair_price" required aria-label="What is it worth per month">
-        <option value="" disabled selected>If Pace worked, what's it worth per month?</option>
-        <option value="just_curious">Just curious, wouldn't pay</option><option value="10-20">$10–20</option><option value="20-40">$20–40</option><option value="40plus">$40+</option>
-      </select>
-      <input type="hidden" name="source" value="landing_v1" />
-      <button class="btn" type="submit">Get early access</button>
-      <p class="err" id="err">Something went wrong. Please try again.</p>
-      <p class="fine">We'll reach out when early access opens.</p>
-    </form>
-    <div class="thanks" id="thanks"><h3 class="serif">You're in.</h3><p>We'll be in touch soon. Thanks for helping us build the right thing.</p></div>
-  </div></div>
+  <div class="final">
+    <div class="wrap reveal">
+      <h2 class="serif">Find your number.</h2>
+      <p>Sixty seconds to see where you land and what cutting back gives you back. Be one of the first in when Pace opens in Canada.</p>
+      <a class="cta2" href="quiz.html">Start the 60-second check</a>
+    </div>
+  </div>
 
   <div class="wrap"><footer>
     Pace · Early access in Canada · For people who want to drink less, not quit forever.<br><br>
@@ -258,16 +211,15 @@
 
 <script>
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var nav=document.getElementById('nav'),sticky=document.getElementById('sticky'),get=document.getElementById('get');
+  var nav=document.getElementById('nav'),sticky=document.getElementById('sticky');
   addEventListener('scroll',function(){
     nav.classList.toggle('solid',scrollY>innerHeight*.85);
-    var formTop=get.getBoundingClientRect().top;
-    sticky.classList.toggle('show',scrollY>innerHeight*1.05 && formTop>innerHeight*.6);
+    sticky.classList.toggle('show',scrollY>innerHeight*1.05);
   });
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.16});
   document.querySelectorAll('.reveal,.pgrid,.linebar').forEach(function(el){io.observe(el);});
   var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target);}});},{threshold:.3});
-  ['phone1','phone2'].forEach(function(id){var p=document.getElementById(id);if(p)io2.observe(p);});
+  var p1=document.getElementById('phone1');if(p1)io2.observe(p1);
   function rotator(el,iv){var it=el.querySelectorAll('span'),i=0,t=null;
     function tick(){var c=it[i];c.classList.remove('active');c.classList.add('out');var n=(i+1)%it.length,x=it[n];x.classList.remove('out');x.classList.add('active');setTimeout(function(){c.classList.remove('out');},650);i=n;}
     function start(){if(t||reduce)return;t=setInterval(tick,iv);}function stop(){clearInterval(t);t=null;}
@@ -278,12 +230,6 @@
     function step(ts){if(!st)st=ts;var p=Math.min((ts-st)/1400,1),e=1-Math.pow(1-p,3),v=t*e;s.textContent=pre+(d>0?v.toFixed(d):Math.round(v).toLocaleString())+suf;if(p<1)requestAnimationFrame(step);else s.textContent=pre+(d>0?t.toFixed(d):Math.round(t).toLocaleString())+suf;}requestAnimationFrame(step);}
   var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target);cio.unobserve(e.target);}});},{threshold:.5});
   document.querySelectorAll('[data-count]').forEach(function(s){cio.observe(s);});
-  var cl=document.querySelector('.cline');if(cl){var L=cl.getTotalLength();cl.style.strokeDasharray=L;cl.style.strokeDashoffset=reduce?0:L;if(!reduce){cl.style.transition='stroke-dashoffset 1.8s ease';new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cl.style.strokeDashoffset=0;}});},{threshold:.3}).observe(cl);}}
-  var form=document.getElementById('waitlist'),err=document.getElementById('err');
-  form.addEventListener('submit',function(e){e.preventDefault();err.style.display='none';
-    fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-      .then(function(r){if(!r.ok)throw new Error();form.style.display='none';document.getElementById('thanks').style.display='block';})
-      .catch(function(){err.style.display='block';});});
 </script>
 </body>
 </html>

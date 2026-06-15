@@ -13,23 +13,27 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Inter',-apple-system,sans-serif;background:radial-gradient(120% 80% at 50% -10%,#FCF9F3,var(--bone) 60%);color:var(--ink);min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   .serif{font-family:'Fraunces',Georgia,serif}
-  .top{position:fixed;top:0;left:0;right:0;padding:18px 22px;display:flex;align-items:center;gap:14px;background:rgba(245,241,232,.85);backdrop-filter:blur(8px);z-index:10}
-  .logo{font-family:'Fraunces',serif;font-weight:600;font-size:20px}.logo span{color:var(--clay)}
+  .top{position:fixed;top:0;left:0;right:0;padding:16px 20px;display:flex;align-items:center;gap:12px;background:rgba(245,241,232,.88);backdrop-filter:blur(8px);z-index:10}
+  .back{border:none;background:none;font-size:22px;color:var(--muted);cursor:pointer;line-height:1;padding:2px 6px;border-radius:8px;visibility:hidden}
+  .back:hover{color:var(--ink)}
+  .logo{font-family:'Fraunces',serif;font-weight:600;font-size:19px}.logo span{color:var(--clay)}
   .bar{flex:1;height:6px;background:#E8E0CF;border-radius:6px;overflow:hidden}
   .barfill{height:100%;width:0;background:var(--clay);border-radius:6px;transition:width .5s var(--ease)}
-  .stepno{font-size:12px;color:var(--muted);min-width:34px;text-align:right}
+  .react{position:fixed;top:58px;left:0;right:0;text-align:center;z-index:9;pointer-events:none;opacity:0;transition:opacity .4s}
+  .react.show{opacity:1}
+  .react span{display:inline-block;background:var(--ink);color:#F3ECE0;font-size:13.5px;padding:9px 16px;border-radius:100px;max-width:90%;box-shadow:0 10px 30px rgba(20,17,14,.25)}
   .stage{max-width:540px;margin:0 auto;padding:104px 22px 60px;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
   .panel{display:none;animation:in .5s var(--ease)}
   .panel.active{display:block}
   @keyframes in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
   .eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--clay-d);margin-bottom:14px}
-  h1{font-family:'Fraunces',serif;font-weight:500;font-size:34px;letter-spacing:-1px;line-height:1.08;margin-bottom:10px}
+  h1{font-family:'Fraunces',serif;font-weight:500;font-size:36px;letter-spacing:-1px;line-height:1.08;margin-bottom:10px}
   .q{font-family:'Fraunces',serif;font-weight:500;font-size:30px;letter-spacing:-.8px;line-height:1.1;margin-bottom:6px}
   .sub{font-size:15.5px;color:var(--muted);margin-bottom:24px}
   .opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--paper);border:1.5px solid var(--line);border-radius:16px;padding:18px 20px;margin-bottom:12px;font-size:17px;font-weight:500;color:var(--ink);cursor:pointer;font-family:inherit;transition:border-color .15s,transform .15s,background .15s}
   .opt:hover{border-color:var(--clay);transform:translateY(-1px)}
   .opt.sel{border-color:var(--clay);background:#F6EAE3}
-  .opt .em{font-size:22px}
+  .opt .em{font-size:18px;min-width:96px;letter-spacing:-2px}
   .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
   .chip{background:var(--paper);border:1.5px solid var(--line);border-radius:100px;padding:11px 18px;font-size:15px;font-weight:500;cursor:pointer;transition:all .15s;font-family:inherit;color:var(--ink)}
   .chip.sel{border-color:var(--clay);background:var(--clay);color:#fff}
@@ -37,15 +41,13 @@
   .btn:hover{background:var(--clay-d);transform:translateY(-1px)}
   .btn.ghost{background:transparent;color:var(--muted);font-weight:500;font-size:14px;padding:10px;margin-top:4px}
   .note{font-size:13px;color:var(--muted);margin-top:18px;text-align:center}
-  input{width:100%;padding:16px;font-size:16px;border:1.5px solid var(--line);border-radius:14px;background:#fff;margin-bottom:14px;font-family:inherit}
-  input:focus{outline:none;border-color:var(--clay)}
-  select{width:100%;padding:16px;font-size:16px;border:1.5px solid var(--line);border-radius:14px;background:#fff;margin-bottom:14px;font-family:inherit;color:var(--ink)}
-  select:focus{outline:none;border-color:var(--clay)}
-  .stat{font-family:'Fraunces',serif;font-size:54px;font-weight:600;color:var(--clay);letter-spacing:-1.5px;line-height:1}
+  input,select{width:100%;padding:16px;font-size:16px;border:1.5px solid var(--line);border-radius:14px;background:#fff;margin-bottom:14px;font-family:inherit;color:var(--ink)}
+  input:focus,select:focus{outline:none;border-color:var(--clay)}
   .statrow{display:flex;gap:16px;margin:20px 0 6px}
   .statbox{flex:1;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px}
   .statbox .n{font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--clay-d);letter-spacing:-1px}
   .statbox .l{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .social{margin-top:16px;font-size:13.5px;color:var(--muted)}
   .contbar{display:flex;height:12px;border-radius:7px;overflow:hidden;margin-top:8px}
   .contbar div:nth-child(1){background:#3E8E7E;flex:0 0 14%}.contbar div:nth-child(2){background:#9CBF7E;flex:0 0 22%}
   .contbar div:nth-child(3){background:var(--gold);flex:0 0 28%}.contbar div:nth-child(4){background:var(--clay);flex:1}
@@ -62,15 +64,21 @@
   .pcard .n{font-family:'Fraunces',serif;font-size:28px;font-weight:600;color:var(--clay-d);letter-spacing:-1px}
   .pcard .l{font-size:12.5px;color:var(--muted);margin-top:3px}
   .center{text-align:center}
-  @media(prefers-reduced-motion:reduce){.panel{animation:none}.ringfg,.pin,.barfill{transition:none}}
+  .loader{text-align:center;padding:30px 0}
+  .lring{width:64px;height:64px;border:5px solid #E8E0CF;border-top-color:var(--clay);border-radius:50%;margin:0 auto 22px;animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .lstep{height:22px;transition:opacity .3s}
+  @media(max-width:480px){.q{font-size:26px}h1{font-size:32px}.opt .em{min-width:74px}}
+  @media(prefers-reduced-motion:reduce){.panel{animation:none}.ringfg,.pin,.barfill{transition:none}.lring{animation:none}}
 </style>
 </head>
 <body>
   <div class="top">
+    <button class="back" id="back" onclick="prev()" aria-label="Back">‹</button>
     <div class="logo">Pace<span>.</span></div>
     <div class="bar"><div class="barfill" id="barfill"></div></div>
-    <div class="stepno" id="stepno"></div>
   </div>
+  <div class="react" id="react"><span id="reacttext"></span></div>
 
   <div class="stage">
     <div class="panel active" data-step="0">
@@ -86,9 +94,9 @@
       <div class="q serif">A typical week, how much do you drink?</div>
       <p class="sub">Roughly. Beer, wine, and spirits all count as one each.</p>
       <button class="opt" onclick="pick('drinks','1–3 drinks',2,this)"><span class="em">🍷</span> 1–3 drinks</button>
-      <button class="opt" onclick="pick('drinks','4–7 drinks',5.5,this)"><span class="em">🍷</span> 4–7 drinks</button>
-      <button class="opt" onclick="pick('drinks','8–14 drinks',11,this)"><span class="em">🍷</span> 8–14 drinks</button>
-      <button class="opt" onclick="pick('drinks','15+ drinks',18,this)"><span class="em">🍷</span> 15 or more</button>
+      <button class="opt" onclick="pick('drinks','4–7 drinks',5.5,this)"><span class="em">🍷🍷</span> 4–7 drinks</button>
+      <button class="opt" onclick="pick('drinks','8–14 drinks',11,this)"><span class="em">🍷🍷🍷</span> 8–14 drinks</button>
+      <button class="opt" onclick="pick('drinks','15+ drinks',18,this)"><span class="em">🍷🍷🍷🍷</span> 15 or more</button>
     </div>
 
     <div class="panel" data-step="1.5">
@@ -102,6 +110,7 @@
         <div class="statbox"><div class="n" id="dm-money">$0</div><div class="l">a year on alcohol</div></div>
         <div class="statbox"><div class="n" id="dm-cal">0</div><div class="l">empty calories a year</div></div>
       </div>
+      <div class="social">You're not alone, 49% of adults are already planning to drink less.</div>
       <button class="btn" onclick="next()">Keep going</button>
     </div>
 
@@ -119,19 +128,19 @@
       <div class="eyebrow">Question 3 of 5</div>
       <div class="q serif">Tried to cut back before?</div>
       <p class="sub">Most people have. It rarely sticks alone.</p>
-      <button class="opt" onclick="pick('tried','Willpower alone',0,this)"><span class="em">💪</span> Willpower alone</button>
-      <button class="opt" onclick="pick('tried','A dry month',0,this)"><span class="em">📅</span> A dry month</button>
-      <button class="opt" onclick="pick('tried','An app or tracker',0,this)"><span class="em">📱</span> An app or tracker</button>
-      <button class="opt" onclick="pick('tried','Not yet',0,this)"><span class="em">🌱</span> Not yet, this is new</button>
+      <button class="opt" onclick="pick('tried','Willpower alone',0,this,'Willpower alone works for almost no one. Not a you problem.')"><span class="em">💪</span> Willpower alone</button>
+      <button class="opt" onclick="pick('tried','A dry month',0,this,'Dry months are great. The trick is what happens after.')"><span class="em">📅</span> A dry month</button>
+      <button class="opt" onclick="pick('tried','An app or tracker',0,this,'Tracking helps. Coaching is what makes it stick.')"><span class="em">📱</span> An app or tracker</button>
+      <button class="opt" onclick="pick('tried','Not yet',0,this,'Perfect time to start, then.')"><span class="em">🌱</span> Not yet, this is new</button>
     </div>
 
     <div class="panel" data-step="4">
       <div class="eyebrow">Question 4 of 5</div>
       <div class="q serif">Where do you want to land?</div>
       <p class="sub">This sets your number. You can change it anytime.</p>
-      <button class="opt" onclick="pick('goal','A little less',0.7,this)"><span class="em">🌤️</span> A little less</button>
-      <button class="opt" onclick="pick('goal','A lot less',0.4,this)"><span class="em">☀️</span> A lot less</button>
-      <button class="opt" onclick="pick('goal','Just more mindful',0.8,this)"><span class="em">🧭</span> Just more mindful</button>
+      <button class="opt" onclick="pick('goal','A little less',0.7,this,'Small and sustainable. That is how it lasts.')"><span class="em">🌤️</span> A little less</button>
+      <button class="opt" onclick="pick('goal','A lot less',0.4,this,'Bold. We will make it feel doable.')"><span class="em">☀️</span> A lot less</button>
+      <button class="opt" onclick="pick('goal','Just more mindful',0.8,this,'Awareness alone changes behaviour. Smart.')"><span class="em">🧭</span> Just more mindful</button>
     </div>
 
     <div class="panel" data-step="5">
@@ -152,7 +161,7 @@
     <div class="panel" data-step="6">
       <div class="eyebrow">Last step</div>
       <div class="q serif">Where should we send your plan?</div>
-      <p class="sub">Your number and early access, nothing else.</p>
+      <p class="sub">Your number and early access, nothing else. We never share your data.</p>
       <input type="email" id="email" placeholder="you@email.com" />
       <select id="price">
         <option value="" disabled selected>If Pace worked, what's it worth per month?</option>
@@ -161,6 +170,13 @@
       </select>
       <button class="btn" onclick="finish()">See my number</button>
       <p class="note" id="emailerr" style="display:none;color:var(--clay-d)">Enter a valid email to see your number.</p>
+    </div>
+
+    <div class="panel center" data-step="6.5">
+      <div class="loader">
+        <div class="lring"></div>
+        <div class="lstep serif" id="lstep" style="font-size:18px;color:var(--ink)">Building your number…</div>
+      </div>
     </div>
 
     <div class="panel center" data-step="7">
@@ -189,63 +205,51 @@
 
 <script>
   var A={drinks:'',drinksVal:0,when:'',tried:'',goal:'',goalFactor:0.6,drivers:[],email:'',price:''};
-  var order=['0','1','1.5','2','3','4','5','6','7'];
-  var idx=0;
-  var DRINK_COST=9, CAL=150;
+  var order=['0','1','1.5','2','3','4','5','6','6.5','7'];
+  var idx=0, DRINK_COST=9, CAL=150;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   function show(){
     document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active',p.dataset.step===order[idx]);});
-    var prog=Math.min(idx/(order.length-1),1);
-    document.getElementById('barfill').style.width=(prog*100)+'%';
+    document.getElementById('barfill').style.width=(Math.min(idx/(order.length-1),1)*100)+'%';
+    document.getElementById('back').style.visibility=(idx>0 && order[idx]!=='6.5' && order[idx]!=='7')?'visible':'hidden';
     window.scrollTo(0,0);
   }
   function next(){idx=Math.min(idx+1,order.length-1);show();}
-  function pick(key,label,val,el){
-    A[key]=label;
-    if(key==='drinks'){A.drinksVal=val;}
-    if(key==='goal'){A.goalFactor=val;}
-    el.parentNode.querySelectorAll('.opt').forEach(function(o){o.classList.remove('sel');});
-    el.classList.add('sel');
-    setTimeout(function(){if(key==='drinks'){renderDataMoment();}next();},300);
+  function prev(){if(order[idx]==='1.5'){idx-=2;}else{idx=Math.max(idx-1,0);}show();}
+  function reactShow(msg){if(!msg)return;var r=document.getElementById('react');document.getElementById('reacttext').textContent=msg;r.classList.add('show');clearTimeout(window._rt);window._rt=setTimeout(function(){r.classList.remove('show');},2600);}
+  function pick(key,label,val,el,reaction){
+    A[key]=label;if(key==='drinks')A.drinksVal=val;if(key==='goal')A.goalFactor=val;
+    el.parentNode.querySelectorAll('.opt').forEach(function(o){o.classList.remove('sel');});el.classList.add('sel');
+    setTimeout(function(){if(key==='drinks')renderDataMoment();next();if(reaction)reactShow(reaction);},320);
   }
   function toggle(el,v){el.classList.toggle('sel');var i=A.drivers.indexOf(v);if(i>-1)A.drivers.splice(i,1);else A.drivers.push(v);}
-  function animateNum(id,to,pre,suf){
-    var el=document.getElementById(id),st=null;
-    function step(ts){if(!st)st=ts;var p=Math.min((ts-st)/1100,1),e=1-Math.pow(1-p,3);el.textContent=(pre||'')+Math.round(to*e).toLocaleString()+(suf||'');if(p<1)requestAnimationFrame(step);}
-    requestAnimationFrame(step);
-  }
+  function animateNum(id,to,pre,suf){var el=document.getElementById(id);if(reduce){el.textContent=(pre||'')+Math.round(to).toLocaleString()+(suf||'');return;}var st=null;function step(ts){if(!st)st=ts;var p=Math.min((ts-st)/1100,1),e=1-Math.pow(1-p,3);el.textContent=(pre||'')+Math.round(to*e).toLocaleString()+(suf||'');if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
   function renderDataMoment(){
     var d=A.drinksVal;
     document.getElementById('dm-n').textContent=A.drinks.replace(' drinks','')+' drinks';
-    animateNum('dm-money',Math.round(d*52*DRINK_COST),'$');
-    animateNum('dm-cal',Math.round(d*52*CAL));
+    animateNum('dm-money',Math.round(d*52*DRINK_COST),'$');animateNum('dm-cal',Math.round(d*52*CAL));
     var pct={2:18,5.5:36,11:62,18:90}[d]||60;
     setTimeout(function(){document.getElementById('pin').style.left=pct+'%';document.getElementById('pinlabel').textContent=A.drinks.replace(' drinks','');},150);
   }
   function finish(){
-    var email=document.getElementById('email').value.trim();
-    var price=document.getElementById('price').value;
+    var email=document.getElementById('email').value.trim(),price=document.getElementById('price').value;
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){document.getElementById('emailerr').style.display='block';return;}
     A.email=email;A.price=price;
-    var fd=new FormData();
-    fd.append('email',email);fd.append('fair_price',price);fd.append('drinks',A.drinks);fd.append('when',A.when);
-    fd.append('tried',A.tried);fd.append('goal',A.goal);fd.append('drivers',A.drivers.join(', '));fd.append('source','quiz_v1');
+    var fd=new FormData();fd.append('email',email);fd.append('fair_price',price);fd.append('drinks',A.drinks);fd.append('when',A.when);fd.append('tried',A.tried);fd.append('goal',A.goal);fd.append('drivers',A.drivers.join(', '));fd.append('source','quiz_v1');
     fetch('https://formspree.io/f/YOUR_FORMSPREE_ID',{method:'POST',body:fd,headers:{'Accept':'application/json'}}).catch(function(){});
-    renderResult();next();
+    next();
+    var steps=['Reading your week…','Mapping it to Canada’s scale…','Setting your number…'],s=0,ls=document.getElementById('lstep');
+    var li=setInterval(function(){s++;if(s<steps.length){ls.style.opacity=0;setTimeout(function(){ls.textContent=steps[s];ls.style.opacity=1;},250);}},520);
+    setTimeout(function(){clearInterval(li);renderResult();next();},reduce?100:1700);
   }
   function renderResult(){
-    var cur=A.drinksVal, target=Math.max(2,Math.round(cur*A.goalFactor));
+    var cur=A.drinksVal,target=Math.max(2,Math.round(cur*A.goalFactor));
     document.getElementById('targetN').textContent=target;
-    var saved=Math.round((cur-target)*52*DRINK_COST);
-    var fewer=Math.round((cur-target)*52);
+    var saved=Math.round((cur-target)*52*DRINK_COST),fewer=Math.round((cur-target)*52);
     document.getElementById('resultline').textContent=target<=2?'Right at Canada’s low-risk line.':'A target that actually fits your life.';
     setTimeout(function(){animateNum('r-money',Math.max(0,saved),'$');animateNum('r-drinks',Math.max(0,fewer));},250);
-    var ratio=cur>0?Math.min(target/cur,1):0.5;
-    document.getElementById('ringfg').style.strokeDashoffset=471*(1-ratio);
-    if(A.drivers.length){
-      var map={Sleep:'deeper sleep',Energy:'more energy',Weight:'a leaner frame',Money:'real savings',Clarity:'a clearer head',Relationships:'being more present'};
-      var list=A.drivers.map(function(x){return map[x]||x;});
-      document.getElementById('r-drivers').textContent='Pace will help you get there, with '+list.slice(0,3).join(', ')+' along the way.';
-    }
+    var ratio=cur>0?Math.min(target/cur,1):0.5;document.getElementById('ringfg').style.strokeDashoffset=471*(1-ratio);
+    if(A.drivers.length){var map={Sleep:'deeper sleep',Energy:'more energy',Weight:'a leaner frame',Money:'real savings',Clarity:'a clearer head',Relationships:'being more present'};document.getElementById('r-drivers').textContent='Pace will help you get there, with '+A.drivers.map(function(x){return map[x]||x;}).slice(0,3).join(', ')+' along the way.';}
   }
   show();
 </script>

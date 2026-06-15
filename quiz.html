@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
-<!-- TODO: replace YOUR_FORMSPREE_ID before the demand test -->
+<!-- Lead capture: Google Apps Script web app (sheet 1G8AWBpv...). Live endpoint wired below. -->
 <style>
   :root{--bone:#F5F1E8;--paper:#FBF8F2;--ink:#14110E;--muted:#5E564B;--clay:#B8533A;--clay-d:#9C4528;--line:#E6DECE;--gold:#C98A45;--ease:cubic-bezier(.22,1,.36,1)}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -345,7 +345,7 @@
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){document.getElementById('emailerr').style.display='block';return;}
     A.email=email;A.price=price;A.fname=document.getElementById('fname').value.trim();
     var fd=new FormData();fd.append('first_name',A.fname);fd.append('email',email);fd.append('fair_price',price);fd.append('age',A.age);fd.append('gender',A.gender);fd.append('province',A.province);fd.append('drinks',A.drinks);fd.append('when',A.when);fd.append('tried',A.tried);fd.append('goal',A.goal);fd.append('drivers',A.drivers.join(', '));fd.append('source','quiz_v1');
-    fetch('https://formspree.io/f/YOUR_FORMSPREE_ID',{method:'POST',body:fd,headers:{'Accept':'application/json'}}).catch(function(){});
+    fetch('https://script.google.com/macros/s/AKfycbyoj_4r_8a-RgvTsXuCu9vJj_CVSB6e1cIcvSBvFMvX7Qbm13FXzKdMXXFUlKyUfPpt/exec',{method:'POST',mode:'no-cors',body:fd}).catch(function(){});
     next();
     var steps=['Reading your week…','Mapping it to Canada’s scale…','Setting your number…'],s=0,ls=document.getElementById('lstep');
     var li=setInterval(function(){s++;if(s<steps.length){ls.style.opacity=0;setTimeout(function(){ls.textContent=steps[s];ls.style.opacity=1;},250);}},520);

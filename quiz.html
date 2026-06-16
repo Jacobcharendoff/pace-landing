@@ -308,7 +308,7 @@
       </div>
       <div class="social"><i data-lucide="users"></i> 49% of Canadian adults plan to drink less. You're not alone.</div>
       <button class="btn" onclick="next()">Keep going</button>
-      <div class="guidecite">Canada's Guidance on Alcohol and Health, CCSA 2023.</div>
+      <div class="guidecite">Statistics Canada, Canadian Community Health Survey 2023 · guideline: CCSA 2023.</div>
     </div>
 
     <div class="panel" data-step="2">
@@ -433,7 +433,10 @@
   var order=['0','about','1.5','2','3','4','5','6','6.5','7'];
   var idx=0, DRINK_COST=9, CAL=150;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var PROV={'Ontario':14,'Quebec':18,'Alberta':14,'British Columbia':15,'Manitoba':14,'New Brunswick':12,'Newfoundland and Labrador':13,'Nova Scotia':14,'Prince Edward Island':13,'Saskatchewan':13,'Northwest Territories':19,'Nunavut':19,'Yukon':18};
+  /* % of adults drinking ABOVE Canada's low-risk guideline (3+ drinks/week = moderate + higher risk). Source: Statistics Canada, CCHS 2023 (released Oct 2024). */
+  var NATABOVE=30;
+  var PROV={'Ontario':28,'Quebec':37,'Alberta':29,'British Columbia':31,'Manitoba':28,'New Brunswick':27,'Newfoundland and Labrador':29,'Nova Scotia':30,'Prince Edward Island':32,'Saskatchewan':26,'Northwest Territories':30,'Nunavut':30,'Yukon':30};
+  var GEN={'Woman':26,'Man':35};
   function icons(){if(window.lucide)lucide.createIcons();}
   function glasses(){document.querySelectorAll('.glasses').forEach(function(g){var n=+g.dataset.g,h='';for(var i=0;i<n;i++)h+='<i data-lucide="wine"></i>';g.innerHTML=h;});}
   function pctFor(d){return Math.max(6,Math.min(95,d/18*90));}
@@ -479,6 +482,7 @@
   function aboutNext(){if(!A.age||!A.province){document.getElementById('abouterr').style.display='block';return;}next();}
   function toggle(el,v){el.classList.toggle('sel');var i=A.drivers.indexOf(v);if(i>-1)A.drivers.splice(i,1);else A.drivers.push(v);renderPlan();}
   function animateNum(id,to,pre,suf){var el=document.getElementById(id);if(reduce){el.textContent=(pre||'')+Math.round(to).toLocaleString()+(suf||'');return;}var st=null;function step(ts){if(!st)st=ts;var p=Math.min((ts-st)/1100,1),e=1-Math.pow(1-p,3);el.textContent=(pre||'')+Math.round(to*e).toLocaleString()+(suf||'');if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
+  function aboveGuidelinePct(){return (A.province&&PROV[A.province])||NATABOVE;}
   function renderDataMoment(){
     var d=A.drinksVal;
     document.getElementById('dm-n').textContent=A.drinks.replace(' drinks','');
@@ -486,8 +490,11 @@
     var pct={2:18,5.5:36,11:62,18:90}[d]||60;
     setTimeout(function(){document.getElementById('pin').style.left=pct+'%';document.getElementById('pinlabel').textContent=A.drinks.replace(' drinks','');},150);
     var rb=document.getElementById('revealbench');
-    if(A.province){var pc=PROV[A.province]||15;rb.innerHTML='In <b>'+A.province+'</b>, about <b>'+pc+'%</b> of adults drink above Canada’s low-risk guideline of 2 a week. Here’s where you land.';}
-    else{rb.innerHTML='Canada’s 2023 guidance puts low risk at <b>2 drinks a week</b>. Here’s where you land.';}
+    var pc=aboveGuidelinePct();
+    var loc=A.province?('In <b>'+A.province+'</b>'):'In Canada';
+    var g=GEN[A.gender];
+    var gtxt=g?(' Among '+(A.gender==='Man'?'men':'women')+', it is about <b>'+g+'%</b>.'):'';
+    rb.innerHTML=loc+', about <b>'+pc+'%</b> of adults drink above Canada’s low-risk guideline of 2 a week.'+gtxt+' Here’s where you land.';
   }
   function targetNum(){return Math.max(2,Math.round(A.drinksVal*A.goalFactor));}
   function renderGoalPreview(){
@@ -521,7 +528,8 @@
     setTimeout(function(){animateNum('r-money',Math.max(0,saved),'$');animateNum('r-drinks',Math.max(0,fewer));},250);
     document.getElementById('ringfg').style.strokeDashoffset=471*(1-(cur>0?Math.min(target/cur,1):.5));
     setTimeout(function(){document.getElementById('bapinNow').style.left=pctFor(cur)+'%';document.getElementById('bapinGoal').style.left=pctFor(target)+'%';},200);
-    if(A.province){var pc=PROV[A.province]||15;var b=document.getElementById('bench');b.style.display='block';b.innerHTML='In '+A.province+', about <b>'+pc+'%</b> drink above Canada’s guideline. Your target lands well under it. <span style="color:#9a9082">(Canada’s Guidance on Alcohol, CCSA 2023)</span>';}
+    var pc=aboveGuidelinePct();var b=document.getElementById('bench');b.style.display='block';
+    b.innerHTML='In '+(A.province||'Canada')+', about <b>'+pc+'%</b> of adults drink above Canada’s guideline. Your target lands well under it. <span style="color:#9a9082">(Statistics Canada, CCHS 2023)</span>';
     if(A.drivers.length){var m={Sleep:'deeper sleep',Energy:'more energy',Weight:'a leaner frame',Money:'real savings',Clarity:'a clearer head',Relationships:'being more present'};document.getElementById('r-drivers').textContent='Pace will help you get there, with '+A.drivers.map(function(x){return m[x]||x;}).slice(0,3).join(', ')+' along the way.';}
     icons();
   }

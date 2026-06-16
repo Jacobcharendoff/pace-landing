@@ -138,8 +138,8 @@
   .h0phone{position:relative;width:288px;aspect-ratio:288/588;background:#15211E;border-radius:42px;padding:11px;box-shadow:0 40px 90px rgba(21,33,30,.30)}
   .h0phone .notch{position:absolute;top:13px;left:50%;transform:translateX(-50%);width:86px;height:7px;border-radius:6px;background:#2c3c37;z-index:6}
   .h0phone .scr{position:relative;width:100%;height:100%;background:linear-gradient(180deg,#FBFDFC,#EFF5F2);border-radius:32px;overflow:hidden}
-  .appscreen{position:absolute;inset:0;padding:32px 22px 22px;opacity:0;transform:translateY(10px);transition:opacity .55s var(--ease),transform .55s var(--ease);display:flex;flex-direction:column}
-  .appscreen.on{opacity:1;transform:none}
+  .appscreen{position:absolute;inset:0;padding:32px 22px 22px;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .45s var(--ease),transform .45s var(--ease);display:flex;flex-direction:column}
+  .appscreen.on{opacity:1;visibility:visible;transform:none}
   .app-h{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-d)}
   .app-t{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--ink);margin:4px 0 16px;line-height:1.12}
   .stepper{display:flex;align-items:center;justify-content:center;gap:18px;margin:10px 0 2px}
@@ -463,8 +463,8 @@
     var scr=document.getElementById('appscr');if(!scr)return;
     var screens=scr.querySelectorAll('.appscreen'),i=0;
     function go(){screens.forEach(function(s,j){s.classList.toggle('on',j===i);});icons();i=(i+1)%screens.length;}
-    if(reduce){screens[0].classList.add('on');icons();return;}
-    clearInterval(_apT);_apT=setInterval(go,3000);
+    if(reduce){screens.forEach(function(s,j){s.classList.toggle('on',j===0);});icons();return;}
+    clearInterval(_apT);_apT=setInterval(go,3200);
   }
   function prev(){idx=Math.max(idx-1,0);var q=document.getElementById('q4prev');if(q)q.classList.remove('on');show();}
   function reactShow(msg){if(!msg)return;var r=document.getElementById('react');document.getElementById('reacttext').textContent=msg;r.classList.add('show');clearTimeout(window._rt);window._rt=setTimeout(function(){r.classList.remove('show');},2800);}

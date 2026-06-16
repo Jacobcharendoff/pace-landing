@@ -101,33 +101,33 @@
   .lstep{height:24px;transition:opacity .3s}
   @media(max-width:480px){.q{font-size:27px}h1{font-size:33px}.cmprow span{min-width:118px}}
   @media(prefers-reduced-motion:reduce){.panel{animation:none}.ringfg,.miniringfg,.pin,.barfill,.cbar i{transition:none}.lring{animation:none}}
-  /* immersive ad-landing intro: two-column, product-in-motion */
-  .hero0{position:fixed;inset:0;z-index:30;display:none;background:radial-gradient(115% 90% at 80% 12%,rgba(184,83,58,.18),rgba(20,17,14,0) 52%),linear-gradient(180deg,#19140F,#0E0C0A);color:#F3ECE0;overflow-y:auto}
+  /* immersive ad-landing intro: two-column, light tech-wellness */
+  .hero0{position:fixed;inset:0;z-index:30;display:none;background:radial-gradient(95% 75% at 84% 6%,rgba(201,138,69,.22),rgba(245,241,232,0) 52%),radial-gradient(85% 70% at 8% 102%,rgba(184,83,58,.10),rgba(245,241,232,0) 55%),linear-gradient(180deg,#FEFCF7,#F4EEE2);color:var(--ink);overflow-y:auto}
   .hero0.on{display:block}
-  .hero0 .h0logo{position:absolute;top:20px;left:26px;font-family:'Fraunces',serif;font-weight:600;font-size:20px;letter-spacing:-.3px;z-index:2}
+  .hero0 .h0logo{position:absolute;top:20px;left:26px;font-family:'Fraunces',serif;font-weight:600;font-size:20px;letter-spacing:-.3px;color:var(--ink);z-index:2}
   .hero0 .h0logo span{color:var(--clay)}
   .hero0 .h0grid{min-height:100%;max-width:1120px;margin:0 auto;padding:104px 28px 52px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-  .hero0 .h0eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E0A282;margin-bottom:14px}
-  .hero0 h1{font-family:'Fraunces',serif;font-weight:500;font-size:50px;line-height:1.02;letter-spacing:-1.7px;margin-bottom:14px}
-  .hero0 .h0sub{font-size:16px;line-height:1.5;color:#C9BEAD;margin-bottom:24px;max-width:450px}
-  .hero0 .qlabel{font-size:13px;font-weight:600;color:#F3ECE0;margin-bottom:12px}
+  .hero0 .h0eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--clay-d);margin-bottom:14px}
+  .hero0 h1{font-family:'Fraunces',serif;font-weight:500;font-size:50px;line-height:1.02;letter-spacing:-1.7px;margin-bottom:14px;color:var(--ink)}
+  .hero0 .h0sub{font-size:16px;line-height:1.5;color:var(--muted);margin-bottom:24px;max-width:450px}
+  .hero0 .qlabel{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:12px}
   .hero0 .qopts{display:flex;flex-direction:column;gap:10px;max-width:450px}
-  .hero0 .qopt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:rgba(255,255,255,.04);border:1.5px solid rgba(243,236,224,.14);border-radius:14px;padding:15px 18px;font-size:16px;font-weight:500;color:#F3ECE0;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s,transform .15s}
-  .hero0 .qopt:hover{border-color:var(--clay);background:rgba(184,83,58,.16);transform:translateY(-1px)}
-  .hero0 .qopt .arw{font-size:17px;color:#E0A282;opacity:.75}
-  .hero0 .h0note{font-size:12.5px;color:#8E8576;margin-top:16px}
-  .h0card{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(243,236,224,.12);border-radius:26px;padding:32px 30px;box-shadow:0 40px 90px rgba(0,0,0,.45)}
-  .h0card .pc-eyebrow{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#A89A86;text-align:center;margin-bottom:12px}
+  .hero0 .qopt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:#FFFDF9;border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s,transform .15s,box-shadow .15s}
+  .hero0 .qopt:hover{border-color:var(--clay);background:#F6EAE3;transform:translateY(-1px);box-shadow:0 10px 26px rgba(184,83,58,.12)}
+  .hero0 .qopt .arw{font-size:17px;color:var(--clay);opacity:.85}
+  .hero0 .h0note{font-size:12.5px;color:var(--muted);margin-top:16px}
+  .h0card{position:relative;background:#FFFDF9;border:1px solid var(--line);border-radius:26px;padding:32px 30px;box-shadow:0 30px 70px rgba(20,17,14,.10)}
+  .h0card .pc-eyebrow{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--clay-d);text-align:center;margin-bottom:12px}
   .pc-ring{display:flex;justify-content:center}
   .pcringfg{stroke-dasharray:471;stroke-dashoffset:471;transition:stroke-dashoffset 1.5s var(--ease)}
   .pc-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
-  .pc-stat{background:rgba(255,255,255,.04);border:1px solid rgba(243,236,224,.1);border-radius:14px;padding:16px 12px;text-align:center}
-  .pc-stat .v{font-family:'Fraunces',serif;font-size:25px;font-weight:600;color:#E8A07E;letter-spacing:-.5px}
-  .pc-stat .k{font-size:11px;color:#A89A86;margin-top:4px;line-height:1.3}
-  .pc-bar{height:10px;border-radius:6px;margin-top:20px;background:linear-gradient(90deg,#3E8E7E 0 16%,#9CBF7E 16% 38%,#C98A45 38% 64%,#B8533A 64% 100%);position:relative;opacity:.9}
-  .pc-now,.pc-goal{position:absolute;top:-3px;width:16px;height:16px;border-radius:50%;border:3px solid #14110E;left:-20px;transition:left 1.4s var(--ease)}
-  .pc-now{background:#F3ECE0}.pc-goal{background:var(--clay)}
-  .pc-cap{text-align:center;font-size:12px;color:#8E8576;margin-top:18px}
+  .pc-stat{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 12px;text-align:center}
+  .pc-stat .v{font-family:'Fraunces',serif;font-size:25px;font-weight:600;color:var(--clay-d);letter-spacing:-.5px}
+  .pc-stat .k{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.3}
+  .pc-bar{height:10px;border-radius:6px;margin-top:20px;background:linear-gradient(90deg,#3E8E7E 0 16%,#9CBF7E 16% 38%,#C98A45 38% 64%,#B8533A 64% 100%);position:relative}
+  .pc-now,.pc-goal{position:absolute;top:-3px;width:16px;height:16px;border-radius:50%;border:3px solid #FFFDF9;left:-20px;transition:left 1.4s var(--ease);box-shadow:0 2px 6px rgba(20,17,14,.18)}
+  .pc-now{background:var(--ink)}.pc-goal{background:var(--clay)}
+  .pc-cap{text-align:center;font-size:12px;color:var(--muted);margin-top:18px}
   @media(max-width:860px){
     .hero0 .h0grid{grid-template-columns:1fr;gap:26px;padding:86px 22px 40px;align-items:start}
     .hero0 h1{font-size:37px;letter-spacing:-1.2px}
@@ -165,10 +165,10 @@
           <div class="pc-eyebrow">A peek at your number</div>
           <div class="pc-ring">
             <svg width="168" height="168" viewBox="0 0 200 200" role="img" aria-label="Example result">
-              <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(243,236,224,.12)" stroke-width="14"/>
+              <circle cx="100" cy="100" r="75" fill="none" stroke="#EAE2D2" stroke-width="14"/>
               <circle class="pcringfg" id="pcring" cx="100" cy="100" r="75" fill="none" stroke="#B8533A" stroke-width="14" stroke-linecap="round" transform="rotate(-90 100 100)"/>
-              <text x="100" y="96" text-anchor="middle" class="serif" font-size="50" font-weight="600" fill="#F3ECE0" id="pcn">0</text>
-              <text x="100" y="124" text-anchor="middle" font-size="12" fill="#A89A86" font-family="Inter">drinks / week</text>
+              <text x="100" y="96" text-anchor="middle" class="serif" font-size="50" font-weight="600" fill="#14110E" id="pcn">0</text>
+              <text x="100" y="124" text-anchor="middle" font-size="12" fill="#5E564B" font-family="Inter">drinks / week</text>
             </svg>
           </div>
           <div class="pc-stats">

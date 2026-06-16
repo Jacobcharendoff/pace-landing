@@ -433,10 +433,11 @@
   var order=['0','about','1.5','2','3','4','5','6','6.5','7'];
   var idx=0, DRINK_COST=9, CAL=150;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  /* % of adults drinking ABOVE Canada's low-risk guideline (3+ drinks/week = moderate + higher risk). Source: Statistics Canada, CCHS 2023 (released Oct 2024). */
+  /* % of adults drinking ABOVE Canada's low-risk guideline (3+ drinks/week = moderate + higher risk). Source: Statistics Canada, CCHS 2023 (released Oct 2024). Marginals only; not cross-tabulated. */
   var NATABOVE=30;
   var PROV={'Ontario':28,'Quebec':37,'Alberta':29,'British Columbia':31,'Manitoba':28,'New Brunswick':27,'Newfoundland and Labrador':29,'Nova Scotia':30,'Prince Edward Island':32,'Saskatchewan':26,'Northwest Territories':30,'Nunavut':30,'Yukon':30};
   var GEN={'Woman':26,'Man':35};
+  var AGE={'Under 30':26,'30–39':31,'40–49':32,'50–59':33,'60+':29};
   function icons(){if(window.lucide)lucide.createIcons();}
   function glasses(){document.querySelectorAll('.glasses').forEach(function(g){var n=+g.dataset.g,h='';for(var i=0;i<n;i++)h+='<i data-lucide="wine"></i>';g.innerHTML=h;});}
   function pctFor(d){return Math.max(6,Math.min(95,d/18*90));}
@@ -492,9 +493,12 @@
     var rb=document.getElementById('revealbench');
     var pc=aboveGuidelinePct();
     var loc=A.province?('In <b>'+A.province+'</b>'):'In Canada';
-    var g=GEN[A.gender];
-    var gtxt=g?(' Among '+(A.gender==='Man'?'men':'women')+', it is about <b>'+g+'%</b>.'):'';
-    rb.innerHTML=loc+', about <b>'+pc+'%</b> of adults drink above Canada’s low-risk guideline of 2 a week.'+gtxt+' Here’s where you land.';
+    var g=GEN[A.gender],ag=AGE[A.age];
+    var extra='';
+    if(g&&ag){extra=' For '+(A.gender==='Man'?'men':'women')+' it is about <b>'+g+'%</b>, and about <b>'+ag+'%</b> of people your age.';}
+    else if(g){extra=' For '+(A.gender==='Man'?'men':'women')+' it is about <b>'+g+'%</b>.';}
+    else if(ag){extra=' About <b>'+ag+'%</b> of people your age are over it.';}
+    rb.innerHTML=loc+', about <b>'+pc+'%</b> of adults drink above Canada’s low-risk guideline of 2 a week.'+extra+' Here’s where you land.';
   }
   function targetNum(){return Math.max(2,Math.round(A.drinksVal*A.goalFactor));}
   function renderGoalPreview(){

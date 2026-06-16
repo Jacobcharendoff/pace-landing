@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Find your number — Pace</title>
-<meta name="description" content="60 seconds. See how your week compares to Canada's alcohol guideline, and what cutting back gives you back." />
+<meta name="description" content="60 seconds. See where your week sits against Canada's guidance, and what a little less gives back." />
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
@@ -71,8 +71,9 @@
   .card .ic{color:var(--clay);margin-bottom:10px;display:flex}.card .ic svg{width:22px;height:22px}
   .card .n{font-family:'Fraunces',serif;font-size:34px;font-weight:600;color:var(--clay-d);letter-spacing:-1.4px;line-height:1}
   .card .l{font-size:13px;color:var(--muted);margin-top:5px}
-  .social{margin-top:18px;font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:8px}.social svg{width:16px;height:16px;color:var(--teal)}
+  .social{margin-top:18px;font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:8px}.social svg{width:16px;height:16px;color:var(--teal);flex:0 0 16px}
   .guidecite{font-size:12px;color:#9aa49f;margin-top:14px}
+  .guideline{font-size:13.5px;color:var(--teal-d);font-weight:500;margin-top:14px;line-height:1.45}
   .contwrap{margin-top:10px}
   .contbar{display:flex;height:14px;border-radius:8px;overflow:hidden}
   .contbar div:nth-child(1){background:#0E8C73;flex:0 0 14%}.contbar div:nth-child(2){background:#6FBE8F;flex:0 0 22%}
@@ -183,7 +184,7 @@
   </div>
   <div class="livebar" id="livebar">
     <div class="lb-in">
-      <span class="lb-guide"><span class="dot"></span>Canada low-risk: <b>&nbsp;2 / week</b></span>
+      <span class="lb-guide"><span class="dot"></span>Canada low-risk: <b>&nbsp;1–2 / wk</b></span>
       <span class="lb-you" id="lbyou"></span>
       <span class="lb-ins" id="lbins"><span class="sp"></span>1 insight</span>
     </div>
@@ -196,7 +197,7 @@
       <div class="h0intro">
         <div class="h0eyebrow">Early access · Canada</div>
         <h1 class="serif">How much do you actually drink?</h1>
-        <p class="h0sub">Sixty seconds, no judgment, no email until the end. See how your week compares to Canada's guideline, and to people like you.</p>
+        <p class="h0sub">Sixty seconds. No judgment, no email until the end. See where your week actually sits, and what a little less would give back.</p>
       </div>
       <div class="h0right">
         <div class="h0phonewrap">
@@ -239,14 +240,14 @@
         </div>
       </div>
       <div class="h0quiz">
-        <div class="qlabel">In a typical week, how much do you drink?</div>
+        <div class="qlabel">In a typical week, how many drinks?</div>
         <div class="qopts">
           <button class="qopt" onclick="startQuiz('1–3 drinks',2)"><span>1–3 drinks</span><span class="arw">&#8594;</span></button>
           <button class="qopt" onclick="startQuiz('4–7 drinks',5.5)"><span>4–7 drinks</span><span class="arw">&#8594;</span></button>
           <button class="qopt" onclick="startQuiz('8–14 drinks',11)"><span>8–14 drinks</span><span class="arw">&#8594;</span></button>
           <button class="qopt" onclick="startQuiz('15+ drinks',18)"><span>15 or more</span><span class="arw">&#8594;</span></button>
         </div>
-        <div class="h0note">Beer, wine, and spirits each count as one. No labels, no 12 steps.</div>
+        <div class="h0note">A beer, a glass of wine, a shot. Each one counts as a drink.</div>
       </div>
     </div>
   </div>
@@ -255,9 +256,9 @@
     <div class="panel active" data-step="0"></div>
 
     <div class="panel" data-step="about">
-      <div class="eyebrow">First, a little about you</div>
-      <div class="q serif">Let's tailor this to you.</div>
-      <p class="sub">This sets which benchmark and provincial data we hold you against. Quick, and it stays private.</p>
+      <div class="eyebrow">First, a bit about you</div>
+      <div class="q serif">Let's make this about you.</div>
+      <p class="sub">Your age, gender, and province change how you compare. Takes a second, and it stays private.</p>
       <div class="fieldlabel">Your age</div>
       <div class="optrow" id="agerow">
         <button class="pillopt" onclick="selOne('agerow','age','Under 30',this)">Under 30</button>
@@ -290,59 +291,60 @@
         <button class="pillopt" onclick="selOne('provrow','province','Yukon',this)">Yukon</button>
       </div>
       <button class="btn" onclick="aboutNext()">Continue</button>
-      <p class="note" id="abouterr" style="display:none;color:var(--clay-d)">Pick your age and province to continue.</p>
+      <p class="note" id="abouterr" style="display:none;color:var(--clay-d)">Add your age and province to keep going.</p>
     </div>
 
     <div class="panel" data-step="1.5">
-      <div class="eyebrow">Your week vs Canada's guideline</div>
+      <div class="eyebrow">Your week</div>
       <div class="q serif">That's about <span id="dm-n" class="bignum" style="color:var(--clay)">—</span> a week.</div>
       <div class="contwrap" style="margin-top:18px">
         <div class="marker"><div class="pin" id="pin"><b id="pinlabel">You</b></div></div>
         <div class="contbar"><div></div><div></div><div></div><div></div></div>
         <div class="contlabels"><div>0</div><div>1–2 low</div><div>3–6 moderate</div><div>7+ higher</div></div>
       </div>
-      <div class="bench" id="revealbench" style="margin-top:20px">Canada's 2023 guidance puts low risk at 2 drinks a week.</div>
+      <div class="bench" id="revealbench" style="margin-top:20px">Canada's guidance is simple now: less is better.</div>
+      <div class="guideline">Canada's guidance doesn't tell you to quit. It says less is better, and meets you where you are. So does Pace.</div>
       <div class="cards">
-        <div class="card"><div class="ic"><i data-lucide="wallet"></i></div><div class="n" id="dm-money">$0</div><div class="l">spent on alcohol a year</div></div>
-        <div class="card"><div class="ic"><i data-lucide="flame"></i></div><div class="n" id="dm-cal">0</div><div class="l">empty calories a year</div></div>
+        <div class="card"><div class="ic"><i data-lucide="wallet"></i></div><div class="n" id="dm-money">$0</div><div class="l">a year on alcohol</div></div>
+        <div class="card"><div class="ic"><i data-lucide="flame"></i></div><div class="n" id="dm-cal">0</div><div class="l">calories a year from drinks</div></div>
       </div>
-      <div class="social"><i data-lucide="users"></i> 49% of Canadian adults plan to drink less. You're not alone.</div>
+      <div class="social"><i data-lucide="users"></i> Most people who take this come in over where they'd like to be. You're in good company.</div>
       <button class="btn" onclick="next()">Keep going</button>
-      <div class="guidecite">Statistics Canada, Canadian Community Health Survey 2023 · guideline: CCSA 2023.</div>
+      <div class="guidecite">Statistics Canada, Canadian Community Health Survey 2023 · guideline: Canada's Guidance on Alcohol and Health, 2023.</div>
     </div>
 
     <div class="panel" data-step="2">
-      <div class="eyebrow">Your pattern</div>
+      <div class="eyebrow">When it happens</div>
       <div class="q serif">When does it usually happen?</div>
-      <p class="sub">Pick the one that fits most. This shapes your plan.</p>
-      <button class="opt" onclick="pick('when','Winding down after work',0,this,'The after-work unwind is the #1 trigger in Canada. Pace targets it directly.')"><span class="ico"><i data-lucide="sofa"></i></span> Winding down after work</button>
-      <button class="opt" onclick="pick('when','Social occasions',0,this,'Social drinking is the most invisible kind. We make it visible.')"><span class="ico"><i data-lucide="party-popper"></i></span> Social occasions</button>
-      <button class="opt" onclick="pick('when','Out of habit',0,this,'Habit, not craving. That is the easiest pattern to reshape.')"><span class="ico"><i data-lucide="repeat"></i></span> Just out of habit</button>
-      <button class="opt" onclick="pick('when','Stress or a long day',0,this,'Stress drinking is real. Pace builds a different thing to reach for.')"><span class="ico"><i data-lucide="cloud-rain"></i></span> Stress or a long day</button>
+      <p class="sub">Pick the closest one. It shapes the plan we build.</p>
+      <button class="opt" onclick="pick('when','Winding down after work',0,this,'The after-work drink is the most common one in Canada. Easy to target once you can see it.')"><span class="ico"><i data-lucide="sofa"></i></span> Winding down after work</button>
+      <button class="opt" onclick="pick('when','Social occasions',0,this,'Social drinking is the sneaky one. It barely registers. We make it visible.')"><span class="ico"><i data-lucide="party-popper"></i></span> Social occasions</button>
+      <button class="opt" onclick="pick('when','Out of habit',0,this,'Habit, not craving. Honestly the easiest kind to shift.')"><span class="ico"><i data-lucide="repeat"></i></span> Just out of habit</button>
+      <button class="opt" onclick="pick('when','Stress or a long day',0,this,'Stress drinking is real. The fix is having something else to reach for.')"><span class="ico"><i data-lucide="cloud-rain"></i></span> Stress or a long day</button>
     </div>
 
     <div class="panel" data-step="3">
-      <div class="eyebrow">Your history</div>
+      <div class="eyebrow">Been here before</div>
       <div class="q serif">Tried to cut back before?</div>
       <p class="sub">Here's the part no one tells you:</p>
       <div class="cmp">
         <div class="cmprow"><span>Willpower alone</span><div class="cbar"><i style="--w:19%"></i></div></div>
         <div class="cmprow"><span>With a plan and a coach</span><div class="cbar"><i class="good" style="--w:84%"></i></div></div>
-        <div class="cmpcap">Roughly how many keep it up past six months. Support is the difference.</div>
+        <div class="cmpcap">That's roughly how many hold it past six months. The difference isn't willpower. It's a plan and someone in your corner.</div>
       </div>
-      <button class="opt" onclick="pick('tried','Willpower alone',0,this,'That bar is exactly why. Not a you problem.')"><span class="ico"><i data-lucide="dumbbell"></i></span> Willpower alone</button>
-      <button class="opt" onclick="pick('tried','A dry month',0,this,'Dry months are great. The trick is what happens after.')"><span class="ico"><i data-lucide="calendar"></i></span> A dry month</button>
-      <button class="opt" onclick="pick('tried','An app or tracker',0,this,'Tracking helps. Coaching is what makes it stick.')"><span class="ico"><i data-lucide="smartphone"></i></span> An app or tracker</button>
-      <button class="opt" onclick="pick('tried','Not yet',0,this,'Perfect time to start, then.')"><span class="ico"><i data-lucide="sprout"></i></span> Not yet, this is new</button>
+      <button class="opt" onclick="pick('tried','Willpower alone',0,this,'That gap is the reason, not you. White-knuckling almost never holds.')"><span class="ico"><i data-lucide="dumbbell"></i></span> Willpower alone</button>
+      <button class="opt" onclick="pick('tried','A dry month',0,this,'Dry months are great. What matters is the day after they end.')"><span class="ico"><i data-lucide="calendar"></i></span> A dry month</button>
+      <button class="opt" onclick="pick('tried','An app or tracker',0,this,'Tracking shows you the problem. A plan is what changes it.')"><span class="ico"><i data-lucide="smartphone"></i></span> An app or tracker</button>
+      <button class="opt" onclick="pick('tried','Not yet',0,this,'Then you are starting fresh. Good place to be.')"><span class="ico"><i data-lucide="sprout"></i></span> Not yet, this is new</button>
     </div>
 
     <div class="panel" data-step="4">
-      <div class="eyebrow">Your target</div>
+      <div class="eyebrow">Your goal</div>
       <div class="q serif">What's your goal?</div>
       <p class="sub">Watch your number take shape.</p>
-      <button class="opt" onclick="pick('goal','A little less',0.7,this,'Small and sustainable. That is how it lasts.')"><span class="ico"><i data-lucide="cloud-sun"></i></span> A little less</button>
-      <button class="opt" onclick="pick('goal','A lot less',0.4,this,'Bold. We will make it feel doable.')"><span class="ico"><i data-lucide="sun"></i></span> A lot less</button>
-      <button class="opt" onclick="pick('goal','Just more mindful',0.85,this,'Awareness alone changes behaviour. Smart.')"><span class="ico"><i data-lucide="compass"></i></span> Just more mindful</button>
+      <button class="opt" onclick="pick('goal','A little less',0.7,this,'Small and steady. That is the kind that lasts.')"><span class="ico"><i data-lucide="cloud-sun"></i></span> A little less</button>
+      <button class="opt" onclick="pick('goal','A lot less',0.4,this,'Bold. We will make it feel doable, not painful.')"><span class="ico"><i data-lucide="sun"></i></span> A lot less</button>
+      <button class="opt" onclick="pick('goal','Just more mindful',0.85,this,'Just paying attention changes how much you drink. Real effect.')"><span class="ico"><i data-lucide="compass"></i></span> Just more mindful</button>
       <div class="prev" id="q4prev">
         <svg width="70" height="70" viewBox="0 0 80 80">
           <circle cx="40" cy="40" r="34" fill="none" stroke="#DCE7E2" stroke-width="9"/>
@@ -356,7 +358,7 @@
     <div class="panel" data-step="5">
       <div class="eyebrow">Your why</div>
       <div class="q serif">What's pulling you?</div>
-      <p class="sub">Tap all that matter. Watch your plan build.</p>
+      <p class="sub">Tap whatever's true. Your plan builds as you go.</p>
       <div class="chips" id="drivers">
         <button class="chip" onclick="toggle(this,'Sleep')"><i data-lucide="moon"></i> Better sleep</button>
         <button class="chip" onclick="toggle(this,'Energy')"><i data-lucide="zap"></i> More energy</button>
@@ -383,7 +385,7 @@
       <p class="sub">Your number and early access, nothing else. We never share your data.</p>
       <input type="text" id="fname" placeholder="First name (optional)" />
       <input type="email" id="email" placeholder="you@email.com" />
-      <div class="fieldlabel" style="margin-top:6px">If Pace worked, what's it worth a month?</div>
+      <div class="fieldlabel" style="margin-top:6px">If Pace worked, what would it be worth a month?</div>
       <div class="priceopts" id="priceopts">
         <button class="priceopt" onclick="selPrice('40plus',this)"><span class="pv">$40+</span><span class="pk">still less than one night out</span></button>
         <button class="priceopt" onclick="selPrice('20-40',this)"><span class="pv">$20–40</span><span class="pk">about 3 drinks out</span></button>
@@ -422,7 +424,7 @@
       <p class="sub" id="r-drivers" style="margin-top:14px"></p>
       <div style="background:#EFF7F3;border:1px solid #CFE5DC;border-radius:18px;padding:20px;margin-top:6px;max-width:430px;margin-left:auto;margin-right:auto">
         <b class="serif" style="font-size:19px">You're on the early-access list.</b>
-        <p style="font-size:14px;color:var(--muted);margin-top:5px">We'll be in touch when Pace opens in Canada. Thanks for helping us build the right thing.</p>
+        <p style="font-size:14px;color:var(--muted);margin-top:5px">We'll email when Pace opens in Canada. That's it. Thanks for helping us build the right thing.</p>
       </div>
       <a class="btn ghost" href="index.html">Back to Pace</a>
     </div>
@@ -433,7 +435,7 @@
   var order=['0','about','1.5','2','3','4','5','6','6.5','7'];
   var idx=0, DRINK_COST=9, CAL=150;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  /* % of adults drinking ABOVE Canada's low-risk guideline (3+ drinks/week = moderate + higher risk). Source: Statistics Canada, CCHS 2023 (released Oct 2024). Marginals only; not cross-tabulated. */
+  /* % of adults drinking ABOVE Canada's low-risk range (3+ drinks/week = moderate + higher risk). Source: Statistics Canada, CCHS 2023 (released Oct 2024). Marginals only; not cross-tabulated. */
   var NATABOVE=30;
   var PROV={'Ontario':28,'Quebec':37,'Alberta':29,'British Columbia':31,'Manitoba':28,'New Brunswick':27,'Newfoundland and Labrador':29,'Nova Scotia':30,'Prince Edward Island':32,'Saskatchewan':26,'Northwest Territories':30,'Nunavut':30,'Yukon':30};
   var GEN={'Woman':26,'Man':35};
@@ -442,9 +444,9 @@
   function glasses(){document.querySelectorAll('.glasses').forEach(function(g){var n=+g.dataset.g,h='';for(var i=0;i<n;i++)h+='<i data-lucide="wine"></i>';g.innerHTML=h;});}
   function pctFor(d){return Math.max(6,Math.min(95,d/18*90));}
   function bandLine(v){
-    if(v<=2)return "That's right around Canada's low-risk line of 2 a week.";
-    if(v<=6)return "That puts you in the moderate-risk range. Canada's guidance links 3 to 6 drinks a week to higher cancer risk, including breast and colon.";
-    return "That's in the higher-risk range. Canada's guidance links 7 or more a week to higher risk of heart disease and stroke.";
+    if(v<=2)return "That sits in the low-risk range. Canada's guidance is simple now: less is better, and you're already near the floor.";
+    if(v<=6)return "That's the moderate range. Canada links 3 to 6 a week to higher odds of several cancers, including breast and colon. Not a lecture, just the data.";
+    return "That's the higher-risk range. At 7 or more a week the odds of heart disease and stroke climb, and every extra drink adds to it.";
   }
   function liveSteps(){return ['about','1.5','2','3','4','5','6'].indexOf(order[idx])>-1;}
   function updateLive(){
@@ -499,7 +501,7 @@
     var pc=aboveGuidelinePct();
     var loc=A.province?('In <b>'+A.province+'</b>'):'In Canada';
     var g=GEN[A.gender],ag=AGE[A.age];
-    var who=loc+', about <b>'+pc+'%</b> of adults are over the guideline too';
+    var who=loc+', about <b>'+pc+'%</b> of adults drink more than the low-risk range too';
     if(g&&ag){who+=' — about <b>'+g+'%</b> of '+(A.gender==='Man'?'men':'women')+', and <b>'+ag+'%</b> of people your age';}
     else if(g){who+=' — about <b>'+g+'%</b> of '+(A.gender==='Man'?'men':'women');}
     rb.innerHTML='<b style="color:var(--ink)">'+bandLine(d)+'</b> '+who+'.';
@@ -523,7 +525,7 @@
     var fd=new FormData();fd.append('first_name',A.fname);fd.append('email',email);fd.append('fair_price',A.price);fd.append('age',A.age);fd.append('gender',A.gender);fd.append('province',A.province);fd.append('drinks',A.drinks);fd.append('when',A.when);fd.append('tried',A.tried);fd.append('goal',A.goal);fd.append('drivers',A.drivers.join(', '));fd.append('source',(new URLSearchParams(location.search).get('src')||'quiz_v1'));
     fetch('https://script.google.com/macros/s/AKfycbyoj_4r_8a-RgvTsXuCu9vJj_CVSB6e1cIcvSBvFMvX7Qbm13FXzKdMXXFUlKyUfPpt/exec',{method:'POST',mode:'no-cors',body:fd}).catch(function(){});
     next();
-    var steps=['Reading your week…','Mapping it to Canada’s scale…','Setting your number…'],s=0,ls=document.getElementById('lstep');
+    var steps=['Reading your week…','Lining it up with Canada’s guidance…','Setting your number…'],s=0,ls=document.getElementById('lstep');
     var li=setInterval(function(){s++;if(s<steps.length){ls.style.opacity=0;setTimeout(function(){ls.textContent=steps[s];ls.style.opacity=1;},250);}},520);
     setTimeout(function(){clearInterval(li);renderResult();next();},reduce?100:1700);
   }
@@ -532,13 +534,13 @@
     document.getElementById('targetN').textContent=target;
     var saved=Math.round((cur-target)*52*DRINK_COST),fewer=Math.round((cur-target)*52);
     var hi=A.fname?A.fname+', ':'';
-    document.getElementById('resultline').textContent=hi+(target<=2?'right at Canada’s low-risk line.':'a realistic target you can actually hold.');
+    document.getElementById('resultline').textContent=hi+(target<=2?'this keeps you in the low-risk range.':'a number you can actually hold.');
     setTimeout(function(){animateNum('r-money',Math.max(0,saved),'$');animateNum('r-drinks',Math.max(0,fewer));},250);
     document.getElementById('ringfg').style.strokeDashoffset=471*(1-(cur>0?Math.min(target/cur,1):.5));
     setTimeout(function(){document.getElementById('bapinNow').style.left=pctFor(cur)+'%';document.getElementById('bapinGoal').style.left=pctFor(target)+'%';},200);
     var pc=aboveGuidelinePct();var b=document.getElementById('bench');b.style.display='block';
-    b.innerHTML='In '+(A.province||'Canada')+', about <b>'+pc+'%</b> of adults are over Canada’s guideline. Your target brings you back toward the low-risk range. <span style="color:#9a9082">(Statistics Canada, CCHS 2023)</span>';
-    if(A.drivers.length){var m={Sleep:'deeper sleep',Energy:'more energy',Weight:'a leaner frame',Money:'real savings',Clarity:'a clearer head',Relationships:'being more present'};document.getElementById('r-drivers').textContent='Pace will help you get there, with '+A.drivers.map(function(x){return m[x]||x;}).slice(0,3).join(', ')+' along the way.';}
+    b.innerHTML='In '+(A.province||'Canada')+', about <b>'+pc+'%</b> of adults drink more than the low-risk range. Your number puts you on the better side of that. <span style="color:#9a9082">(Statistics Canada, 2023)</span>';
+    if(A.drivers.length){var m={Sleep:'deeper sleep',Energy:'more energy',Weight:'a leaner frame',Money:'real savings',Clarity:'a clearer head',Relationships:'being more present'};document.getElementById('r-drivers').textContent='Pace helps you get there, with '+A.drivers.map(function(x){return m[x]||x;}).slice(0,3).join(', ')+' along the way.';}
     icons();
   }
   glasses();icons();show();appCycle();

@@ -74,6 +74,11 @@
   .social{margin-top:18px;font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:8px}.social svg{width:16px;height:16px;color:var(--teal);flex:0 0 16px}
   .guidecite{font-size:12px;color:#9aa49f;margin-top:14px}
   .guideline{font-size:13.5px;color:var(--teal-d);font-weight:500;margin-top:14px;line-height:1.45}
+  .prow{display:flex;align-items:center;gap:13px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px;text-align:left}
+  .prow .pic{flex:0 0 40px;height:40px;border-radius:11px;background:#E9F4F0;display:flex;align-items:center;justify-content:center;color:var(--teal-d)}
+  .prow .pic svg{width:19px;height:19px}
+  .prow .pt{font-size:14.5px;font-weight:500;color:var(--ink)}
+  .pphone{display:flex;justify-content:center;margin:8px 0 20px}
   .contwrap{margin-top:10px}
   .contbar{display:flex;height:14px;border-radius:8px;overflow:hidden}
   .contbar div:nth-child(1){background:#0E8C73;flex:0 0 14%}.contbar div:nth-child(2){background:#6FBE8F;flex:0 0 22%}
@@ -371,6 +376,35 @@
       <button class="btn" onclick="next()">Almost there</button>
     </div>
 
+    <div class="panel" data-step="product">
+      <div class="eyebrow">How Pace works</div>
+      <div class="q serif">Here's how you hold <span id="pp-num">your number</span> a week.</div>
+      <p class="sub">Not a tracker you forget about. A plan that knows your week.</p>
+      <div class="pphone">
+        <div style="position:relative;width:230px;background:#15211E;border-radius:34px;padding:10px">
+          <div style="position:absolute;top:11px;left:50%;transform:translateX(-50%);width:70px;height:6px;border-radius:5px;background:#2c3c37"></div>
+          <div style="background:linear-gradient(180deg,#FBFDFC,#EFF5F2);border-radius:26px;padding:26px 16px 16px">
+            <div class="app-h">Your week</div>
+            <div class="app-t" style="font-size:18px;margin-bottom:12px">5 of 7 days on track</div>
+            <div class="daysrow">
+              <div class="day ok"><div class="dd">M</div><div class="dot"><i data-lucide="check"></i></div></div>
+              <div class="day ok"><div class="dd">T</div><div class="dot"><i data-lucide="check"></i></div></div>
+              <div class="day ok"><div class="dd">W</div><div class="dot"><i data-lucide="check"></i></div></div>
+              <div class="day over"><div class="dd">T</div><div class="dot"></div></div>
+              <div class="day ok"><div class="dd">F</div><div class="dot"><i data-lucide="check"></i></div></div>
+              <div class="day ok"><div class="dd">S</div><div class="dot"><i data-lucide="check"></i></div></div>
+              <div class="day"><div class="dd">S</div><div class="dot"></div></div>
+            </div>
+            <div class="app-stat" style="margin-top:0"><div class="v" id="pp-stat">—</div><div class="k">drinks used this week</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="prow"><div class="pic"><i data-lucide="plus"></i></div><div class="pt">Log a drink in two taps. That's the whole effort.</div></div>
+      <div class="prow"><div class="pic"><i data-lucide="message-circle"></i></div><div class="pt" id="pp-coach">A coach that knows your week, and checks in before the tricky nights.</div></div>
+      <div class="prow"><div class="pic"><i data-lucide="trending-up"></i></div><div class="pt" id="pp-driver">Watch the sleep and the money add up, week over week.</div></div>
+      <button class="btn" onclick="next()">Continue</button>
+    </div>
+
     <div class="panel center" data-step="6">
       <div class="teaser">
         <svg width="84" height="84" viewBox="0 0 80 80">
@@ -432,7 +466,7 @@
 
 <script>
   var A={drinks:'',drinksVal:0,when:'',tried:'',goal:'',goalFactor:0.6,drivers:[],age:'',gender:'',province:'',fname:'',email:'',price:''};
-  var order=['0','about','1.5','2','3','4','5','6','6.5','7'];
+  var order=['0','about','1.5','2','3','4','5','product','6','6.5','7'];
   var idx=0, DRINK_COST=9, CAL=150;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   /* % of adults drinking ABOVE Canada's low-risk range (3+ drinks/week = moderate + higher risk). Source: Statistics Canada, CCHS 2023 (released Oct 2024). Marginals only; not cross-tabulated. */
@@ -448,7 +482,7 @@
     if(v<=6)return "That's the moderate range. Canada links 3 to 6 a week to higher odds of several cancers, including breast and colon. Not a lecture, just the data.";
     return "That's the higher-risk range. At 7 or more a week the odds of heart disease and stroke climb, and every extra drink adds to it.";
   }
-  function liveSteps(){return ['about','1.5','2','3','4','5','6'].indexOf(order[idx])>-1;}
+  function liveSteps(){return ['about','1.5','2','3','4','5','product','6'].indexOf(order[idx])>-1;}
   function updateLive(){
     var you=document.getElementById('lbyou'),ins=document.getElementById('lbins');
     if(A.drinks){you.textContent='· You: ~'+A.drinks.replace(' drinks','').replace('+','')+'/wk';}else{you.textContent='';}
@@ -465,6 +499,7 @@
     document.getElementById('barfill').style.width=(Math.min(idx/(order.length-1),1)*100)+'%';
     document.getElementById('back').style.visibility=(idx>0 && order[idx]!=='6.5' && order[idx]!=='7')?'visible':'hidden';
     if(order[idx]==='1.5')renderDataMoment();
+    if(order[idx]==='product')renderProduct();
     window.scrollTo(0,0);
   }
   function next(){idx=Math.min(idx+1,order.length-1);show();}
@@ -512,6 +547,16 @@
     document.getElementById('q4n').textContent=t;document.getElementById('q4big').textContent=t+' drinks';
     document.getElementById('q4sub').textContent='down from about '+A.drinks.replace(' drinks','');
     var ratio=A.drinksVal>0?Math.min(t/A.drinksVal,1):.5;document.getElementById('q4ring').style.strokeDashoffset=214*(1-ratio);
+  }
+  function renderProduct(){
+    var t=targetNum();
+    document.getElementById('pp-num').textContent=t;
+    document.getElementById('pp-stat').textContent=Math.max(1,Math.round(t*0.4))+' of '+t;
+    var cmap={'Winding down after work':'knows your after-work wind-down, and nudges before it hits.','Social occasions':'has a plan ready before the social stuff, not after.','Out of habit':'catches the autopilot nights before they start.','Stress or a long day':'checks in on the hard days, with something else to reach for.'};
+    document.getElementById('pp-coach').textContent='A coach that '+(cmap[A.when]||'knows your week, and checks in before the tricky nights.');
+    var dmap={Sleep:'Watch the sleep come back, week over week.',Energy:'Watch your energy climb, week over week.',Weight:'Watch it show up on the scale, week over week.',Money:'Watch the money add up, week over week.',Clarity:'Watch your head clear, week over week.',Relationships:'Show up more present, week over week.'};
+    document.getElementById('pp-driver').textContent=(A.drivers&&A.drivers.length&&dmap[A.drivers[0]])||'Watch the sleep and the money add up, week over week.';
+    icons();
   }
   function renderPlan(){
     var p=document.getElementById('plan');var map={Sleep:['moon','Deeper sleep'],Energy:['zap','More energy'],Weight:['activity','Leaner frame'],Money:['wallet','Money back'],Clarity:['brain','Clearer head'],Relationships:['heart','More present']};

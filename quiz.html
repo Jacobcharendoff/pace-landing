@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Find your number — Pace</title>
-<meta name="description" content="60 seconds to your number. See where you land and what cutting back gives you back." />
+<meta name="description" content="60 seconds to your number. See where you land against Canada's guideline and what cutting back gives you back." />
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
@@ -14,16 +14,24 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Inter',-apple-system,sans-serif;background:radial-gradient(120% 80% at 50% -10%,#F8FBFA,var(--bone) 60%);color:var(--ink);min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   .serif{font-family:'Fraunces',Georgia,serif}
-  .top{position:fixed;top:0;left:0;right:0;padding:16px 20px;display:flex;align-items:center;gap:12px;background:rgba(239,245,242,.9);backdrop-filter:blur(8px);z-index:10}
+  .top{position:fixed;top:0;left:0;right:0;padding:16px 20px;display:flex;align-items:center;gap:12px;background:rgba(239,245,242,.92);backdrop-filter:blur(8px);z-index:11}
   .back{border:none;background:none;color:var(--muted);cursor:pointer;padding:4px;border-radius:8px;visibility:hidden;display:flex}
   .back svg{width:22px;height:22px}.back:hover{color:var(--ink)}
   .logo{font-family:'Fraunces',serif;font-weight:600;font-size:19px}.logo span{color:var(--clay)}
   .bar{flex:1;height:6px;background:#DCE7E2;border-radius:6px;overflow:hidden}
   .barfill{height:100%;width:0;background:var(--teal);border-radius:6px;transition:width .5s var(--ease)}
-  .react{position:fixed;top:58px;left:0;right:0;text-align:center;z-index:9;pointer-events:none;opacity:0;transition:opacity .4s}
+  /* live coaching/score strip */
+  .livebar{position:fixed;top:54px;left:0;right:0;display:none;z-index:10;background:rgba(246,250,248,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .lb-in{max-width:560px;margin:0 auto;padding:9px 22px;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted)}
+  .lb-guide{display:inline-flex;align-items:center;gap:6px;color:var(--teal-d);font-weight:600}
+  .lb-guide .dot{width:8px;height:8px;border-radius:50%;background:var(--teal)}
+  .lb-you{color:var(--ink);font-weight:600}
+  .lb-ins{margin-left:auto;display:inline-flex;align-items:center;gap:5px;color:var(--clay-d);font-weight:600}
+  .lb-ins .sp{width:5px;height:5px;border-radius:50%;background:var(--clay)}
+  .react{position:fixed;top:96px;left:0;right:0;text-align:center;z-index:12;pointer-events:none;opacity:0;transition:opacity .4s}
   .react.show{opacity:1}
   .react span{display:inline-block;background:var(--ink);color:#F3ECE0;font-size:13.5px;padding:9px 16px;border-radius:100px;max-width:90%;box-shadow:0 10px 30px rgba(20,17,14,.25)}
-  .stage{max-width:560px;margin:0 auto;padding:108px 22px 70px;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+  .stage{max-width:560px;margin:0 auto;padding:132px 22px 70px;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
   .panel{display:none;animation:in .55s var(--ease)}
   .panel.active{display:block}
   @keyframes in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
@@ -47,18 +55,25 @@
   .chip{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:100px;padding:11px 17px;font-size:15px;font-weight:500;cursor:pointer;transition:all .15s;font-family:inherit;color:var(--ink)}
   .chip svg{width:17px;height:17px}
   .chip.sel{border-color:var(--teal);background:var(--teal);color:#fff}
+  .priceopts{display:flex;flex-direction:column;gap:10px;margin-bottom:6px}
+  .priceopt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:15px;padding:15px 18px;cursor:pointer;font-family:inherit;transition:all .15s}
+  .priceopt:hover{border-color:var(--teal);background:#EFF7F3}
+  .priceopt.sel{border-color:var(--teal);background:#EFF7F3;box-shadow:inset 0 0 0 1px var(--teal)}
+  .priceopt .pv{font-weight:600;font-size:16px;color:var(--ink)}
+  .priceopt .pk{font-size:12.5px;color:var(--muted)}
   .btn{width:100%;background:var(--clay);color:#fff;font-size:17px;font-weight:600;border:none;border-radius:15px;padding:18px;cursor:pointer;font-family:inherit;transition:background .2s,transform .2s,box-shadow .2s;margin-top:14px;box-shadow:0 12px 30px rgba(242,114,46,.28)}
   .btn:hover{background:var(--clay-d);transform:translateY(-1px)}
   .btn.ghost{background:transparent;color:var(--muted);font-weight:500;font-size:14px;padding:10px;margin-top:6px;box-shadow:none}
   .note{font-size:13px;color:var(--muted);margin-top:18px;text-align:center}
-  input,select{width:100%;padding:17px;font-size:16px;border:1.5px solid var(--line);border-radius:15px;background:#fff;margin-bottom:14px;font-family:inherit;color:var(--ink)}
-  input:focus,select:focus{outline:none;border-color:var(--teal)}
+  input{width:100%;padding:17px;font-size:16px;border:1.5px solid var(--line);border-radius:15px;background:#fff;margin-bottom:14px;font-family:inherit;color:var(--ink)}
+  input:focus{outline:none;border-color:var(--teal)}
   .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 8px}
   .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;text-align:left}
   .card .ic{color:var(--clay);margin-bottom:10px;display:flex}.card .ic svg{width:22px;height:22px}
   .card .n{font-family:'Fraunces',serif;font-size:34px;font-weight:600;color:var(--clay-d);letter-spacing:-1.4px;line-height:1}
   .card .l{font-size:13px;color:var(--muted);margin-top:5px}
   .social{margin-top:18px;font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:8px}.social svg{width:16px;height:16px;color:var(--teal)}
+  .guidecite{font-size:12px;color:#9aa49f;margin-top:14px}
   .contwrap{margin-top:10px}
   .contbar{display:flex;height:14px;border-radius:8px;overflow:hidden}
   .contbar div:nth-child(1){background:#0E8C73;flex:0 0 14%}.contbar div:nth-child(2){background:#6FBE8F;flex:0 0 22%}
@@ -99,17 +114,20 @@
   .lring{width:64px;height:64px;border:5px solid #DCE7E2;border-top-color:var(--teal);border-radius:50%;margin:0 auto 22px;animation:spin 1s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
   .lstep{height:24px;transition:opacity .3s}
-  @media(max-width:480px){.q{font-size:27px}h1{font-size:33px}.cmprow span{min-width:118px}}
+  @media(max-width:480px){.q{font-size:27px}h1{font-size:33px}.cmprow span{min-width:118px}.lb-in{padding:9px 16px;font-size:11.5px}}
   @media(prefers-reduced-motion:reduce){.panel{animation:none}.ringfg,.miniringfg,.pin,.barfill,.cbar i{transition:none}.lring{animation:none}}
-  /* immersive ad-landing intro: two-column, light tech-wellness (teal/blue + orange pop) */
+  /* immersive ad-landing intro: two-column, light tech-wellness */
   .hero0{position:fixed;inset:0;z-index:30;display:none;background:radial-gradient(70% 58% at 88% 2%,rgba(242,114,46,.16),rgba(247,250,249,0) 52%),radial-gradient(82% 70% at 4% 98%,rgba(14,140,115,.16),rgba(247,250,249,0) 55%),linear-gradient(180deg,#F8FBFA,#E9F1EE);color:#15211E;overflow-y:auto}
   .hero0.on{display:block}
   .hero0 .h0logo{position:absolute;top:20px;left:26px;font-family:'Fraunces',serif;font-weight:600;font-size:20px;letter-spacing:-.3px;color:#15211E;z-index:2}
   .hero0 .h0logo span{color:#F2722E}
-  .hero0 .h0grid{min-height:100%;max-width:1120px;margin:0 auto;padding:104px 28px 52px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero0 .h0grid{min-height:100%;max-width:1120px;margin:0 auto;padding:104px 28px 52px;display:grid;grid-template-columns:1.05fr .95fr;column-gap:56px;row-gap:22px;align-items:center;grid-template-areas:"intro card" "quiz card"}
+  .hero0 .h0intro{grid-area:intro;align-self:end}
+  .hero0 .h0quiz{grid-area:quiz;align-self:start}
+  .hero0 .h0right{grid-area:card}
   .hero0 .h0eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#0E8C73;margin-bottom:14px}
   .hero0 h1{font-family:'Fraunces',serif;font-weight:500;font-size:50px;line-height:1.02;letter-spacing:-1.7px;margin-bottom:14px;color:#15211E}
-  .hero0 .h0sub{font-size:16px;line-height:1.5;color:#5C6B66;margin-bottom:24px;max-width:450px}
+  .hero0 .h0sub{font-size:16px;line-height:1.5;color:#5C6B66;margin-bottom:22px;max-width:450px}
   .hero0 .qlabel{font-size:13px;font-weight:600;color:#15211E;margin-bottom:12px}
   .hero0 .qopts{display:flex;flex-direction:column;gap:10px;max-width:450px}
   .hero0 .qopt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:#fff;border:1.5px solid #E2EBE7;border-radius:14px;padding:16px 18px;font-size:16px;font-weight:500;color:#15211E;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s,transform .15s,box-shadow .15s}
@@ -130,10 +148,13 @@
   .pc-now{background:#F2722E}.pc-goal{background:#0E8C73}
   .pc-cap{text-align:center;font-size:12px;color:#5C6B66;margin-top:18px}
   @media(max-width:860px){
-    .hero0 .h0grid{grid-template-columns:1fr;gap:26px;padding:86px 22px 40px;align-items:start}
-    .hero0 h1{font-size:37px;letter-spacing:-1.2px}
-    .h0card{padding:26px 22px}
-    .pc-stat .v{font-size:22px}
+    .hero0 .h0grid{grid-template-columns:1fr;grid-template-areas:"intro" "card" "quiz";row-gap:18px;padding:80px 20px 36px;align-items:start}
+    .hero0 h1{font-size:31px;letter-spacing:-1px}
+    .hero0 .h0sub{font-size:15px;margin-bottom:6px}
+    .h0card{padding:20px 18px}
+    .hero0 .pc-ring svg{width:132px;height:132px}
+    .pc-stat{padding:12px 10px}.pc-stat .v{font-size:21px}
+    .h0card .pc-eyebrow{margin-bottom:8px}.pc-bar{margin-top:16px}.pc-cap{margin-top:14px}
   }
 </style>
 </head>
@@ -143,23 +164,22 @@
     <div class="logo">Pace<span>.</span></div>
     <div class="bar"><div class="barfill" id="barfill"></div></div>
   </div>
+  <div class="livebar" id="livebar">
+    <div class="lb-in">
+      <span class="lb-guide"><span class="dot"></span>Canada low-risk: <b>&nbsp;2 / week</b></span>
+      <span class="lb-you" id="lbyou"></span>
+      <span class="lb-ins" id="lbins"><span class="sp"></span>1 insight</span>
+    </div>
+  </div>
   <div class="react" id="react"><span id="reacttext"></span></div>
 
   <div class="hero0 on" id="hero0">
     <div class="h0logo">Pace<span>.</span></div>
     <div class="h0grid">
-      <div class="h0left">
+      <div class="h0intro">
         <div class="h0eyebrow">Early access · Canada</div>
         <h1 class="serif">Where does your drinking actually land?</h1>
-        <p class="h0sub">Sixty seconds, no judgment, no email until the end. Start with an honest guess:</p>
-        <div class="qlabel">In a typical week, how much do you drink?</div>
-        <div class="qopts">
-          <button class="qopt" onclick="startQuiz('1–3 drinks',2)"><span>1–3 drinks</span><span class="arw">&#8594;</span></button>
-          <button class="qopt" onclick="startQuiz('4–7 drinks',5.5)"><span>4–7 drinks</span><span class="arw">&#8594;</span></button>
-          <button class="qopt" onclick="startQuiz('8–14 drinks',11)"><span>8–14 drinks</span><span class="arw">&#8594;</span></button>
-          <button class="qopt" onclick="startQuiz('15+ drinks',18)"><span>15 or more</span><span class="arw">&#8594;</span></button>
-        </div>
-        <div class="h0note">Beer, wine, and spirits each count as one. No labels, no 12 steps.</div>
+        <p class="h0sub">Sixty seconds, no judgment, no email until the end. We map you against Canada's official guideline. Start with an honest guess:</p>
       </div>
       <div class="h0right">
         <div class="h0card">
@@ -180,20 +200,59 @@
           <div class="pc-cap">An example. Yours takes 60 seconds.</div>
         </div>
       </div>
+      <div class="h0quiz">
+        <div class="qlabel">In a typical week, how much do you drink?</div>
+        <div class="qopts">
+          <button class="qopt" onclick="startQuiz('1–3 drinks',2)"><span>1–3 drinks</span><span class="arw">&#8594;</span></button>
+          <button class="qopt" onclick="startQuiz('4–7 drinks',5.5)"><span>4–7 drinks</span><span class="arw">&#8594;</span></button>
+          <button class="qopt" onclick="startQuiz('8–14 drinks',11)"><span>8–14 drinks</span><span class="arw">&#8594;</span></button>
+          <button class="qopt" onclick="startQuiz('15+ drinks',18)"><span>15 or more</span><span class="arw">&#8594;</span></button>
+        </div>
+        <div class="h0note">Beer, wine, and spirits each count as one. No labels, no 12 steps.</div>
+      </div>
     </div>
   </div>
 
   <div class="stage">
     <div class="panel active" data-step="0"></div>
 
-    <div class="panel" data-step="1">
-      <div class="eyebrow">Your week</div>
-      <div class="q serif">A typical week, how much do you drink?</div>
-      <p class="sub">Roughly. Beer, wine, and spirits all count as one each.</p>
-      <button class="opt" onclick="pick('drinks','1–3 drinks',2,this)"><span class="ico"><span class="glasses" data-g="1"></span></span> 1–3 drinks</button>
-      <button class="opt" onclick="pick('drinks','4–7 drinks',5.5,this)"><span class="ico"><span class="glasses" data-g="2"></span></span> 4–7 drinks</button>
-      <button class="opt" onclick="pick('drinks','8–14 drinks',11,this)"><span class="ico"><span class="glasses" data-g="3"></span></span> 8–14 drinks</button>
-      <button class="opt" onclick="pick('drinks','15+ drinks',18,this)"><span class="ico"><span class="glasses" data-g="3"></span></span> 15 or more</button>
+    <div class="panel" data-step="about">
+      <div class="eyebrow">First, a little about you</div>
+      <div class="q serif">Let's tailor this to you.</div>
+      <p class="sub">This sets which benchmark and provincial data we hold you against. Quick, and it stays private.</p>
+      <div class="fieldlabel">Your age</div>
+      <div class="optrow" id="agerow">
+        <button class="pillopt" onclick="selOne('agerow','age','Under 30',this)">Under 30</button>
+        <button class="pillopt" onclick="selOne('agerow','age','30–39',this)">30–39</button>
+        <button class="pillopt" onclick="selOne('agerow','age','40–49',this)">40–49</button>
+        <button class="pillopt" onclick="selOne('agerow','age','50–59',this)">50–59</button>
+        <button class="pillopt" onclick="selOne('agerow','age','60+',this)">60+</button>
+      </div>
+      <div class="fieldlabel">You are</div>
+      <div class="optrow" id="genderrow">
+        <button class="pillopt" onclick="selOne('genderrow','gender','Woman',this)">Woman</button>
+        <button class="pillopt" onclick="selOne('genderrow','gender','Man',this)">Man</button>
+        <button class="pillopt" onclick="selOne('genderrow','gender','Non-binary',this)">Non-binary</button>
+        <button class="pillopt" onclick="selOne('genderrow','gender','Prefer not to say',this)">Prefer not to say</button>
+      </div>
+      <div class="fieldlabel">Your province</div>
+      <div class="optrow" id="provrow">
+        <button class="pillopt" onclick="selOne('provrow','province','Alberta',this)">Alberta</button>
+        <button class="pillopt" onclick="selOne('provrow','province','British Columbia',this)">British Columbia</button>
+        <button class="pillopt" onclick="selOne('provrow','province','Manitoba',this)">Manitoba</button>
+        <button class="pillopt" onclick="selOne('provrow','province','New Brunswick',this)">New Brunswick</button>
+        <button class="pillopt" onclick="selOne('provrow','province','Newfoundland and Labrador',this)">Newfoundland</button>
+        <button class="pillopt" onclick="selOne('provrow','province','Nova Scotia',this)">Nova Scotia</button>
+        <button class="pillopt" onclick="selOne('provrow','province','Ontario',this)">Ontario</button>
+        <button class="pillopt" onclick="selOne('provrow','province','Prince Edward Island',this)">PEI</button>
+        <button class="pillopt" onclick="selOne('provrow','province','Quebec',this)">Quebec</button>
+        <button class="pillopt" onclick="selOne('provrow','province','Saskatchewan',this)">Saskatchewan</button>
+        <button class="pillopt" onclick="selOne('provrow','province','Northwest Territories',this)">NWT</button>
+        <button class="pillopt" onclick="selOne('provrow','province','Nunavut',this)">Nunavut</button>
+        <button class="pillopt" onclick="selOne('provrow','province','Yukon',this)">Yukon</button>
+      </div>
+      <button class="btn" onclick="aboutNext()">Continue</button>
+      <p class="note" id="abouterr" style="display:none;color:var(--clay-d)">Pick your age and province to continue.</p>
     </div>
 
     <div class="panel" data-step="1.5">
@@ -204,23 +263,24 @@
         <div class="contbar"><div></div><div></div><div></div><div></div></div>
         <div class="contlabels"><div>0</div><div>1–2 low</div><div>3–6 moderate</div><div>7+ higher</div></div>
       </div>
-      <p class="sub" style="margin-top:22px">Canada's guideline is two a week. Here's the yearly cost of where you are now:</p>
+      <div class="bench" id="revealbench" style="margin-top:20px">Canada's 2023 guidance puts low risk at 2 drinks a week.</div>
       <div class="cards">
         <div class="card"><div class="ic"><i data-lucide="wallet"></i></div><div class="n" id="dm-money">$0</div><div class="l">spent on alcohol a year</div></div>
         <div class="card"><div class="ic"><i data-lucide="flame"></i></div><div class="n" id="dm-cal">0</div><div class="l">empty calories a year</div></div>
       </div>
-      <div class="social"><i data-lucide="users"></i> 49% of adults are already planning to drink less. You're not alone.</div>
+      <div class="social"><i data-lucide="users"></i> 49% of Canadian adults plan to drink less. You're not alone.</div>
       <button class="btn" onclick="next()">Keep going</button>
+      <div class="guidecite">Canada's Guidance on Alcohol and Health, CCSA 2023.</div>
     </div>
 
     <div class="panel" data-step="2">
       <div class="eyebrow">Your pattern</div>
       <div class="q serif">When does it usually happen?</div>
-      <p class="sub">Pick the one that fits most.</p>
-      <button class="opt" onclick="pick('when','Winding down after work',0,this)"><span class="ico"><i data-lucide="sofa"></i></span> Winding down after work</button>
-      <button class="opt" onclick="pick('when','Social occasions',0,this)"><span class="ico"><i data-lucide="party-popper"></i></span> Social occasions</button>
-      <button class="opt" onclick="pick('when','Out of habit',0,this)"><span class="ico"><i data-lucide="repeat"></i></span> Just out of habit</button>
-      <button class="opt" onclick="pick('when','Stress or a long day',0,this)"><span class="ico"><i data-lucide="cloud-rain"></i></span> Stress or a long day</button>
+      <p class="sub">Pick the one that fits most. This shapes your plan.</p>
+      <button class="opt" onclick="pick('when','Winding down after work',0,this,'The after-work unwind is the #1 trigger in Canada. Pace targets it directly.')"><span class="ico"><i data-lucide="sofa"></i></span> Winding down after work</button>
+      <button class="opt" onclick="pick('when','Social occasions',0,this,'Social drinking is the most invisible kind. We make it visible.')"><span class="ico"><i data-lucide="party-popper"></i></span> Social occasions</button>
+      <button class="opt" onclick="pick('when','Out of habit',0,this,'Habit, not craving. That is the easiest pattern to reshape.')"><span class="ico"><i data-lucide="repeat"></i></span> Just out of habit</button>
+      <button class="opt" onclick="pick('when','Stress or a long day',0,this,'Stress drinking is real. Pace builds a different thing to reach for.')"><span class="ico"><i data-lucide="cloud-rain"></i></span> Stress or a long day</button>
     </div>
 
     <div class="panel" data-step="3">
@@ -271,37 +331,6 @@
       <button class="btn" onclick="next()">Almost there</button>
     </div>
 
-    <div class="panel" data-step="about">
-      <div class="eyebrow">A little about you</div>
-      <div class="q serif">So we can tailor your number.</div>
-      <p class="sub">Quick, and it stays private. It also tells us who Pace is for.</p>
-      <div class="fieldlabel">Your age</div>
-      <div class="optrow" id="agerow">
-        <button class="pillopt" onclick="selOne('agerow','age','Under 30',this)">Under 30</button>
-        <button class="pillopt" onclick="selOne('agerow','age','30–39',this)">30–39</button>
-        <button class="pillopt" onclick="selOne('agerow','age','40–49',this)">40–49</button>
-        <button class="pillopt" onclick="selOne('agerow','age','50–59',this)">50–59</button>
-        <button class="pillopt" onclick="selOne('agerow','age','60+',this)">60+</button>
-      </div>
-      <div class="fieldlabel">You are</div>
-      <div class="optrow" id="genderrow">
-        <button class="pillopt" onclick="selOne('genderrow','gender','Woman',this)">Woman</button>
-        <button class="pillopt" onclick="selOne('genderrow','gender','Man',this)">Man</button>
-        <button class="pillopt" onclick="selOne('genderrow','gender','Non-binary',this)">Non-binary</button>
-        <button class="pillopt" onclick="selOne('genderrow','gender','Prefer not to say',this)">Prefer not to say</button>
-      </div>
-      <div class="fieldlabel">Your province</div>
-      <select id="province">
-        <option value="" disabled selected>Choose your province</option>
-        <option>Alberta</option><option>British Columbia</option><option>Manitoba</option><option>New Brunswick</option>
-        <option>Newfoundland and Labrador</option><option>Nova Scotia</option><option>Ontario</option>
-        <option>Prince Edward Island</option><option>Quebec</option><option>Saskatchewan</option>
-        <option>Northwest Territories</option><option>Nunavut</option><option>Yukon</option>
-      </select>
-      <button class="btn" onclick="aboutNext()">Continue</button>
-      <p class="note" id="abouterr" style="display:none;color:var(--clay-d)">Pick your age and province to continue.</p>
-    </div>
-
     <div class="panel center" data-step="6">
       <div class="teaser">
         <svg width="84" height="84" viewBox="0 0 80 80">
@@ -316,11 +345,13 @@
       <p class="sub">Your number and early access, nothing else. We never share your data.</p>
       <input type="text" id="fname" placeholder="First name (optional)" />
       <input type="email" id="email" placeholder="you@email.com" />
-      <select id="price">
-        <option value="" disabled selected>If Pace worked, what's it worth per month?</option>
-        <option value="just_curious">Just curious, wouldn't pay</option>
-        <option value="10-20">$10–20</option><option value="20-40">$20–40</option><option value="40plus">$40+</option>
-      </select>
+      <div class="fieldlabel" style="margin-top:6px">If Pace worked, what's it worth a month?</div>
+      <div class="priceopts" id="priceopts">
+        <button class="priceopt" onclick="selPrice('40plus',this)"><span class="pv">$40+</span><span class="pk">still less than one night out</span></button>
+        <button class="priceopt" onclick="selPrice('20-40',this)"><span class="pv">$20–40</span><span class="pk">about 3 drinks out</span></button>
+        <button class="priceopt" onclick="selPrice('10-20',this)"><span class="pv">$10–20</span><span class="pk">less than 2 drinks out</span></button>
+        <button class="priceopt" onclick="selPrice('just_curious',this)"><span class="pv">Just curious</span><span class="pk">not sure I'd pay yet</span></button>
+      </div>
       <button class="btn" onclick="finish()">See my number</button>
       <p class="note" id="emailerr" style="display:none;color:var(--clay-d)">Enter a valid email to see your number.</p>
     </div>
@@ -361,24 +392,34 @@
 
 <script>
   var A={drinks:'',drinksVal:0,when:'',tried:'',goal:'',goalFactor:0.6,drivers:[],age:'',gender:'',province:'',fname:'',email:'',price:''};
-  var order=['0','1','1.5','2','3','4','5','about','6','6.5','7'];
+  var order=['0','about','1.5','2','3','4','5','6','6.5','7'];
   var idx=0, DRINK_COST=9, CAL=150;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var PROV={'Ontario':14,'Quebec':18,'Alberta':14,'New Brunswick':12,'Saskatchewan':13};
+  var PROV={'Ontario':14,'Quebec':18,'Alberta':14,'British Columbia':15,'Manitoba':14,'New Brunswick':12,'Newfoundland and Labrador':13,'Nova Scotia':14,'Prince Edward Island':13,'Saskatchewan':13,'Northwest Territories':19,'Nunavut':19,'Yukon':18};
   function icons(){if(window.lucide)lucide.createIcons();}
   function glasses(){document.querySelectorAll('.glasses').forEach(function(g){var n=+g.dataset.g,h='';for(var i=0;i<n;i++)h+='<i data-lucide="wine"></i>';g.innerHTML=h;});}
   function pctFor(d){return Math.max(6,Math.min(95,d/18*90));}
+  function liveSteps(){return ['about','1.5','2','3','4','5','6'].indexOf(order[idx])>-1;}
+  function updateLive(){
+    var you=document.getElementById('lbyou'),ins=document.getElementById('lbins');
+    if(A.drinks){you.textContent='· You: ~'+A.drinks.replace(' drinks','').replace('+','')+'/wk';}else{you.textContent='';}
+    var c=0;if(A.drinks)c++;if(A.province)c++;if(A.when)c++;if(A.tried)c++;if(A.goal)c++;if(A.drivers.length)c++;
+    c=Math.max(c,1);ins.innerHTML='<span class="sp"></span>'+c+' insight'+(c>1?'s':'');
+  }
   function show(){
     document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active',p.dataset.step===order[idx]);});
     var atIntro=order[idx]==='0';
     document.getElementById('hero0').classList.toggle('on',atIntro);
     document.querySelector('.top').style.display=atIntro?'none':'flex';
+    document.getElementById('livebar').style.display=liveSteps()?'block':'none';
+    updateLive();
     document.getElementById('barfill').style.width=(Math.min(idx/(order.length-1),1)*100)+'%';
     document.getElementById('back').style.visibility=(idx>0 && order[idx]!=='6.5' && order[idx]!=='7')?'visible':'hidden';
+    if(order[idx]==='1.5')renderDataMoment();
     window.scrollTo(0,0);
   }
   function next(){idx=Math.min(idx+1,order.length-1);show();}
-  function startQuiz(label,val){A.drinks=label;A.drinksVal=val;idx=order.indexOf('1.5');show();renderDataMoment();}
+  function startQuiz(label,val){A.drinks=label;A.drinksVal=val;idx=order.indexOf('about');show();}
   function pcCount(el,to,dur,pre){if(!el)return;if(reduce){el.textContent=(pre||'')+to.toLocaleString();return;}var st=null;function s(ts){if(!st)st=ts;var p=Math.min((ts-st)/dur,1),e=1-Math.pow(1-p,3);el.textContent=(pre||'')+Math.round(to*e).toLocaleString();if(p<1)requestAnimationFrame(s);}requestAnimationFrame(s);}
   function runPreview(){
     var ring=document.getElementById('pcring');if(!ring)return;
@@ -394,16 +435,17 @@
   }
   var _pcTimer;
   function previewLoop(){runPreview();if(reduce)return;clearInterval(_pcTimer);_pcTimer=setInterval(runPreview,5600);}
-  function prev(){if(order[idx]==='1.5'){idx-=2;}else{idx=Math.max(idx-1,0);}var q=document.getElementById('q4prev');if(q)q.classList.remove('on');show();}
-  function reactShow(msg){if(!msg)return;var r=document.getElementById('react');document.getElementById('reacttext').textContent=msg;r.classList.add('show');clearTimeout(window._rt);window._rt=setTimeout(function(){r.classList.remove('show');},2600);}
+  function prev(){idx=Math.max(idx-1,0);var q=document.getElementById('q4prev');if(q)q.classList.remove('on');show();}
+  function reactShow(msg){if(!msg)return;var r=document.getElementById('react');document.getElementById('reacttext').textContent=msg;r.classList.add('show');clearTimeout(window._rt);window._rt=setTimeout(function(){r.classList.remove('show');},2800);}
   function pick(key,label,val,el,reaction){
-    A[key]=label;if(key==='drinks')A.drinksVal=val;if(key==='goal')A.goalFactor=val;
+    A[key]=label;if(key==='goal')A.goalFactor=val;
     el.parentNode.querySelectorAll('.opt').forEach(function(o){o.classList.remove('sel');});el.classList.add('sel');
     if(key==='goal'){renderGoalPreview();if(reaction)reactShow(reaction);setTimeout(next,1400);return;}
-    setTimeout(function(){if(key==='drinks')renderDataMoment();next();if(reaction)reactShow(reaction);},320);
+    setTimeout(function(){next();if(reaction)reactShow(reaction);},340);
   }
   function selOne(rowId,key,val,el){A[key]=val;document.getElementById(rowId).querySelectorAll('.pillopt').forEach(function(o){o.classList.remove('sel');});el.classList.add('sel');}
-  function aboutNext(){A.province=document.getElementById('province').value;if(!A.age||!A.province){document.getElementById('abouterr').style.display='block';return;}next();}
+  function selPrice(val,el){A.price=val;document.querySelectorAll('#priceopts .priceopt').forEach(function(o){o.classList.remove('sel');});el.classList.add('sel');}
+  function aboutNext(){if(!A.age||!A.province){document.getElementById('abouterr').style.display='block';return;}next();}
   function toggle(el,v){el.classList.toggle('sel');var i=A.drivers.indexOf(v);if(i>-1)A.drivers.splice(i,1);else A.drivers.push(v);renderPlan();}
   function animateNum(id,to,pre,suf){var el=document.getElementById(id);if(reduce){el.textContent=(pre||'')+Math.round(to).toLocaleString()+(suf||'');return;}var st=null;function step(ts){if(!st)st=ts;var p=Math.min((ts-st)/1100,1),e=1-Math.pow(1-p,3);el.textContent=(pre||'')+Math.round(to*e).toLocaleString()+(suf||'');if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
   function renderDataMoment(){
@@ -412,6 +454,9 @@
     animateNum('dm-money',Math.round(d*52*DRINK_COST),'$');animateNum('dm-cal',Math.round(d*52*CAL));
     var pct={2:18,5.5:36,11:62,18:90}[d]||60;
     setTimeout(function(){document.getElementById('pin').style.left=pct+'%';document.getElementById('pinlabel').textContent=A.drinks.replace(' drinks','');},150);
+    var rb=document.getElementById('revealbench');
+    if(A.province){var pc=PROV[A.province]||15;rb.innerHTML='In <b>'+A.province+'</b>, about <b>'+pc+'%</b> of adults drink above Canada’s low-risk guideline of 2 a week. Here’s where you land.';}
+    else{rb.innerHTML='Canada’s 2023 guidance puts low risk at <b>2 drinks a week</b>. Here’s where you land.';}
   }
   function targetNum(){return Math.max(2,Math.round(A.drinksVal*A.goalFactor));}
   function renderGoalPreview(){
@@ -426,10 +471,10 @@
     p.innerHTML=A.drivers.map(function(d){return '<div class="ptile"><i data-lucide="'+map[d][0]+'"></i>'+map[d][1]+'</div>';}).join('');icons();
   }
   function finish(){
-    var email=document.getElementById('email').value.trim(),price=document.getElementById('price').value;
+    var email=document.getElementById('email').value.trim();
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){document.getElementById('emailerr').style.display='block';return;}
-    A.email=email;A.price=price;A.fname=document.getElementById('fname').value.trim();
-    var fd=new FormData();fd.append('first_name',A.fname);fd.append('email',email);fd.append('fair_price',price);fd.append('age',A.age);fd.append('gender',A.gender);fd.append('province',A.province);fd.append('drinks',A.drinks);fd.append('when',A.when);fd.append('tried',A.tried);fd.append('goal',A.goal);fd.append('drivers',A.drivers.join(', '));fd.append('source',(new URLSearchParams(location.search).get('src')||'quiz_v1'));
+    A.email=email;A.fname=document.getElementById('fname').value.trim();
+    var fd=new FormData();fd.append('first_name',A.fname);fd.append('email',email);fd.append('fair_price',A.price);fd.append('age',A.age);fd.append('gender',A.gender);fd.append('province',A.province);fd.append('drinks',A.drinks);fd.append('when',A.when);fd.append('tried',A.tried);fd.append('goal',A.goal);fd.append('drivers',A.drivers.join(', '));fd.append('source',(new URLSearchParams(location.search).get('src')||'quiz_v1'));
     fetch('https://script.google.com/macros/s/AKfycbyoj_4r_8a-RgvTsXuCu9vJj_CVSB6e1cIcvSBvFMvX7Qbm13FXzKdMXXFUlKyUfPpt/exec',{method:'POST',mode:'no-cors',body:fd}).catch(function(){});
     next();
     var steps=['Reading your week…','Mapping it to Canada’s scale…','Setting your number…'],s=0,ls=document.getElementById('lstep');
@@ -445,7 +490,7 @@
     setTimeout(function(){animateNum('r-money',Math.max(0,saved),'$');animateNum('r-drinks',Math.max(0,fewer));},250);
     document.getElementById('ringfg').style.strokeDashoffset=471*(1-(cur>0?Math.min(target/cur,1):.5));
     setTimeout(function(){document.getElementById('bapinNow').style.left=pctFor(cur)+'%';document.getElementById('bapinGoal').style.left=pctFor(target)+'%';},200);
-    if(A.province){var pc=PROV[A.province]||15;var b=document.getElementById('bench');b.style.display='block';b.innerHTML='In '+A.province+', about <b>'+pc+'%</b> drink above Canada’s guideline. Your target lands well under it. <span style="color:#9a9082">(StatCan, 2023)</span>';}
+    if(A.province){var pc=PROV[A.province]||15;var b=document.getElementById('bench');b.style.display='block';b.innerHTML='In '+A.province+', about <b>'+pc+'%</b> drink above Canada’s guideline. Your target lands well under it. <span style="color:#9a9082">(Canada’s Guidance on Alcohol, CCSA 2023)</span>';}
     if(A.drivers.length){var m={Sleep:'deeper sleep',Energy:'more energy',Weight:'a leaner frame',Money:'real savings',Clarity:'a clearer head',Relationships:'being more present'};document.getElementById('r-drivers').textContent='Pace will help you get there, with '+A.drivers.map(function(x){return m[x]||x;}).slice(0,3).join(', ')+' along the way.';}
     icons();
   }

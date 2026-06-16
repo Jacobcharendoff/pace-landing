@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Find your number — Pace</title>
-<meta name="description" content="60 seconds to your number. See where you land against Canada's guideline and what cutting back gives you back." />
+<meta name="description" content="60 seconds. See how your week compares to Canada's alcohol guideline, and what cutting back gives you back." />
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
@@ -195,8 +195,8 @@
     <div class="h0grid">
       <div class="h0intro">
         <div class="h0eyebrow">Early access · Canada</div>
-        <h1 class="serif">Where does your drinking actually land?</h1>
-        <p class="h0sub">Sixty seconds, no judgment, no email until the end. We map you against Canada's official guideline. Start with an honest guess:</p>
+        <h1 class="serif">How much do you actually drink?</h1>
+        <p class="h0sub">Sixty seconds, no judgment, no email until the end. See how your week compares to Canada's guideline, and to people like you.</p>
       </div>
       <div class="h0right">
         <div class="h0phonewrap">
@@ -294,7 +294,7 @@
     </div>
 
     <div class="panel" data-step="1.5">
-      <div class="eyebrow">Here's what that adds up to</div>
+      <div class="eyebrow">Your week vs Canada's guideline</div>
       <div class="q serif">That's about <span id="dm-n" class="bignum" style="color:var(--clay)">—</span> a week.</div>
       <div class="contwrap" style="margin-top:18px">
         <div class="marker"><div class="pin" id="pin"><b id="pinlabel">You</b></div></div>
@@ -408,7 +408,7 @@
           <text x="100" y="122" text-anchor="middle" font-size="13" fill="#5C6B66" font-family="Inter">drinks / week</text>
         </svg>
       </div>
-      <div class="q serif" style="font-size:27px" id="resultline">A target that fits your life.</div>
+      <div class="q serif" style="font-size:27px" id="resultline">Your number.</div>
       <div class="contwrap" style="max-width:430px;margin:20px auto 0">
         <div class="marker"><div class="pin" id="bapinNow"><b>now</b></div><div class="pin goal" id="bapinGoal"><b>goal</b></div></div>
         <div class="contbar"><div></div><div></div><div></div><div></div></div>
@@ -441,6 +441,11 @@
   function icons(){if(window.lucide)lucide.createIcons();}
   function glasses(){document.querySelectorAll('.glasses').forEach(function(g){var n=+g.dataset.g,h='';for(var i=0;i<n;i++)h+='<i data-lucide="wine"></i>';g.innerHTML=h;});}
   function pctFor(d){return Math.max(6,Math.min(95,d/18*90));}
+  function bandLine(v){
+    if(v<=2)return "That's right around Canada's low-risk line of 2 a week.";
+    if(v<=6)return "That puts you in the moderate-risk range. Canada's guidance links 3 to 6 drinks a week to higher cancer risk, including breast and colon.";
+    return "That's in the higher-risk range. Canada's guidance links 7 or more a week to higher risk of heart disease and stroke.";
+  }
   function liveSteps(){return ['about','1.5','2','3','4','5','6'].indexOf(order[idx])>-1;}
   function updateLive(){
     var you=document.getElementById('lbyou'),ins=document.getElementById('lbins');
@@ -494,11 +499,10 @@
     var pc=aboveGuidelinePct();
     var loc=A.province?('In <b>'+A.province+'</b>'):'In Canada';
     var g=GEN[A.gender],ag=AGE[A.age];
-    var extra='';
-    if(g&&ag){extra=' For '+(A.gender==='Man'?'men':'women')+' it is about <b>'+g+'%</b>, and about <b>'+ag+'%</b> of people your age.';}
-    else if(g){extra=' For '+(A.gender==='Man'?'men':'women')+' it is about <b>'+g+'%</b>.';}
-    else if(ag){extra=' About <b>'+ag+'%</b> of people your age are over it.';}
-    rb.innerHTML=loc+', about <b>'+pc+'%</b> of adults drink above Canada’s low-risk guideline of 2 a week.'+extra+' Here’s where you land.';
+    var who=loc+', about <b>'+pc+'%</b> of adults are over the guideline too';
+    if(g&&ag){who+=' — about <b>'+g+'%</b> of '+(A.gender==='Man'?'men':'women')+', and <b>'+ag+'%</b> of people your age';}
+    else if(g){who+=' — about <b>'+g+'%</b> of '+(A.gender==='Man'?'men':'women');}
+    rb.innerHTML='<b style="color:var(--ink)">'+bandLine(d)+'</b> '+who+'.';
   }
   function targetNum(){return Math.max(2,Math.round(A.drinksVal*A.goalFactor));}
   function renderGoalPreview(){
@@ -528,12 +532,12 @@
     document.getElementById('targetN').textContent=target;
     var saved=Math.round((cur-target)*52*DRINK_COST),fewer=Math.round((cur-target)*52);
     var hi=A.fname?A.fname+', ':'';
-    document.getElementById('resultline').textContent=hi+(target<=2?'right at Canada’s low-risk line.':'a target that actually fits your life.');
+    document.getElementById('resultline').textContent=hi+(target<=2?'right at Canada’s low-risk line.':'a realistic target you can actually hold.');
     setTimeout(function(){animateNum('r-money',Math.max(0,saved),'$');animateNum('r-drinks',Math.max(0,fewer));},250);
     document.getElementById('ringfg').style.strokeDashoffset=471*(1-(cur>0?Math.min(target/cur,1):.5));
     setTimeout(function(){document.getElementById('bapinNow').style.left=pctFor(cur)+'%';document.getElementById('bapinGoal').style.left=pctFor(target)+'%';},200);
     var pc=aboveGuidelinePct();var b=document.getElementById('bench');b.style.display='block';
-    b.innerHTML='In '+(A.province||'Canada')+', about <b>'+pc+'%</b> of adults drink above Canada’s guideline. Your target lands well under it. <span style="color:#9a9082">(Statistics Canada, CCHS 2023)</span>';
+    b.innerHTML='In '+(A.province||'Canada')+', about <b>'+pc+'%</b> of adults are over Canada’s guideline. Your target brings you back toward the low-risk range. <span style="color:#9a9082">(Statistics Canada, CCHS 2023)</span>';
     if(A.drivers.length){var m={Sleep:'deeper sleep',Energy:'more energy',Weight:'a leaner frame',Money:'real savings',Clarity:'a clearer head',Relationships:'being more present'};document.getElementById('r-drivers').textContent='Pace will help you get there, with '+A.drivers.map(function(x){return m[x]||x;}).slice(0,3).join(', ')+' along the way.';}
     icons();
   }

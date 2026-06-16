@@ -101,19 +101,39 @@
   .lstep{height:24px;transition:opacity .3s}
   @media(max-width:480px){.q{font-size:27px}h1{font-size:33px}.cmprow span{min-width:118px}}
   @media(prefers-reduced-motion:reduce){.panel{animation:none}.ringfg,.miniringfg,.pin,.barfill,.cbar i{transition:none}.lring{animation:none}}
-  /* immersive ad-landing intro */
-  .hero0{position:fixed;inset:0;z-index:30;display:none;flex-direction:column;justify-content:flex-end;background-image:linear-gradient(rgba(20,17,14,.30),rgba(20,17,14,.55) 45%,rgba(20,17,14,.96)),url('https://cdn.midjourney.com/caada6e4-b58b-4fff-9bab-b2a38e1ebca7/0_0.jpeg');background-color:#14110E;background-size:cover;background-position:center 32%;color:#F8F3EA;overflow-y:auto}
-  .hero0.on{display:flex}
-  .hero0 .h0logo{position:absolute;top:18px;left:22px;font-family:'Fraunces',serif;font-weight:600;font-size:20px;letter-spacing:-.3px}
+  /* immersive ad-landing intro: two-column, product-in-motion */
+  .hero0{position:fixed;inset:0;z-index:30;display:none;background:radial-gradient(115% 90% at 80% 12%,rgba(184,83,58,.18),rgba(20,17,14,0) 52%),linear-gradient(180deg,#19140F,#0E0C0A);color:#F3ECE0;overflow-y:auto}
+  .hero0.on{display:block}
+  .hero0 .h0logo{position:absolute;top:20px;left:26px;font-family:'Fraunces',serif;font-weight:600;font-size:20px;letter-spacing:-.3px;z-index:2}
   .hero0 .h0logo span{color:var(--clay)}
-  .hero0 .h0inner{position:relative;max-width:560px;margin:0 auto;width:100%;padding:120px 24px 44px}
-  .hero0 .h0eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#E6B79C;margin-bottom:16px}
-  .hero0 h1{font-family:'Fraunces',serif;font-weight:500;font-size:44px;line-height:1.03;letter-spacing:-1.4px;margin-bottom:16px}
-  .hero0 .h0sub{font-size:16.5px;line-height:1.5;color:#E8DFD0;margin-bottom:28px;max-width:430px}
-  .hero0 .h0btn{width:100%;background:var(--clay);color:#fff;font-size:17px;font-weight:600;border:none;border-radius:15px;padding:19px;cursor:pointer;font-family:inherit;transition:background .2s,transform .2s;box-shadow:0 14px 34px rgba(184,83,58,.4)}
-  .hero0 .h0btn:hover{background:var(--clay-d);transform:translateY(-1px)}
-  .hero0 .h0note{font-size:13px;color:#C6BBA9;margin-top:16px;text-align:center}
-  @media(max-width:480px){.hero0 h1{font-size:38px}}
+  .hero0 .h0grid{min-height:100%;max-width:1120px;margin:0 auto;padding:104px 28px 52px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero0 .h0eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E0A282;margin-bottom:14px}
+  .hero0 h1{font-family:'Fraunces',serif;font-weight:500;font-size:50px;line-height:1.02;letter-spacing:-1.7px;margin-bottom:14px}
+  .hero0 .h0sub{font-size:16px;line-height:1.5;color:#C9BEAD;margin-bottom:24px;max-width:450px}
+  .hero0 .qlabel{font-size:13px;font-weight:600;color:#F3ECE0;margin-bottom:12px}
+  .hero0 .qopts{display:flex;flex-direction:column;gap:10px;max-width:450px}
+  .hero0 .qopt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:rgba(255,255,255,.04);border:1.5px solid rgba(243,236,224,.14);border-radius:14px;padding:15px 18px;font-size:16px;font-weight:500;color:#F3ECE0;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s,transform .15s}
+  .hero0 .qopt:hover{border-color:var(--clay);background:rgba(184,83,58,.16);transform:translateY(-1px)}
+  .hero0 .qopt .arw{font-size:17px;color:#E0A282;opacity:.75}
+  .hero0 .h0note{font-size:12.5px;color:#8E8576;margin-top:16px}
+  .h0card{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(243,236,224,.12);border-radius:26px;padding:32px 30px;box-shadow:0 40px 90px rgba(0,0,0,.45)}
+  .h0card .pc-eyebrow{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#A89A86;text-align:center;margin-bottom:12px}
+  .pc-ring{display:flex;justify-content:center}
+  .pcringfg{stroke-dasharray:471;stroke-dashoffset:471;transition:stroke-dashoffset 1.5s var(--ease)}
+  .pc-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+  .pc-stat{background:rgba(255,255,255,.04);border:1px solid rgba(243,236,224,.1);border-radius:14px;padding:16px 12px;text-align:center}
+  .pc-stat .v{font-family:'Fraunces',serif;font-size:25px;font-weight:600;color:#E8A07E;letter-spacing:-.5px}
+  .pc-stat .k{font-size:11px;color:#A89A86;margin-top:4px;line-height:1.3}
+  .pc-bar{height:10px;border-radius:6px;margin-top:20px;background:linear-gradient(90deg,#3E8E7E 0 16%,#9CBF7E 16% 38%,#C98A45 38% 64%,#B8533A 64% 100%);position:relative;opacity:.9}
+  .pc-now,.pc-goal{position:absolute;top:-3px;width:16px;height:16px;border-radius:50%;border:3px solid #14110E;left:-20px;transition:left 1.4s var(--ease)}
+  .pc-now{background:#F3ECE0}.pc-goal{background:var(--clay)}
+  .pc-cap{text-align:center;font-size:12px;color:#8E8576;margin-top:18px}
+  @media(max-width:860px){
+    .hero0 .h0grid{grid-template-columns:1fr;gap:26px;padding:86px 22px 40px;align-items:start}
+    .hero0 h1{font-size:37px;letter-spacing:-1.2px}
+    .h0card{padding:26px 22px}
+    .pc-stat .v{font-size:22px}
+  }
 </style>
 </head>
 <body>
@@ -126,12 +146,39 @@
 
   <div class="hero0 on" id="hero0">
     <div class="h0logo">Pace<span>.</span></div>
-    <div class="h0inner">
-      <div class="h0eyebrow">Early access · Canada</div>
-      <h1 class="serif">Where does your drinking actually land?</h1>
-      <p class="h0sub">Sixty seconds, a few honest taps. See where you stand, what it is quietly costing you, and exactly what you would get back. No judgment, no email until the end.</p>
-      <button class="h0btn" onclick="next()">Find my number</button>
-      <div class="h0note">No labels. No 12 steps. Just your number.</div>
+    <div class="h0grid">
+      <div class="h0left">
+        <div class="h0eyebrow">Early access · Canada</div>
+        <h1 class="serif">Where does your drinking actually land?</h1>
+        <p class="h0sub">Sixty seconds, no judgment, no email until the end. Start with an honest guess:</p>
+        <div class="qlabel">In a typical week, how much do you drink?</div>
+        <div class="qopts">
+          <button class="qopt" onclick="startQuiz('1–3 drinks',2)"><span>1–3 drinks</span><span class="arw">&#8594;</span></button>
+          <button class="qopt" onclick="startQuiz('4–7 drinks',5.5)"><span>4–7 drinks</span><span class="arw">&#8594;</span></button>
+          <button class="qopt" onclick="startQuiz('8–14 drinks',11)"><span>8–14 drinks</span><span class="arw">&#8594;</span></button>
+          <button class="qopt" onclick="startQuiz('15+ drinks',18)"><span>15 or more</span><span class="arw">&#8594;</span></button>
+        </div>
+        <div class="h0note">Beer, wine, and spirits each count as one. No labels, no 12 steps.</div>
+      </div>
+      <div class="h0right">
+        <div class="h0card">
+          <div class="pc-eyebrow">A peek at your number</div>
+          <div class="pc-ring">
+            <svg width="168" height="168" viewBox="0 0 200 200" role="img" aria-label="Example result">
+              <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(243,236,224,.12)" stroke-width="14"/>
+              <circle class="pcringfg" id="pcring" cx="100" cy="100" r="75" fill="none" stroke="#B8533A" stroke-width="14" stroke-linecap="round" transform="rotate(-90 100 100)"/>
+              <text x="100" y="96" text-anchor="middle" class="serif" font-size="50" font-weight="600" fill="#F3ECE0" id="pcn">0</text>
+              <text x="100" y="124" text-anchor="middle" font-size="12" fill="#A89A86" font-family="Inter">drinks / week</text>
+            </svg>
+          </div>
+          <div class="pc-stats">
+            <div class="pc-stat"><div class="v" id="pcmoney">$0</div><div class="k">back in your pocket a year</div></div>
+            <div class="pc-stat"><div class="v" id="pcfewer">0</div><div class="k">fewer drinks a year</div></div>
+          </div>
+          <div class="pc-bar"><span class="pc-now" id="pcnow"></span><span class="pc-goal" id="pcgoal"></span></div>
+          <div class="pc-cap">An example. Yours takes 60 seconds.</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -330,6 +377,22 @@
     window.scrollTo(0,0);
   }
   function next(){idx=Math.min(idx+1,order.length-1);show();}
+  function startQuiz(label,val){A.drinks=label;A.drinksVal=val;idx=order.indexOf('1.5');show();renderDataMoment();}
+  function pcCount(el,to,dur,pre){if(!el)return;if(reduce){el.textContent=(pre||'')+to.toLocaleString();return;}var st=null;function s(ts){if(!st)st=ts;var p=Math.min((ts-st)/dur,1),e=1-Math.pow(1-p,3);el.textContent=(pre||'')+Math.round(to*e).toLocaleString();if(p<1)requestAnimationFrame(s);}requestAnimationFrame(s);}
+  function runPreview(){
+    var ring=document.getElementById('pcring');if(!ring)return;
+    var n=document.getElementById('pcn'),money=document.getElementById('pcmoney'),fewer=document.getElementById('pcfewer'),now=document.getElementById('pcnow'),goal=document.getElementById('pcgoal');
+    ring.style.transition='none';ring.style.strokeDashoffset=471;now.style.transition='none';goal.style.transition='none';now.style.left='-20px';goal.style.left='-20px';n.textContent='0';money.textContent='$0';fewer.textContent='0';
+    void ring.getBoundingClientRect();
+    setTimeout(function(){
+      ring.style.transition='stroke-dashoffset 1.5s var(--ease)';ring.style.strokeDashoffset=471*(1-7/14);
+      now.style.transition='left 1.4s var(--ease)';goal.style.transition='left 1.4s var(--ease)';
+      now.style.left='calc(90% - 8px)';goal.style.left='calc(46% - 8px)';
+      pcCount(n,7,1200,'');pcCount(money,3300,1500,'$');pcCount(fewer,364,1500,'');
+    },160);
+  }
+  var _pcTimer;
+  function previewLoop(){runPreview();if(reduce)return;clearInterval(_pcTimer);_pcTimer=setInterval(runPreview,5600);}
   function prev(){if(order[idx]==='1.5'){idx-=2;}else{idx=Math.max(idx-1,0);}var q=document.getElementById('q4prev');if(q)q.classList.remove('on');show();}
   function reactShow(msg){if(!msg)return;var r=document.getElementById('react');document.getElementById('reacttext').textContent=msg;r.classList.add('show');clearTimeout(window._rt);window._rt=setTimeout(function(){r.classList.remove('show');},2600);}
   function pick(key,label,val,el,reaction){
@@ -385,7 +448,7 @@
     if(A.drivers.length){var m={Sleep:'deeper sleep',Energy:'more energy',Weight:'a leaner frame',Money:'real savings',Clarity:'a clearer head',Relationships:'being more present'};document.getElementById('r-drivers').textContent='Pace will help you get there, with '+A.drivers.map(function(x){return m[x]||x;}).slice(0,3).join(', ')+' along the way.';}
     icons();
   }
-  glasses();icons();show();
+  glasses();icons();show();previewLoop();
 </script>
 </body>
 </html>

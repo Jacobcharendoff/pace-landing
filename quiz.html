@@ -101,6 +101,19 @@
   .lstep{height:24px;transition:opacity .3s}
   @media(max-width:480px){.q{font-size:27px}h1{font-size:33px}.cmprow span{min-width:118px}}
   @media(prefers-reduced-motion:reduce){.panel{animation:none}.ringfg,.miniringfg,.pin,.barfill,.cbar i{transition:none}.lring{animation:none}}
+  /* immersive ad-landing intro */
+  .hero0{position:fixed;inset:0;z-index:30;display:none;flex-direction:column;justify-content:flex-end;background-image:linear-gradient(rgba(20,17,14,.28),rgba(20,17,14,.44) 38%,rgba(20,17,14,.94)),url('https://cdn.midjourney.com/0bbaa627-67d9-42c6-b112-e3e74cfe95a7/0_3.jpeg');background-color:#14110E;background-size:cover;background-position:70% center;color:#F8F3EA;overflow-y:auto}
+  .hero0.on{display:flex}
+  .hero0 .h0logo{position:absolute;top:18px;left:22px;font-family:'Fraunces',serif;font-weight:600;font-size:20px;letter-spacing:-.3px}
+  .hero0 .h0logo span{color:var(--clay)}
+  .hero0 .h0inner{position:relative;max-width:560px;margin:0 auto;width:100%;padding:120px 24px 44px}
+  .hero0 .h0eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#E6B79C;margin-bottom:16px}
+  .hero0 h1{font-family:'Fraunces',serif;font-weight:500;font-size:44px;line-height:1.03;letter-spacing:-1.4px;margin-bottom:16px}
+  .hero0 .h0sub{font-size:16.5px;line-height:1.5;color:#E8DFD0;margin-bottom:28px;max-width:430px}
+  .hero0 .h0btn{width:100%;background:var(--clay);color:#fff;font-size:17px;font-weight:600;border:none;border-radius:15px;padding:19px;cursor:pointer;font-family:inherit;transition:background .2s,transform .2s;box-shadow:0 14px 34px rgba(184,83,58,.4)}
+  .hero0 .h0btn:hover{background:var(--clay-d);transform:translateY(-1px)}
+  .hero0 .h0note{font-size:13px;color:#C6BBA9;margin-top:16px;text-align:center}
+  @media(max-width:480px){.hero0 h1{font-size:38px}}
 </style>
 </head>
 <body>
@@ -111,14 +124,19 @@
   </div>
   <div class="react" id="react"><span id="reacttext"></span></div>
 
-  <div class="stage">
-    <div class="panel active" data-step="0">
-      <div class="eyebrow">Early access · Canada</div>
-      <h1 class="serif">Find your number.</h1>
-      <p class="sub">Sixty seconds, a few taps. See where you land and exactly what cutting back gives you back. No email until the end.</p>
-      <button class="btn" onclick="next()">Start</button>
-      <div class="note">No judgment. No 12 steps. Just your number.</div>
+  <div class="hero0 on" id="hero0">
+    <div class="h0logo">Pace<span>.</span></div>
+    <div class="h0inner">
+      <div class="h0eyebrow">Early access · Canada</div>
+      <h1 class="serif">Where does your drinking actually land?</h1>
+      <p class="h0sub">Sixty seconds, a few honest taps. See where you stand, what it is quietly costing you, and exactly what you would get back. No judgment, no email until the end.</p>
+      <button class="h0btn" onclick="next()">Find my number</button>
+      <div class="h0note">No labels. No 12 steps. Just your number.</div>
     </div>
+  </div>
+
+  <div class="stage">
+    <div class="panel active" data-step="0"></div>
 
     <div class="panel" data-step="1">
       <div class="eyebrow">Your week</div>
@@ -304,6 +322,9 @@
   function pctFor(d){return Math.max(6,Math.min(95,d/18*90));}
   function show(){
     document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active',p.dataset.step===order[idx]);});
+    var atIntro=order[idx]==='0';
+    document.getElementById('hero0').classList.toggle('on',atIntro);
+    document.querySelector('.top').style.display=atIntro?'none':'flex';
     document.getElementById('barfill').style.width=(Math.min(idx/(order.length-1),1)*100)+'%';
     document.getElementById('back').style.visibility=(idx>0 && order[idx]!=='6.5' && order[idx]!=='7')?'visible':'hidden';
     window.scrollTo(0,0);

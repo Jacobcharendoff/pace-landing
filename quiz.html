@@ -20,7 +20,6 @@
   .logo{font-family:'Fraunces',serif;font-weight:600;font-size:19px}.logo span{color:var(--clay)}
   .bar{flex:1;height:6px;background:#DCE7E2;border-radius:6px;overflow:hidden}
   .barfill{height:100%;width:0;background:var(--teal);border-radius:6px;transition:width .5s var(--ease)}
-  /* live coaching/score strip */
   .livebar{position:fixed;top:54px;left:0;right:0;display:none;z-index:10;background:rgba(246,250,248,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .lb-in{max-width:560px;margin:0 auto;padding:9px 22px;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted)}
   .lb-guide{display:inline-flex;align-items:center;gap:6px;color:var(--teal-d);font-weight:600}
@@ -121,7 +120,7 @@
   .hero0.on{display:block}
   .hero0 .h0logo{position:absolute;top:20px;left:26px;font-family:'Fraunces',serif;font-weight:600;font-size:20px;letter-spacing:-.3px;color:#15211E;z-index:2}
   .hero0 .h0logo span{color:#F2722E}
-  .hero0 .h0grid{min-height:100%;max-width:1120px;margin:0 auto;padding:104px 28px 52px;display:grid;grid-template-columns:1.05fr .95fr;column-gap:56px;row-gap:22px;align-items:center;grid-template-areas:"intro card" "quiz card"}
+  .hero0 .h0grid{min-height:100%;max-width:1120px;margin:0 auto;padding:96px 28px 48px;display:grid;grid-template-columns:1.05fr .95fr;column-gap:56px;row-gap:22px;align-items:center;grid-template-areas:"intro card" "quiz card"}
   .hero0 .h0intro{grid-area:intro;align-self:end}
   .hero0 .h0quiz{grid-area:quiz;align-self:start}
   .hero0 .h0right{grid-area:card}
@@ -134,27 +133,45 @@
   .hero0 .qopt:hover{border-color:#0E8C73;background:#F0F8F5;transform:translateY(-1px);box-shadow:0 10px 26px rgba(14,140,115,.16)}
   .hero0 .qopt .arw{font-size:17px;color:#F2722E;opacity:1}
   .hero0 .h0note{font-size:12.5px;color:#5C6B66;margin-top:16px}
-  .h0card{position:relative;background:#fff;border:1px solid #E2EBE7;border-radius:26px;padding:32px 30px;box-shadow:0 30px 70px rgba(21,33,30,.12)}
-  .h0card .pc-eyebrow{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#0E8C73;text-align:center;margin-bottom:12px}
-  .pc-ring{display:flex;justify-content:center}
-  .pcringfg{stroke-dasharray:471;stroke-dashoffset:471;transition:stroke-dashoffset 1.5s var(--ease)}
-  .pc-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
-  .pc-stat{background:#F5F9F7;border:1px solid #E2EBE7;border-radius:14px;padding:16px 12px;text-align:center}
-  .pc-stat .v{font-family:'Fraunces',serif;font-size:25px;font-weight:600;letter-spacing:-.5px}
-  .pc-stat .v.money{color:#F2722E}.pc-stat .v.teal{color:#0E8C73}
-  .pc-stat .k{font-size:11px;color:#5C6B66;margin-top:4px;line-height:1.3}
-  .pc-bar{height:10px;border-radius:6px;margin-top:20px;background:linear-gradient(90deg,#0E8C73 0 18%,#6FBE8F 18% 40%,#E6A93C 40% 64%,#F2722E 64% 100%);position:relative}
-  .pc-now,.pc-goal{position:absolute;top:-3px;width:16px;height:16px;border-radius:50%;border:3px solid #fff;left:-20px;transition:left 1.4s var(--ease);box-shadow:0 2px 6px rgba(21,33,30,.22)}
-  .pc-now{background:#F2722E}.pc-goal{background:#0E8C73}
-  .pc-cap{text-align:center;font-size:12px;color:#5C6B66;margin-top:18px}
+  /* animated Pace app mockup */
+  .h0phonewrap{display:flex;flex-direction:column;align-items:center}
+  .h0phone{position:relative;width:288px;aspect-ratio:288/588;background:#15211E;border-radius:42px;padding:11px;box-shadow:0 40px 90px rgba(21,33,30,.30)}
+  .h0phone .notch{position:absolute;top:13px;left:50%;transform:translateX(-50%);width:86px;height:7px;border-radius:6px;background:#2c3c37;z-index:6}
+  .h0phone .scr{position:relative;width:100%;height:100%;background:linear-gradient(180deg,#FBFDFC,#EFF5F2);border-radius:32px;overflow:hidden}
+  .appscreen{position:absolute;inset:0;padding:32px 22px 22px;opacity:0;transform:translateY(10px);transition:opacity .55s var(--ease),transform .55s var(--ease);display:flex;flex-direction:column}
+  .appscreen.on{opacity:1;transform:none}
+  .app-h{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-d)}
+  .app-t{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--ink);margin:4px 0 16px;line-height:1.12}
+  .stepper{display:flex;align-items:center;justify-content:center;gap:18px;margin:10px 0 2px}
+  .stepper span.b{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font-size:24px;color:var(--ink);display:flex;align-items:center;justify-content:center;line-height:1}
+  .stepper .cnt{font-family:'Fraunces',serif;font-size:48px;font-weight:600;color:var(--ink);min-width:52px;text-align:center}
+  .app-mut{text-align:center;font-size:12.5px;color:var(--muted)}
+  .applog{background:var(--clay);color:#fff;border-radius:13px;padding:14px;font-weight:600;font-size:15px;text-align:center;margin-top:auto}
+  .app-foot{text-align:center;font-size:11.5px;color:var(--teal-d);font-weight:600;margin-top:12px}
+  .daysrow{display:flex;justify-content:space-between;margin:4px 0 16px}
+  .day{text-align:center}
+  .day .dd{font-size:10px;color:var(--muted);margin-bottom:6px}
+  .day .dot{width:26px;height:26px;border-radius:50%;background:#E2EBE7;display:flex;align-items:center;justify-content:center;color:#fff}
+  .day .dot svg{width:14px;height:14px}
+  .day.ok .dot{background:var(--teal)}
+  .day.over .dot{background:var(--clay)}
+  .app-stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;margin-top:auto}
+  .app-stat .v{font-family:'Fraunces',serif;font-size:26px;font-weight:600;color:var(--teal-d)}
+  .app-stat .k{font-size:11.5px;color:var(--muted);margin-top:3px}
+  .coachfrom{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .coachav{width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:15px}
+  .coachname{font-size:12px;font-weight:600;color:var(--ink)}
+  .coachbub{background:#fff;border:1px solid var(--line);border-radius:16px;border-top-left-radius:4px;padding:14px 16px;font-size:13.5px;color:var(--ink);line-height:1.45;box-shadow:0 6px 18px rgba(21,33,30,.05)}
+  .coachchips{display:flex;gap:8px;margin-top:12px}
+  .coachchip{border:1.5px solid var(--line);border-radius:100px;padding:8px 14px;font-size:12.5px;color:var(--ink);background:#fff}
+  .coachchip.p{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .phonecap{text-align:center;font-size:12px;color:var(--muted);margin-top:16px}
   @media(max-width:860px){
     .hero0 .h0grid{grid-template-columns:1fr;grid-template-areas:"intro" "card" "quiz";row-gap:18px;padding:80px 20px 36px;align-items:start}
     .hero0 h1{font-size:31px;letter-spacing:-1px}
     .hero0 .h0sub{font-size:15px;margin-bottom:6px}
-    .h0card{padding:20px 18px}
-    .hero0 .pc-ring svg{width:132px;height:132px}
-    .pc-stat{padding:12px 10px}.pc-stat .v{font-size:21px}
-    .h0card .pc-eyebrow{margin-bottom:8px}.pc-bar{margin-top:16px}.pc-cap{margin-top:14px}
+    .h0phone{width:236px}
+    .stepper .cnt{font-size:40px}.app-t{font-size:20px}
   }
 </style>
 </head>
@@ -182,22 +199,43 @@
         <p class="h0sub">Sixty seconds, no judgment, no email until the end. We map you against Canada's official guideline. Start with an honest guess:</p>
       </div>
       <div class="h0right">
-        <div class="h0card">
-          <div class="pc-eyebrow">A peek at your number</div>
-          <div class="pc-ring">
-            <svg width="168" height="168" viewBox="0 0 200 200" role="img" aria-label="Example result">
-              <circle cx="100" cy="100" r="75" fill="none" stroke="#E2EBE7" stroke-width="14"/>
-              <circle class="pcringfg" id="pcring" cx="100" cy="100" r="75" fill="none" stroke="#0E8C73" stroke-width="14" stroke-linecap="round" transform="rotate(-90 100 100)"/>
-              <text x="100" y="96" text-anchor="middle" class="serif" font-size="50" font-weight="600" fill="#15211E" id="pcn">0</text>
-              <text x="100" y="124" text-anchor="middle" font-size="12" fill="#5C6B66" font-family="Inter">drinks / week</text>
-            </svg>
+        <div class="h0phonewrap">
+          <div class="h0phone">
+            <div class="notch"></div>
+            <div class="scr" id="appscr">
+              <div class="appscreen on" data-s="0">
+                <div class="app-h">Tonight · Thursday</div>
+                <div class="app-t">How many so far?</div>
+                <div class="stepper"><span class="b">&minus;</span><div class="cnt">1</div><span class="b">+</span></div>
+                <div class="app-mut">drinks today</div>
+                <div class="applog">Log it</div>
+                <div class="app-foot">2 left to stay on track this week</div>
+              </div>
+              <div class="appscreen" data-s="1">
+                <div class="app-h">Your week</div>
+                <div class="app-t">5 of 7 days on track</div>
+                <div class="daysrow">
+                  <div class="day ok"><div class="dd">M</div><div class="dot"><i data-lucide="check"></i></div></div>
+                  <div class="day ok"><div class="dd">T</div><div class="dot"><i data-lucide="check"></i></div></div>
+                  <div class="day ok"><div class="dd">W</div><div class="dot"><i data-lucide="check"></i></div></div>
+                  <div class="day over"><div class="dd">T</div><div class="dot"></div></div>
+                  <div class="day ok"><div class="dd">F</div><div class="dot"><i data-lucide="check"></i></div></div>
+                  <div class="day ok"><div class="dd">S</div><div class="dot"><i data-lucide="check"></i></div></div>
+                  <div class="day"><div class="dd">S</div><div class="dot"></div></div>
+                </div>
+                <div class="app-stat"><div class="v">2 of 6</div><div class="k">drinks used toward your weekly number</div></div>
+              </div>
+              <div class="appscreen" data-s="2">
+                <div class="app-h">Your coach</div>
+                <div class="app-t">Tonight's check-in</div>
+                <div class="coachfrom"><div class="coachav">P</div><div class="coachname">Pace coach</div></div>
+                <div class="coachbub">Two under your number this week, nice. Thursdays tend to trip you up. Want a quick plan for tonight?</div>
+                <div class="coachchips"><span class="coachchip p">Yes, plan it</span><span class="coachchip">I'm good</span></div>
+                <div class="app-foot" style="margin-top:auto">Real coaching, not just tracking</div>
+              </div>
+            </div>
           </div>
-          <div class="pc-stats">
-            <div class="pc-stat"><div class="v money" id="pcmoney">$0</div><div class="k">back in your pocket a year</div></div>
-            <div class="pc-stat"><div class="v teal" id="pcfewer">0</div><div class="k">fewer drinks a year</div></div>
-          </div>
-          <div class="pc-bar"><span class="pc-now" id="pcnow"></span><span class="pc-goal" id="pcgoal"></span></div>
-          <div class="pc-cap">An example. Yours takes 60 seconds.</div>
+          <div class="phonecap">A look inside Pace.</div>
         </div>
       </div>
       <div class="h0quiz">
@@ -420,21 +458,14 @@
   }
   function next(){idx=Math.min(idx+1,order.length-1);show();}
   function startQuiz(label,val){A.drinks=label;A.drinksVal=val;idx=order.indexOf('about');show();}
-  function pcCount(el,to,dur,pre){if(!el)return;if(reduce){el.textContent=(pre||'')+to.toLocaleString();return;}var st=null;function s(ts){if(!st)st=ts;var p=Math.min((ts-st)/dur,1),e=1-Math.pow(1-p,3);el.textContent=(pre||'')+Math.round(to*e).toLocaleString();if(p<1)requestAnimationFrame(s);}requestAnimationFrame(s);}
-  function runPreview(){
-    var ring=document.getElementById('pcring');if(!ring)return;
-    var n=document.getElementById('pcn'),money=document.getElementById('pcmoney'),fewer=document.getElementById('pcfewer'),now=document.getElementById('pcnow'),goal=document.getElementById('pcgoal');
-    ring.style.transition='none';ring.style.strokeDashoffset=471;now.style.transition='none';goal.style.transition='none';now.style.left='-20px';goal.style.left='-20px';n.textContent='0';money.textContent='$0';fewer.textContent='0';
-    void ring.getBoundingClientRect();
-    setTimeout(function(){
-      ring.style.transition='stroke-dashoffset 1.5s var(--ease)';ring.style.strokeDashoffset=471*(1-7/14);
-      now.style.transition='left 1.4s var(--ease)';goal.style.transition='left 1.4s var(--ease)';
-      now.style.left='calc(90% - 8px)';goal.style.left='calc(46% - 8px)';
-      pcCount(n,7,1200,'');pcCount(money,3300,1500,'$');pcCount(fewer,364,1500,'');
-    },160);
+  var _apT;
+  function appCycle(){
+    var scr=document.getElementById('appscr');if(!scr)return;
+    var screens=scr.querySelectorAll('.appscreen'),i=0;
+    function go(){screens.forEach(function(s,j){s.classList.toggle('on',j===i);});icons();i=(i+1)%screens.length;}
+    if(reduce){screens[0].classList.add('on');icons();return;}
+    clearInterval(_apT);_apT=setInterval(go,3000);
   }
-  var _pcTimer;
-  function previewLoop(){runPreview();if(reduce)return;clearInterval(_pcTimer);_pcTimer=setInterval(runPreview,5600);}
   function prev(){idx=Math.max(idx-1,0);var q=document.getElementById('q4prev');if(q)q.classList.remove('on');show();}
   function reactShow(msg){if(!msg)return;var r=document.getElementById('react');document.getElementById('reacttext').textContent=msg;r.classList.add('show');clearTimeout(window._rt);window._rt=setTimeout(function(){r.classList.remove('show');},2800);}
   function pick(key,label,val,el,reaction){
@@ -494,7 +525,7 @@
     if(A.drivers.length){var m={Sleep:'deeper sleep',Energy:'more energy',Weight:'a leaner frame',Money:'real savings',Clarity:'a clearer head',Relationships:'being more present'};document.getElementById('r-drivers').textContent='Pace will help you get there, with '+A.drivers.map(function(x){return m[x]||x;}).slice(0,3).join(', ')+' along the way.';}
     icons();
   }
-  glasses();icons();show();previewLoop();
+  glasses();icons();show();appCycle();
 </script>
 </body>
 </html>

@@ -101,33 +101,34 @@
   .lstep{height:24px;transition:opacity .3s}
   @media(max-width:480px){.q{font-size:27px}h1{font-size:33px}.cmprow span{min-width:118px}}
   @media(prefers-reduced-motion:reduce){.panel{animation:none}.ringfg,.miniringfg,.pin,.barfill,.cbar i{transition:none}.lring{animation:none}}
-  /* immersive ad-landing intro: two-column, light tech-wellness */
-  .hero0{position:fixed;inset:0;z-index:30;display:none;background:radial-gradient(95% 75% at 84% 6%,rgba(201,138,69,.22),rgba(245,241,232,0) 52%),radial-gradient(85% 70% at 8% 102%,rgba(184,83,58,.10),rgba(245,241,232,0) 55%),linear-gradient(180deg,#FEFCF7,#F4EEE2);color:var(--ink);overflow-y:auto}
+  /* immersive ad-landing intro: two-column, light tech-wellness (teal/blue + orange pop) */
+  .hero0{position:fixed;inset:0;z-index:30;display:none;background:radial-gradient(70% 58% at 88% 2%,rgba(242,114,46,.16),rgba(247,250,249,0) 52%),radial-gradient(82% 70% at 4% 98%,rgba(14,140,115,.16),rgba(247,250,249,0) 55%),linear-gradient(180deg,#F8FBFA,#E9F1EE);color:#15211E;overflow-y:auto}
   .hero0.on{display:block}
-  .hero0 .h0logo{position:absolute;top:20px;left:26px;font-family:'Fraunces',serif;font-weight:600;font-size:20px;letter-spacing:-.3px;color:var(--ink);z-index:2}
-  .hero0 .h0logo span{color:var(--clay)}
+  .hero0 .h0logo{position:absolute;top:20px;left:26px;font-family:'Fraunces',serif;font-weight:600;font-size:20px;letter-spacing:-.3px;color:#15211E;z-index:2}
+  .hero0 .h0logo span{color:#F2722E}
   .hero0 .h0grid{min-height:100%;max-width:1120px;margin:0 auto;padding:104px 28px 52px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-  .hero0 .h0eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--clay-d);margin-bottom:14px}
-  .hero0 h1{font-family:'Fraunces',serif;font-weight:500;font-size:50px;line-height:1.02;letter-spacing:-1.7px;margin-bottom:14px;color:var(--ink)}
-  .hero0 .h0sub{font-size:16px;line-height:1.5;color:var(--muted);margin-bottom:24px;max-width:450px}
-  .hero0 .qlabel{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:12px}
+  .hero0 .h0eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#0E8C73;margin-bottom:14px}
+  .hero0 h1{font-family:'Fraunces',serif;font-weight:500;font-size:50px;line-height:1.02;letter-spacing:-1.7px;margin-bottom:14px;color:#15211E}
+  .hero0 .h0sub{font-size:16px;line-height:1.5;color:#5C6B66;margin-bottom:24px;max-width:450px}
+  .hero0 .qlabel{font-size:13px;font-weight:600;color:#15211E;margin-bottom:12px}
   .hero0 .qopts{display:flex;flex-direction:column;gap:10px;max-width:450px}
-  .hero0 .qopt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:#FFFDF9;border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s,transform .15s,box-shadow .15s}
-  .hero0 .qopt:hover{border-color:var(--clay);background:#F6EAE3;transform:translateY(-1px);box-shadow:0 10px 26px rgba(184,83,58,.12)}
-  .hero0 .qopt .arw{font-size:17px;color:var(--clay);opacity:.85}
-  .hero0 .h0note{font-size:12.5px;color:var(--muted);margin-top:16px}
-  .h0card{position:relative;background:#FFFDF9;border:1px solid var(--line);border-radius:26px;padding:32px 30px;box-shadow:0 30px 70px rgba(20,17,14,.10)}
-  .h0card .pc-eyebrow{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--clay-d);text-align:center;margin-bottom:12px}
+  .hero0 .qopt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:#fff;border:1.5px solid #E2EBE7;border-radius:14px;padding:16px 18px;font-size:16px;font-weight:500;color:#15211E;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s,transform .15s,box-shadow .15s}
+  .hero0 .qopt:hover{border-color:#0E8C73;background:#F0F8F5;transform:translateY(-1px);box-shadow:0 10px 26px rgba(14,140,115,.16)}
+  .hero0 .qopt .arw{font-size:17px;color:#F2722E;opacity:1}
+  .hero0 .h0note{font-size:12.5px;color:#5C6B66;margin-top:16px}
+  .h0card{position:relative;background:#fff;border:1px solid #E2EBE7;border-radius:26px;padding:32px 30px;box-shadow:0 30px 70px rgba(21,33,30,.12)}
+  .h0card .pc-eyebrow{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#0E8C73;text-align:center;margin-bottom:12px}
   .pc-ring{display:flex;justify-content:center}
   .pcringfg{stroke-dasharray:471;stroke-dashoffset:471;transition:stroke-dashoffset 1.5s var(--ease)}
   .pc-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
-  .pc-stat{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 12px;text-align:center}
-  .pc-stat .v{font-family:'Fraunces',serif;font-size:25px;font-weight:600;color:var(--clay-d);letter-spacing:-.5px}
-  .pc-stat .k{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.3}
-  .pc-bar{height:10px;border-radius:6px;margin-top:20px;background:linear-gradient(90deg,#3E8E7E 0 16%,#9CBF7E 16% 38%,#C98A45 38% 64%,#B8533A 64% 100%);position:relative}
-  .pc-now,.pc-goal{position:absolute;top:-3px;width:16px;height:16px;border-radius:50%;border:3px solid #FFFDF9;left:-20px;transition:left 1.4s var(--ease);box-shadow:0 2px 6px rgba(20,17,14,.18)}
-  .pc-now{background:var(--ink)}.pc-goal{background:var(--clay)}
-  .pc-cap{text-align:center;font-size:12px;color:var(--muted);margin-top:18px}
+  .pc-stat{background:#F5F9F7;border:1px solid #E2EBE7;border-radius:14px;padding:16px 12px;text-align:center}
+  .pc-stat .v{font-family:'Fraunces',serif;font-size:25px;font-weight:600;letter-spacing:-.5px}
+  .pc-stat .v.money{color:#F2722E}.pc-stat .v.teal{color:#0E8C73}
+  .pc-stat .k{font-size:11px;color:#5C6B66;margin-top:4px;line-height:1.3}
+  .pc-bar{height:10px;border-radius:6px;margin-top:20px;background:linear-gradient(90deg,#0E8C73 0 18%,#6FBE8F 18% 40%,#E6A93C 40% 64%,#F2722E 64% 100%);position:relative}
+  .pc-now,.pc-goal{position:absolute;top:-3px;width:16px;height:16px;border-radius:50%;border:3px solid #fff;left:-20px;transition:left 1.4s var(--ease);box-shadow:0 2px 6px rgba(21,33,30,.22)}
+  .pc-now{background:#F2722E}.pc-goal{background:#0E8C73}
+  .pc-cap{text-align:center;font-size:12px;color:#5C6B66;margin-top:18px}
   @media(max-width:860px){
     .hero0 .h0grid{grid-template-columns:1fr;gap:26px;padding:86px 22px 40px;align-items:start}
     .hero0 h1{font-size:37px;letter-spacing:-1.2px}
@@ -165,15 +166,15 @@
           <div class="pc-eyebrow">A peek at your number</div>
           <div class="pc-ring">
             <svg width="168" height="168" viewBox="0 0 200 200" role="img" aria-label="Example result">
-              <circle cx="100" cy="100" r="75" fill="none" stroke="#EAE2D2" stroke-width="14"/>
-              <circle class="pcringfg" id="pcring" cx="100" cy="100" r="75" fill="none" stroke="#B8533A" stroke-width="14" stroke-linecap="round" transform="rotate(-90 100 100)"/>
-              <text x="100" y="96" text-anchor="middle" class="serif" font-size="50" font-weight="600" fill="#14110E" id="pcn">0</text>
-              <text x="100" y="124" text-anchor="middle" font-size="12" fill="#5E564B" font-family="Inter">drinks / week</text>
+              <circle cx="100" cy="100" r="75" fill="none" stroke="#E2EBE7" stroke-width="14"/>
+              <circle class="pcringfg" id="pcring" cx="100" cy="100" r="75" fill="none" stroke="#0E8C73" stroke-width="14" stroke-linecap="round" transform="rotate(-90 100 100)"/>
+              <text x="100" y="96" text-anchor="middle" class="serif" font-size="50" font-weight="600" fill="#15211E" id="pcn">0</text>
+              <text x="100" y="124" text-anchor="middle" font-size="12" fill="#5C6B66" font-family="Inter">drinks / week</text>
             </svg>
           </div>
           <div class="pc-stats">
-            <div class="pc-stat"><div class="v" id="pcmoney">$0</div><div class="k">back in your pocket a year</div></div>
-            <div class="pc-stat"><div class="v" id="pcfewer">0</div><div class="k">fewer drinks a year</div></div>
+            <div class="pc-stat"><div class="v money" id="pcmoney">$0</div><div class="k">back in your pocket a year</div></div>
+            <div class="pc-stat"><div class="v teal" id="pcfewer">0</div><div class="k">fewer drinks a year</div></div>
           </div>
           <div class="pc-bar"><span class="pc-now" id="pcnow"></span><span class="pc-goal" id="pcgoal"></span></div>
           <div class="pc-cap">An example. Yours takes 60 seconds.</div>

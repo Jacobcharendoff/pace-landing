@@ -9,21 +9,22 @@
 <meta property="og:description" content="Not a label. Not willpower. Just your number. Early access in Canada." />
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://images.pexels.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bone:#EFF5F2;--paper:#F6FAF8;--ink:#15211E;--muted:#5C6B66;
+    --bone:#EFF5F2;--paper:#F6FAF8;--ink:#15211E;--muted:#566460;
     --clay:#F2722E;--clay-d:#DA5E1F;--cta:#B5420D;--cta-h:#A8430F;
     --line:#E2EBE7;--gold:#E6A93C;--teal:#0E8C73;--teal-d:#0B6F5C;
+    --mint:#DCEDE6;--mint-2:#E7F2EC;--sand:#FBF1E6;--peach:#FCE9DD;
     --ease:cubic-bezier(.22,1,.36,1)}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--bone);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   .serif{font-family:'Fraunces',Georgia,serif}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 
-  /* fast, no-half-fade reveals */
-  .reveal{opacity:0;transform:translateY(15px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none}}
 
@@ -31,142 +32,148 @@
   .skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:#fff;padding:10px 16px;border-radius:0 0 10px 0;text-decoration:none;font-size:14px;font-weight:600}
   .skip:focus{left:0}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);background:rgba(246,250,248,.72);border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
-  nav.solid{background:rgba(246,250,248,.94);border-bottom:1px solid var(--line)}
-  .navin{display:flex;justify-content:space-between;align-items:center;padding:15px 0}
-  .logo{font-family:'Fraunces',serif;font-weight:600;font-size:23px;color:var(--ink)}.logo span{color:var(--teal)}
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);background:rgba(246,250,248,.6);border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
+  nav.solid{background:rgba(246,250,248,.95);border-bottom:1px solid var(--line)}
+  .navin{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+  .logo{font-family:'Fraunces',serif;font-weight:600;font-size:24px;color:var(--ink)}.logo span{color:var(--teal)}
 
-  /* single shared CTA component, WCAG-contrast safe */
-  .cta{display:inline-block;font-size:17px;font-weight:600;color:#fff;background:var(--cta);padding:16px 38px;border-radius:100px;text-decoration:none;transition:transform .2s,background .2s,box-shadow .2s;box-shadow:0 10px 28px rgba(181,66,13,.28)}
+  .cta{display:inline-block;font-size:17px;font-weight:600;color:#fff;background:var(--cta);padding:16px 38px;border-radius:100px;text-decoration:none;transition:transform .2s,background .2s,box-shadow .2s;box-shadow:0 12px 28px rgba(181,66,13,.26)}
   .cta:hover{background:var(--cta-h);transform:translateY(-2px)}
-  .cta.sm{font-size:14px;padding:9px 20px;box-shadow:0 6px 16px rgba(181,66,13,.22)}
+  .cta.sm{font-size:14px;padding:9px 20px;box-shadow:0 6px 16px rgba(181,66,13,.2)}
 
-  /* Hero */
-  .hero{position:relative;padding:170px 0 96px;background:radial-gradient(125% 90% at 78% 8%,#F8FCFB,var(--bone) 60%);overflow:hidden}
-  .hero .ghost{position:absolute;right:-3%;top:8%;font-family:'Fraunces',serif;font-weight:500;font-size:30vw;line-height:.8;color:var(--teal);opacity:.05;pointer-events:none;user-select:none;letter-spacing:-1vw}
-  .hero .inner{position:relative;max-width:640px}
-  .recog{font-size:16px;font-weight:500;color:var(--muted);margin-bottom:20px}
-  .kick{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--teal-d);background:rgba(14,140,115,.10);padding:6px 13px;border-radius:100px;margin-bottom:22px}
-  h1{font-family:'Fraunces',serif;font-weight:500;font-size:74px;line-height:.98;letter-spacing:-2.2px}
-  .rot{display:block;color:var(--clay-d);min-height:1.18em;height:1.18em;padding-bottom:.12em;overflow:visible;position:relative}
-  .rot span{display:block;font-style:italic;position:absolute;width:100%;left:0;top:0;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .35s var(--ease)}
-  .rot span.active{opacity:1;transform:translateY(0);transition:opacity .4s ease .28s,transform .45s var(--ease) .28s}
-  .tagline{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:25px;color:var(--teal-d);margin:24px 0 8px}
-  .hsub{font-size:20px;color:var(--muted);max-width:520px;margin:14px 0 32px}
+  .ey{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cta);margin-bottom:16px}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(34px,4.6vw,52px);line-height:1.02;letter-spacing:-1.4px}
+  h2 em{font-style:italic;font-weight:500;color:var(--teal)}
+  .lead{font-size:clamp(17px,1.9vw,20px);color:var(--muted);line-height:1.55}
+
+  /* ===== HERO: bold mint color block, text + angled phone cluster ===== */
+  .hero{position:relative;background:radial-gradient(120% 100% at 85% 0%,var(--mint-2),var(--mint) 55%,#CFE6DD 100%);overflow:hidden;padding:150px 0 90px}
+  .hero .ribbon{position:absolute;right:-8%;bottom:-30%;width:60%;height:120%;background:radial-gradient(circle,rgba(14,140,115,.10),transparent 62%);pointer-events:none}
+  .hgrid{position:relative;z-index:2;display:grid;grid-template-columns:1.02fr .98fr;gap:50px;align-items:center}
+  .recog{font-size:16px;font-weight:500;color:var(--teal-d);margin-bottom:18px;max-width:440px}
+  .kick{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);background:rgba(255,255,255,.7);padding:6px 13px;border-radius:100px;margin-bottom:20px}
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(48px,7vw,82px);line-height:.95;letter-spacing:-2.6px;color:var(--ink)}
+  .rot{display:block;color:var(--clay-d);min-height:1.16em;height:1.16em;padding-bottom:.1em;overflow:visible;position:relative}
+  .rot span{display:block;font-style:italic;font-weight:500;position:absolute;width:100%;left:0;top:0;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .35s var(--ease)}
+  .rot span.active{opacity:1;transform:none;transition:opacity .4s ease .26s,transform .45s var(--ease) .26s}
+  .tagline{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:24px;color:var(--teal-d);margin:22px 0 6px}
+  .hsub{font-size:19px;color:#3f4d49;max-width:500px;margin:12px 0 30px}
   .hsub b{color:var(--ink);font-weight:600}
 
-  /* Hero phone (the ONE phone) */
-  .stage{display:flex;justify-content:center;padding:0 0 90px;background:linear-gradient(180deg,var(--bone),var(--paper))}
-  .phone{width:312px;background:#15211E;border-radius:46px;padding:13px;box-shadow:0 46px 92px rgba(21,33,30,.26)}
-  .phone .screen{background:var(--paper);border-radius:34px;padding:26px 22px 24px}
-  .sc-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-bottom:16px}
-  .sc-top b{font-family:'Fraunces',serif;color:var(--ink);font-size:17px;font-weight:600}
-  .ring{display:flex;justify-content:center;margin:4px 0 8px}
-  .ringfg{stroke-dasharray:490;stroke-dashoffset:490;transition:stroke-dashoffset 1.6s var(--ease)}
-  .in .ringfg{stroke-dashoffset:163}
-  .sc-cap{text-align:center;font-size:13.5px;color:var(--muted);margin-bottom:16px}
-  .week{display:flex;justify-content:space-between;margin-bottom:18px}
-  .day{width:30px;text-align:center;font-size:11px;color:var(--muted)}
-  .day .d{width:26px;height:26px;border-radius:8px;background:#E4EEEA;margin:5px auto 0}
+  /* phone cluster */
+  .cluster{position:relative;height:560px;display:flex;align-items:center;justify-content:center}
+  .ph{position:absolute;width:248px;background:#15211E;border-radius:40px;padding:11px;box-shadow:0 40px 80px rgba(15,40,32,.30)}
+  .ph .scr{background:var(--paper);border-radius:30px;padding:22px 18px 18px;overflow:hidden}
+  .ph.back{transform:rotate(-7deg) translate(-86px,-14px);z-index:1;filter:saturate(.98)}
+  .ph.front{transform:rotate(5deg) translate(74px,28px);z-index:2}
+  .sc-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);margin-bottom:12px}
+  .sc-top b{font-family:'Fraunces',serif;color:var(--ink);font-size:15px;font-weight:600}
+  .ring{display:flex;justify-content:center;margin:2px 0 6px}
+  .ringfg{stroke-dasharray:415;stroke-dashoffset:415;transition:stroke-dashoffset 1.6s var(--ease) .3s}
+  .in .ringfg{stroke-dashoffset:138}
+  .sc-cap{text-align:center;font-size:12px;color:var(--muted);margin-bottom:12px}
+  .week{display:flex;justify-content:space-between;margin-bottom:6px}
+  .day{width:24px;text-align:center;font-size:9.5px;color:var(--muted)}
+  .day .d{width:21px;height:21px;border-radius:7px;background:#E4EEEA;margin:5px auto 0}
   .day .d.on{background:var(--teal)}.day .d.today{box-shadow:0 0 0 2px var(--clay)}
-  .coach{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px}
-  .coach .lab{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-d);margin-bottom:3px}
-  .coach p{font-size:13.5px}
+  .coachav{width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:15px;margin-bottom:9px}
+  .coachlab{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-d);margin-bottom:5px}
+  .coachbub{background:#fff;border:1px solid var(--line);border-radius:14px;border-top-left-radius:4px;padding:12px 13px;font-size:12.5px;color:var(--ink);line-height:1.45}
+  .coachchips{display:flex;gap:7px;margin-top:10px}
+  .coachchips span{border:1.5px solid var(--line);border-radius:100px;padding:6px 12px;font-size:11.5px}
+  .coachchips .p{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .flchip{position:absolute;z-index:3;background:#fff;border-radius:13px;padding:9px 13px;font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 14px 30px rgba(15,40,32,.16)}
+  .flchip .dotg{width:9px;height:9px;border-radius:50%;background:var(--teal)}
+  .flchip.a{top:8%;left:2%;color:var(--teal-d);animation:fl 4.6s var(--ease) infinite}
+  .flchip.b{bottom:9%;right:0;color:var(--cta);animation:fl 4.6s var(--ease) 1s infinite}
+  @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-  .moment{padding:94px 0;text-align:center}
-  .ey{font-size:13px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--cta);margin-bottom:16px}
-  .moment h2{font-family:'Fraunces',serif;font-weight:500;font-size:48px;line-height:1.02;letter-spacing:-1.3px;margin-bottom:18px}
-  .moment p{font-size:19px;color:var(--muted);max-width:600px;margin:0 auto}
-  .mission h2{font-size:54px;max-width:840px;margin:0 auto 18px}.mission em{font-style:italic;color:var(--teal)}
+  /* ===== section rhythm via color blocks ===== */
+  .sec{padding:clamp(76px,9vw,116px) 0}
+  .sec.white{background:var(--paper)}
+  .sec.mint{background:var(--mint-2)}
+  .sec.sand{background:var(--sand)}
+  .sec.center{text-align:center}
+  .mission h2{max-width:860px;margin:0 auto}.mission .lead{max-width:620px;margin:22px auto 0}
 
-  /* Movement section with dot grid */
-  .crowd{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;padding:94px 0}
-  .crowd .txt{text-align:left}
-  .crowd h2{font-family:'Fraunces',serif;font-weight:500;font-size:46px;line-height:1.02;letter-spacing:-1.2px;margin-bottom:16px}
-  .crowd h2 em{font-style:italic;color:var(--teal)}
-  .crowd p{font-size:18px;color:var(--muted);max-width:440px}
-  .dotcard{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:36px 34px;box-shadow:0 24px 56px rgba(21,33,30,.08)}
-  .dotgrid{display:grid;grid-template-columns:repeat(10,1fr);gap:14px;margin-bottom:22px}
-  .dotgrid i{display:block;aspect-ratio:1;border-radius:50%;background:#D7E4DF}
-  .dotgrid i.on{background:var(--clay)}
-  .dotcap{font-size:13.5px;color:var(--muted);line-height:1.45}
-  .dotcap b{color:var(--cta);font-weight:600}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .split.flip .txt{order:2}
+  .txt{max-width:480px}
+  .txt .lead{margin-top:20px}
 
-  /* What you get back */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;padding:94px 0}
-  .split .left{text-align:left}
-  .split .left .ey{margin-bottom:18px}
-  .bigrot{font-family:'Fraunces',serif;font-weight:500;font-size:56px;letter-spacing:-1.5px;min-height:1.3em;height:1.3em;padding-bottom:.14em;overflow:visible;position:relative}
-  .bigrot span{position:absolute;width:100%;left:0;top:0;opacity:0;transform:translateY(10px);transition:opacity .3s ease,transform .35s var(--ease);color:var(--teal)}
-  .bigrot span.active{opacity:1;transform:translateY(0);transition:opacity .4s ease .28s,transform .45s var(--ease) .28s}
-  .split .left p{font-size:18px;color:var(--muted);margin-top:22px;max-width:400px}
-  .getcard{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:34px;box-shadow:0 24px 56px rgba(21,33,30,.08)}
-  .getrow{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+  /* photo frames + overlay chips */
+  .photo{position:relative;border-radius:26px;overflow:hidden;box-shadow:0 30px 70px rgba(15,40,32,.16);aspect-ratio:4/5;background:var(--mint)}
+  .photo.wide{aspect-ratio:5/4}
+  .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .ov{position:absolute;background:rgba(255,255,255,.96);border-radius:14px;padding:11px 15px;box-shadow:0 14px 34px rgba(15,40,32,.18);display:flex;align-items:center;gap:11px}
+  .ov .ic{width:34px;height:34px;border-radius:10px;background:#E9F4F0;display:flex;align-items:center;justify-content:center;color:var(--teal-d);flex:none;font-family:'Fraunces',serif;font-weight:600}
+  .ov .v{font-family:'Fraunces',serif;font-weight:600;font-size:19px;color:var(--ink);line-height:1}
+  .ov .l{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .ov.one{top:7%;left:-18px}.ov.two{bottom:9%;right:-14px}
+  .ov.solo{left:50%;bottom:18px;transform:translateX(-50%);text-align:left}
+  .ov.solo .v{font-size:17px}
+
+  /* benefit list */
+  .getlist{margin-top:8px}
+  .getrow{display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid var(--line)}
   .getrow:last-child{border-bottom:none}
-  .getrow .dot{width:9px;height:9px;border-radius:50%;background:var(--teal);flex:none}
-  .getrow span{font-size:16px;color:var(--ink)}
+  .getrow .gd{width:9px;height:9px;border-radius:50%;background:var(--teal);flex:none}
+  .getrow span{font-size:16.5px;color:var(--ink)}
 
-  /* Outcome / Watch it come down */
-  .feature{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:94px 0}
-  .feature .txt{text-align:left}
-  .feature h2{font-family:'Fraunces',serif;font-weight:500;font-size:44px;line-height:1.04;letter-spacing:-1.2px;margin-bottom:16px}
-  .feature p{font-size:18px;color:var(--muted);max-width:430px;margin-bottom:26px}
-  .outstats{display:flex;flex-direction:column;gap:6px}
-  .out-main .v{font-family:'Fraunces',serif;font-weight:600;font-size:66px;line-height:1;letter-spacing:-2px;color:var(--teal-d)}
-  .out-main .l{font-size:16px;color:var(--muted);margin-top:4px}
-  .out-sub{margin-top:14px}
-  .out-sub .v{font-family:'Fraunces',serif;font-weight:500;font-size:30px;color:var(--ink);letter-spacing:-.6px}
+  /* outcome stats + trend */
+  .bigrot{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(40px,5.4vw,60px);letter-spacing:-1.6px;min-height:1.3em;height:1.3em;padding-bottom:.14em;overflow:visible;position:relative;color:var(--teal)}
+  .bigrot span{position:absolute;width:100%;left:0;top:0;opacity:0;transform:translateY(10px);transition:opacity .3s ease,transform .35s var(--ease)}
+  .bigrot span.active{opacity:1;transform:none;transition:opacity .4s ease .26s,transform .45s var(--ease) .26s}
+  .outstats{display:flex;gap:40px;margin-top:26px;flex-wrap:wrap}
+  .out-main .v{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(44px,5vw,62px);line-height:1;letter-spacing:-2px;color:var(--clay-d)}
+  .out-main .l{font-size:15px;color:var(--muted);margin-top:5px;max-width:170px}
+  .out-sub .v{font-family:'Fraunces',serif;font-weight:500;font-size:30px;color:var(--ink)}
   .out-sub .l{font-size:14px;color:var(--muted)}
-  .trendcard{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:8px;box-shadow:0 24px 56px rgba(21,33,30,.08)}
-  .trendcard .screen{padding:26px 24px 22px}
-  .chart-cap{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:8px}
+  .trendcard{background:#fff;border:1px solid var(--line);border-radius:26px;padding:26px 24px 22px;box-shadow:0 30px 70px rgba(15,40,32,.12)}
+  .tc-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-bottom:6px}
+  .tc-top b{font-family:'Fraunces',serif;color:var(--ink);font-size:17px;font-weight:600}
   .cline{fill:none;stroke:var(--teal);stroke-width:3.5;stroke-linecap:round}
-  .carea{opacity:0;transition:opacity 1.4s ease .4s}.in .carea{opacity:1}
+  .chart-cap{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:6px}
+  .tc-note{background:var(--mint-2);border-radius:13px;padding:12px 14px;margin-top:14px;font-size:13px;color:var(--teal-d);font-weight:500}
 
-  /* Proof grid (light) */
-  .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:940px;margin:46px auto 0;text-align:left}
-  .pbox .num{font-family:'Fraunces',serif;font-size:50px;font-weight:600;color:var(--clay-d);letter-spacing:-1.4px;line-height:1}
-  .pbox.gain .num{color:var(--teal-d);font-size:58px}
-  .pbox .lab{font-size:13.5px;color:var(--muted);margin-top:10px}
-  .pnote{font-size:12px;color:var(--muted);margin-top:32px;opacity:.85}
+  /* proof big-type grid */
+  .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;max-width:1000px;margin:48px auto 0;text-align:left}
+  .pbox .num{font-family:'Fraunces',serif;font-size:clamp(42px,5vw,56px);font-weight:600;color:var(--clay-d);letter-spacing:-1.6px;line-height:.95}
+  .pbox.gain .num{color:var(--teal-d)}
+  .pbox .lab{font-size:13.5px;color:var(--muted);margin-top:12px;line-height:1.45}
+  .pnote{font-size:12.5px;color:var(--muted);margin:30px auto 0;max-width:640px;text-align:center;opacity:.9}
 
-  /* Spectrum / line */
-  .linebar{display:flex;height:11px;border-radius:6px;overflow:hidden;max-width:640px;margin:34px auto 0;box-shadow:inset 0 0 0 1px var(--line)}
+  /* canada line */
+  .linebar{display:flex;height:13px;border-radius:7px;overflow:hidden;max-width:680px;margin:36px auto 0;box-shadow:inset 0 0 0 1px var(--line)}
   .linebar div{transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease)}
   .in .linebar div{transform:scaleX(1)}
-  .linebar div:nth-child(1){background:var(--teal);flex:0 0 14%;transition-delay:.05s}.linebar div:nth-child(2){background:#5FB89C;flex:0 0 22%;transition-delay:.15s}
-  .linebar div:nth-child(3){background:var(--gold);flex:0 0 28%;transition-delay:.25s}.linebar div:nth-child(4){background:var(--clay);flex:1;transition-delay:.35s}
-  .linelabels{display:flex;max-width:640px;margin:9px auto 0;font-size:12px;color:var(--muted)}
+  .linebar div:nth-child(1){background:var(--teal);flex:0 0 14%}.linebar div:nth-child(2){background:#5FB89C;flex:0 0 22%;transition-delay:.1s}
+  .linebar div:nth-child(3){background:var(--gold);flex:0 0 28%;transition-delay:.2s}.linebar div:nth-child(4){background:var(--clay);flex:1;transition-delay:.3s}
+  .linelabels{display:flex;max-width:680px;margin:10px auto 0;font-size:12.5px;color:var(--muted)}
   .linelabels div{flex:1;text-align:center}.linelabels div:first-child{flex:0 0 14%;text-align:left}
 
-  .felt{padding:18px 0 4px;text-align:center}
-  .felt p{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:26px;color:var(--teal-d);max-width:680px;margin:0 auto;letter-spacing:-.4px}
-
-  .finalsec{padding:40px 0 100px;text-align:center}
-  .finalsec h2{font-family:'Fraunces',serif;font-weight:600;font-size:46px;letter-spacing:-1.2px;margin-bottom:12px}
-  .finalsec p{font-size:18px;color:var(--muted);max-width:520px;margin:0 auto 30px}
+  .felt p{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:clamp(22px,3vw,30px);color:var(--teal-d);max-width:760px;margin:0 auto;text-align:center;letter-spacing:-.4px}
+  .finalsec h2{font-size:clamp(40px,5.6vw,58px)}
+  .finalsec .lead{max-width:520px;margin:18px auto 30px}
   .microtrust{font-size:13px;color:var(--muted);margin-top:16px}
 
-  /* Sticky mobile CTA */
-  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(246,250,248,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(246,250,248,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
   .sticky .cta{display:block;text-align:center;width:100%}
+  footer{padding:32px 0 80px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);background:var(--paper)}footer a{color:var(--muted)}
 
-  footer{padding:30px 0 80px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}footer a{color:var(--muted)}
-
-  @media(max-width:760px){
-    .hero{padding:130px 0 70px}
-    h1{font-size:46px;letter-spacing:-1.4px}
-    .tagline{font-size:21px}
-    .mission h2{font-size:34px}.moment h2{font-size:32px}
-    .bigrot{font-size:38px}
-    .crowd,.split,.feature{grid-template-columns:1fr;gap:34px}
-    .crowd .txt,.split .left,.feature .txt{text-align:center}
-    .crowd p,.split .left p,.feature p{margin-left:auto;margin-right:auto}
-    .out-main .v{font-size:54px}
-    .pgrid{grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:880px){
+    .hgrid,.split{grid-template-columns:1fr;gap:36px}
+    .split.flip .txt{order:0}
+    .txt{max-width:none}
+    h1{font-size:clamp(44px,11vw,60px)}
+    .cluster{height:480px;margin-top:8px}
+    .ph{width:210px}.ph.back{transform:rotate(-7deg) translate(-64px,-10px)}.ph.front{transform:rotate(5deg) translate(58px,24px)}
+    .ov.one{left:0}.ov.two{right:0}
+    .pgrid{grid-template-columns:1fr 1fr;gap:22px}
     .sticky{display:block}
-    .hero .ghost{font-size:52vw;opacity:.04}
+    .outstats{gap:28px}
   }
+  @media(max-width:480px){.ph{width:184px}.cluster{height:430px}}
 </style>
 </head>
 <body>
@@ -174,99 +181,129 @@
   <nav id="nav"><div class="wrap navin"><div class="logo">Pace<span>.</span></div><a class="cta sm" href="quiz.html">Find your number</a></div></nav>
 
   <main id="main">
+  <!-- HERO -->
   <section class="hero">
-    <div class="ghost serif" aria-hidden="true">2</div>
-    <div class="wrap"><div class="inner">
-      <p class="recog">It crept up quietly. Three on a Tuesday, most nights, and somewhere along the way it stopped being a choice.</p>
-      <div class="kick">Early access · Canada</div>
-      <h1>Drink less.
-        <span class="rot" id="rot"><span class="active">Sleep deeper.</span><span>Think sharper.</span><span>Feel stronger.</span><span>$4,680 a year.</span></span>
-      </h1>
-      <p class="tagline">The grown-up way to drink less.</p>
-      <p class="hsub">Not a label. Not willpower. Just <b>your number</b>, a week you can see, and a coach who knows your patterns. The version of you that drinks a little less and gets a lot back.</p>
-      <a class="cta" href="quiz.html">Find your number</a>
+    <div class="ribbon" aria-hidden="true"></div>
+    <div class="wrap"><div class="hgrid">
+      <div class="htext">
+        <p class="recog">It crept up quietly. Three on a Tuesday, most nights, and somewhere along the way it stopped being a choice.</p>
+        <div class="kick">Early access · Canada</div>
+        <h1>Drink less.
+          <span class="rot" id="rot"><span class="active">Sleep deeper.</span><span>Think sharper.</span><span>Feel stronger.</span><span>$4,680 a year.</span></span>
+        </h1>
+        <p class="tagline">The grown-up way to drink less.</p>
+        <p class="hsub">Not a label. Not willpower. Just <b>your number</b>, a week you can see, and a coach who knows your patterns.</p>
+        <a class="cta" href="quiz.html">Find your number</a>
+      </div>
+      <div class="cluster reveal" id="cluster">
+        <div class="flchip a"><span class="dotg"></span> 7 days on track</div>
+        <div class="ph back"><div class="scr">
+          <div class="coachav">P</div>
+          <div class="coachlab">Your coach</div>
+          <div class="coachbub">Friday usually gets away from you. Want a quick plan for tonight?</div>
+          <div class="coachchips"><span class="p">Plan it</span><span>I'm good</span></div>
+        </div></div>
+        <div class="ph front"><div class="scr">
+          <div class="sc-top"><b>This week</b><span>Mon to Sun</span></div>
+          <div class="ring">
+            <svg width="150" height="150" viewBox="0 0 190 190" role="img" aria-label="Four of six drinks this week, two left">
+              <circle cx="95" cy="95" r="66" fill="none" stroke="#E4EEEA" stroke-width="13"/>
+              <circle class="ringfg" cx="95" cy="95" r="66" fill="none" stroke="#0E8C73" stroke-width="13" stroke-linecap="round" transform="rotate(-90 95 95)"/>
+              <text x="95" y="90" text-anchor="middle" class="serif" font-size="40" font-weight="600" fill="#15211E">4</text>
+              <text x="95" y="114" text-anchor="middle" font-size="12" fill="#566460" font-family="Inter">of 6 this week</text>
+            </svg>
+          </div>
+          <div class="sc-cap">2 left. You're on pace.</div>
+          <div class="week">
+            <div class="day">M<div class="d on"></div></div><div class="day">T<div class="d"></div></div><div class="day">W<div class="d on"></div></div>
+            <div class="day">T<div class="d"></div></div><div class="day">F<div class="d today"></div></div><div class="day">S<div class="d"></div></div><div class="day">S<div class="d"></div></div>
+          </div>
+        </div></div>
+        <div class="flchip b">+$312 this month</div>
+      </div>
     </div></div>
   </section>
 
-  <div class="stage">
-    <div class="phone reveal" id="phone1"><div class="screen">
-      <div class="sc-top"><b>This week</b><span>Mon to Sun</span></div>
-      <div class="ring">
-        <svg width="186" height="186" viewBox="0 0 190 190" role="img" aria-label="Four of six drinks this week, two left, on pace">
-          <circle cx="95" cy="95" r="78" fill="none" stroke="#E4EEEA" stroke-width="14"/>
-          <circle class="ringfg" cx="95" cy="95" r="78" fill="none" stroke="#0E8C73" stroke-width="14" stroke-linecap="round" transform="rotate(-90 95 95)"/>
-          <text x="95" y="90" text-anchor="middle" class="serif" font-size="46" font-weight="600" fill="#15211E">4</text>
-          <text x="95" y="116" text-anchor="middle" font-size="13" fill="#5C6B66" font-family="Inter">of 6 this week</text>
-        </svg>
-      </div>
-      <div class="sc-cap">2 left. You're on pace.</div>
-      <div class="week">
-        <div class="day">M<div class="d on"></div></div><div class="day">T<div class="d"></div></div><div class="day">W<div class="d on"></div></div>
-        <div class="day">T<div class="d"></div></div><div class="day">F<div class="d today"></div></div><div class="day">S<div class="d"></div></div><div class="day">S<div class="d"></div></div>
-      </div>
-      <div class="coach"><div class="lab">Your coach</div><p>Friday usually gets away from you. Want a plan for tonight?</p></div>
-    </div></div>
-  </div>
-
-  <div class="moment mission">
+  <!-- MANIFESTO (white) -->
+  <section class="sec white center mission">
     <div class="wrap">
       <div class="ey reveal">Why we built Pace</div>
       <h2 class="serif reveal">We're not anti-alcohol.<br>We're <em>pro-you.</em></h2>
-      <p class="reveal">Most of us don't need a label. We're just done waking up foggy, watching the money go, and letting the third glass make the call. Pace is for the millions in the middle the system forgot. Not preachy. Not all-or-nothing. A smarter way to drink less.</p>
+      <p class="lead reveal">Most of us don't need a label. We're just done waking up foggy, watching the money go, and letting the third glass make the call. Pace is for the millions in the middle the system forgot. Not preachy. Not all-or-nothing. A smarter way to drink less.</p>
     </div>
-  </div>
+  </section>
 
-  <div class="wrap crowd">
-    <div class="txt reveal">
-      <div class="ey">A movement, not a program</div>
-      <h2 class="serif">The middle, <em>finally seen.</em></h2>
-      <p>Not a fringe thing, it's most of the room. The world built a free app that does nothing and a recovery world you'd never walk into. Pace is the third door, for capable people choosing to drink a little less, out loud, the grown-up way.</p>
-      <div class="kick" style="margin-top:22px">Early-access members get in first</div>
-    </div>
-    <div class="dotcard reveal">
-      <div class="dotgrid" id="dotgrid" aria-hidden="true"></div>
-      <p class="dotcap"><b>About 1 in 3</b> Canadian adults drink over the line. Statistics Canada, 2023.</p>
-    </div>
-  </div>
-
-  <div class="wrap split">
-    <div class="left">
-      <div class="ey reveal">What you get back</div>
-      <div class="bigrot reveal" id="bigrot"><span class="active">More energy.</span><span>Deeper sleep.</span><span>A leaner frame.</span><span>A clearer head.</span><span>Money back.</span></div>
-      <p class="reveal">This was never about giving something up. It's about everything you get in return.</p>
-    </div>
-    <div class="getcard reveal">
-      <div class="getrow"><span class="dot"></span><span>Mornings you remember</span></div>
-      <div class="getrow"><span class="dot"></span><span>Sleep that actually restores you</span></div>
-      <div class="getrow"><span class="dot"></span><span>A clearer head, fewer 3am spirals</span></div>
-      <div class="getrow"><span class="dot"></span><span>Being present for the people who notice</span></div>
-      <div class="getrow"><span class="dot"></span><span>The quiet pride of holding your number</span></div>
-    </div>
-  </div>
-
-  <div class="wrap feature">
-    <div class="txt reveal">
-      <div class="ey">Watch it come down</div>
-      <h2 class="serif">Proof you can feel.<br>And watch.</h2>
-      <p>Every week, fewer drinks and better numbers. Your sleep, your spend, and your streak all moving the right way.</p>
-      <div class="outstats">
-        <div class="out-main"><div class="v">$4,680</div><div class="l">back in your pocket a year</div></div>
-        <div class="out-sub"><div class="v">10 fewer</div><div class="l">drinks a week</div></div>
+  <!-- MOVEMENT (sand block) + friends photo -->
+  <section class="sec sand">
+    <div class="wrap"><div class="split">
+      <div class="txt reveal">
+        <div class="ey">A movement, not a program</div>
+        <h2 class="serif">The middle, <em>finally seen.</em></h2>
+        <p class="lead">Not a fringe thing, it's most of the room. The world built a free app that does nothing and a recovery world you'd never walk into. Pace is the third door, for capable people choosing to drink a little less, out loud, the grown-up way.</p>
+        <div class="kick" style="margin-top:22px;background:rgba(14,140,115,.1)">Early-access members get in first</div>
       </div>
-    </div>
-    <div class="trendcard reveal" id="phone2"><div class="screen">
-      <div class="sc-top"><b>Your trend</b><span>8 weeks</span></div>
-      <svg width="100%" height="180" viewBox="0 0 260 180" preserveAspectRatio="none" role="img" aria-label="Weekly drinks trending down from 14 to 4 over eight weeks">
-        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E8C73" stop-opacity=".20"/><stop offset="1" stop-color="#0E8C73" stop-opacity="0"/></linearGradient></defs>
-        <path class="carea" d="M0,40 L37,55 L74,70 L111,86 L148,104 L185,120 L222,138 L260,150 L260,180 L0,180 Z" fill="url(#g)"/>
-        <path class="cline" d="M0,40 L37,55 L74,70 L111,86 L148,104 L185,120 L222,138 L260,150"/>
-      </svg>
-      <div class="chart-cap"><span>14 drinks/wk</span><span style="color:var(--teal-d);font-weight:600">4 drinks/wk</span></div>
-      <div class="coach" style="margin-top:14px"><div class="lab">This month</div><p>Sleep up 22%. $390 back in your pocket.</p></div>
+      <div class="reveal">
+        <div class="photo wide">
+          <img src="https://images.pexels.com/photos/9287491/pexels-photo-9287491.jpeg?auto=compress&cs=tinysrgb&w=1100" alt="A group of friends laughing together outdoors in daylight" loading="lazy" />
+          <div class="ov solo"><div class="ic">⅓</div><div><div class="v">About 1 in 3</div><div class="l">Canadian adults drink over the line · StatCan 2023</div></div></div>
+        </div>
+      </div>
     </div></div>
-  </div>
+  </section>
 
-  <div class="moment">
+  <!-- WHAT YOU GET BACK (white) + morning photo with chips -->
+  <section class="sec white">
+    <div class="wrap"><div class="split flip">
+      <div class="txt reveal">
+        <div class="ey">What you get back</div>
+        <div class="bigrot" id="bigrot"><span class="active">More energy.</span><span>Deeper sleep.</span><span>A leaner frame.</span><span>A clearer head.</span><span>Money back.</span></div>
+        <p class="lead" style="margin-top:18px">This was never about giving something up. It's about everything you get in return.</p>
+        <div class="getlist">
+          <div class="getrow"><span class="gd"></span><span>Mornings you remember</span></div>
+          <div class="getrow"><span class="gd"></span><span>Sleep that actually restores you</span></div>
+          <div class="getrow"><span class="gd"></span><span>A clearer head, fewer 3am spirals</span></div>
+          <div class="getrow"><span class="gd"></span><span>The quiet pride of holding your number</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="photo">
+          <img src="https://images.pexels.com/photos/4045427/pexels-photo-4045427.jpeg?auto=compress&cs=tinysrgb&w=1100" alt="A couple having a calm morning coffee by a sunlit window" loading="lazy" />
+          <div class="ov one"><div class="ic">☾</div><div><div class="v">18 nights</div><div class="l">of real sleep</div></div></div>
+          <div class="ov two"><div class="ic" style="color:var(--cta);background:#FCE9DD">$</div><div><div class="v">$312</div><div class="l">back this month</div></div></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- WATCH IT COME DOWN (mint block) -->
+  <section class="sec mint">
+    <div class="wrap"><div class="split">
+      <div class="txt reveal">
+        <div class="ey">Watch it come down</div>
+        <h2 class="serif">Proof you can feel.<br>And watch.</h2>
+        <p class="lead" style="margin-top:16px">Every week, fewer drinks and better numbers. Your sleep, your spend, and your streak all moving the right way.</p>
+        <div class="outstats">
+          <div class="out-main"><div class="v">$4,680</div><div class="l">back in your pocket a year</div></div>
+          <div class="out-sub"><div class="v">10 fewer</div><div class="l">drinks a week</div></div>
+        </div>
+      </div>
+      <div class="reveal" id="trend">
+        <div class="trendcard">
+          <div class="tc-top"><b>Your trend</b><span>8 weeks</span></div>
+          <svg width="100%" height="170" viewBox="0 0 260 170" preserveAspectRatio="none" role="img" aria-label="Weekly drinks trending down from 14 to 4 over eight weeks">
+            <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E8C73" stop-opacity=".18"/><stop offset="1" stop-color="#0E8C73" stop-opacity="0"/></linearGradient></defs>
+            <path class="carea" d="M0,34 L37,50 L74,66 L111,82 L148,98 L185,114 L222,130 L260,142 L260,170 L0,170 Z" fill="url(#g)"/>
+            <path class="cline" d="M0,34 L37,50 L74,66 L111,82 L148,98 L185,114 L222,130 L260,142"/>
+          </svg>
+          <div class="chart-cap"><span>Week 1 · 14 / wk</span><span style="color:var(--teal-d);font-weight:600">Week 8 · 4 / wk</span></div>
+          <div class="tc-note">This month: sleep up 22%, $390 back in your pocket.</div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- PROOF (sand block) -->
+  <section class="sec sand center">
     <div class="wrap">
       <div class="ey reveal">The proof</div>
       <h2 class="serif reveal">The science is on your side.</h2>
@@ -278,26 +315,29 @@
       </div>
       <p class="pnote reveal">One-month-off figures from controlled studies, shown as reported. Benefits scale with how much you cut back.</p>
     </div>
-  </div>
+  </section>
 
-  <div class="moment">
+  <!-- CANADA (white) -->
+  <section class="sec white center">
     <div class="wrap">
       <div class="ey reveal">Why now</div>
       <h2 class="serif reveal">Canada moved the line.</h2>
-      <p class="reveal">In 2023 the guidance dropped from up to 15 drinks a week to two. Most of us are well past it. Less is better, wherever you start.</p>
+      <p class="lead reveal" style="max-width:640px;margin:18px auto 0">In 2023 the guidance dropped from up to 15 drinks a week to two. Most of us are well past it. Less is better, wherever you start.</p>
       <div class="reveal"><div class="linebar"><div></div><div></div><div></div><div></div></div>
       <div class="linelabels"><div>0 · none</div><div>1 to 2 · low</div><div>3 to 6 · moderate</div><div>7+ · high</div></div></div>
     </div>
-  </div>
+  </section>
 
-  <div class="wrap felt"><p class="reveal">What it feels like: a Tuesday you actually remember.</p></div>
-
-  <div class="wrap finalsec">
-    <h2 class="serif reveal">Find your number.</h2>
-    <p class="reveal">Sixty seconds. See where your week sits, and what a little less gives back. Be early in Canada.</p>
-    <div class="reveal"><a class="cta" href="quiz.html">Find your number</a></div>
-    <p class="microtrust reveal">Sixty seconds. No account. No spam.</p>
-  </div>
+  <!-- FELT + FINAL (mint block) -->
+  <section class="sec mint center finalsec">
+    <div class="wrap">
+      <div class="felt reveal" style="margin-bottom:54px"><p>What it feels like: a Tuesday you actually remember.</p></div>
+      <h2 class="serif reveal">Find your number.</h2>
+      <p class="lead reveal">Sixty seconds. See where your week sits, and what a little less gives back. Be early in Canada.</p>
+      <div class="reveal"><a class="cta" href="quiz.html">Find your number</a></div>
+      <p class="microtrust reveal">Sixty seconds. No account. No spam.</p>
+    </div>
+  </section>
   </main>
 
   <div class="sticky"><a class="cta" href="quiz.html">Find your number</a></div>
@@ -311,24 +351,17 @@
 
 <script>
   var nav=document.getElementById('nav');
-  addEventListener('scroll',function(){nav.classList.toggle('solid',scrollY>window.innerHeight*.55);},{passive:true});
+  addEventListener('scroll',function(){nav.classList.toggle('solid',scrollY>window.innerHeight*.5);},{passive:true});
 
-  /* 30-dot population grid: 10 filled (clay), 20 neutral */
-  (function(){var g=document.getElementById('dotgrid');if(!g)return;for(var i=0;i<30;i++){var d=document.createElement('i');if(i%3===0)d.className='on';g.appendChild(d);}})();
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal,.linebar,.pgrid').forEach(function(el){io.observe(el);});
+  var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target);}});},{threshold:.25});
+  ['cluster','trend'].forEach(function(id){var p=document.getElementById(id);if(p)io2.observe(p);});
 
-  /* fast reveals, low threshold, fully opaque once in */
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
-  document.querySelectorAll('.reveal,.pgrid,.linebar').forEach(function(el){io.observe(el);});
-  var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target);}});},{threshold:.2});
-  ['phone1','phone2'].forEach(function(id){var p=document.getElementById(id);if(p)io2.observe(p);});
-
-  /* Rotators: staggered crossfade so only one phrase shows at a time */
   function rotate(el,iv){if(!el)return;var it=el.querySelectorAll('span');var i=0;setInterval(function(){it[i].classList.remove('active');var n=(i+1)%it.length;it[n].classList.add('active');i=n;},iv);}
   rotate(document.getElementById('rot'),2600);rotate(document.getElementById('bigrot'),2300);
 
-  /* Proof numbers are STATIC HTML text and always correct: no count-up, so no mid-scroll wrong value. */
-
-  var cl=document.querySelector('.cline');if(cl){var L=cl.getTotalLength();cl.style.strokeDasharray=L;cl.style.strokeDashoffset=L;cl.style.transition='stroke-dashoffset 1.8s ease';var pio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cl.style.strokeDashoffset=0;pio.unobserve(e.target);}});},{threshold:.3});pio.observe(cl);}
+  var cl=document.querySelector('.cline');if(cl){var L=cl.getTotalLength();cl.style.strokeDasharray=L;cl.style.strokeDashoffset=L;cl.style.transition='stroke-dashoffset 1.8s ease';var pio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cl.style.strokeDashoffset=0;pio.unobserve(e.target);}});},{threshold:.4});pio.observe(cl);}
 </script>
 </body>
 </html>

@@ -18,16 +18,18 @@
   body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--bone);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   .serif{font-family:'Fraunces',Georgia,serif}
   .wrap{max-width:1100px;margin:0 auto;padding:0 28px}
-  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .wide{max-width:1280px;margin:0 auto;padding:0 28px}
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
   .reveal.in{opacity:1;transform:none}
+  .r-d1{transition-delay:.08s}.r-d2{transition-delay:.16s}.r-d3{transition-delay:.24s}.r-d4{transition-delay:.32s}
   nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);background:rgba(248,251,250,0);transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
   nav.solid{background:rgba(248,251,250,.92);border-bottom:1px solid var(--line)}
   .navin{display:flex;justify-content:space-between;align-items:center;padding:15px 0}
   .logo{font-family:'Fraunces',serif;font-weight:600;font-size:23px;color:var(--ink)}.logo span{color:var(--clay)}
   .navcta{font-size:14px;font-weight:600;color:#fff;background:var(--clay);padding:10px 19px;border-radius:100px;text-decoration:none;transition:transform .2s,background .2s}
   .navcta:hover{background:var(--clay-d);transform:translateY(-1px)}
-  .stickycta{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(150%);z-index:60;background:var(--clay);color:#fff;font-weight:600;font-size:15px;padding:15px 32px;border-radius:100px;text-decoration:none;box-shadow:0 16px 40px rgba(242,114,46,.32);transition:transform .5s var(--ease),background .2s}
-  .stickycta.show{transform:translateX(-50%) translateY(0)}
+  .stickycta{position:fixed;bottom:22px;right:22px;left:auto;transform:translateY(150%);z-index:40;background:var(--clay);color:#fff;font-weight:600;font-size:14px;padding:12px 24px;border-radius:100px;text-decoration:none;box-shadow:0 12px 32px rgba(242,114,46,.30);transition:transform .5s var(--ease),background .2s}
+  .stickycta.show{transform:translateY(0)}
   .stickycta:hover{background:var(--clay-d)}
   .eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--teal-d);margin-bottom:16px}
   .cta{display:inline-block;font-size:17px;font-weight:600;color:#fff;background:var(--clay);padding:17px 38px;border-radius:14px;text-decoration:none;transition:transform .2s,background .2s,box-shadow .2s;box-shadow:0 14px 32px rgba(242,114,46,.26)}
@@ -47,15 +49,13 @@
   .rot span{display:block;font-style:italic;position:absolute;width:100%;left:0;opacity:0;transform:translateY(100%);transition:opacity .6s var(--ease),transform .6s var(--ease)}
   .rot span.active{opacity:1;transform:translateY(0)}.rot span.out{opacity:0;transform:translateY(-100%)}
   .hsub{font-size:clamp(17px,2.1vw,20px);color:var(--muted);max-width:440px;margin:24px 0 32px}
-  /* device + screens (shared kit) */
+  /* device + screens (HERO ONLY) */
   .phonewrap{position:relative;display:flex;flex-direction:column;align-items:center}
-  .phone{position:relative;width:286px;aspect-ratio:286/586;background:#15211E;border-radius:42px;padding:11px;box-shadow:0 44px 90px rgba(21,33,30,.26)}
-  .phone.sm{width:212px}
+  .phone{position:relative;width:286px;aspect-ratio:286/586;background:#15211E;border-radius:42px;padding:11px;box-shadow:0 50px 100px rgba(21,33,30,.30),0 14px 34px rgba(21,33,30,.18)}
   .phone .notch{position:absolute;top:13px;left:50%;transform:translateX(-50%);width:84px;height:7px;border-radius:6px;background:#2c3c37;z-index:6}
   .scr{position:relative;width:100%;height:100%;background:linear-gradient(180deg,#FBFDFC,#EFF5F2);border-radius:32px;overflow:hidden}
   .appscreen{position:absolute;inset:0;padding:30px 20px 20px;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .45s var(--ease),transform .45s var(--ease);display:flex;flex-direction:column}
   .appscreen.on{opacity:1;visibility:visible;transform:none}
-  .appstatic .appscreen{position:relative;opacity:1;visibility:visible;transform:none;height:100%}
   .app-h{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-d)}
   .app-t{font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:var(--ink);margin:4px 0 14px;line-height:1.12}
   .stepper{display:flex;align-items:center;justify-content:center;gap:16px;margin:8px 0 2px}
@@ -78,86 +78,179 @@
   .coachchips{display:flex;gap:8px;margin-top:11px}
   .coachchip{border:1.5px solid var(--line);border-radius:100px;padding:7px 13px;font-size:12px;color:var(--ink);background:#fff}
   .coachchip.p{background:var(--teal);color:#fff;border-color:var(--teal)}
-  /* in-screen mini chart */
-  .minichart{margin:2px 0 8px}
-  .minichart svg{width:100%;height:auto;display:block}
-  .mline{fill:none;stroke:var(--teal);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 1.8s var(--ease) .2s}
-  .vis.in .mline{stroke-dashoffset:0}
-  .marea{fill:url(#mg);opacity:0;transition:opacity 1.2s var(--ease) .5s}.vis.in .marea{opacity:1}
-  /* in-screen wins feed */
-  .winrow{display:flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px 13px;margin-bottom:9px;opacity:0;transform:translateX(10px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
-  .vis.in .winrow{opacity:1;transform:none}
-  .vis.in .winrow:nth-child(2){transition-delay:.12s}.vis.in .winrow:nth-child(3){transition-delay:.24s}.vis.in .winrow:nth-child(4){transition-delay:.36s}
-  .winrow .wic{width:30px;height:30px;border-radius:9px;background:#E9F4F0;display:flex;align-items:center;justify-content:center;color:var(--teal-d);flex:0 0 30px}
-  .winrow .wic svg{width:16px;height:16px}
-  .winrow .wl{font-size:12.5px;color:var(--ink);font-weight:500}
-  .winrow .wv{margin-left:auto;font-family:'Fraunces',serif;font-weight:600;font-size:16px;color:var(--clay-d)}
-  /* in-screen risk bar */
-  .mbar{display:flex;height:12px;border-radius:7px;overflow:hidden;margin:2px 0 0}
-  .mbar div:nth-child(1){background:#0E8C73;flex:0 0 14%}.mbar div:nth-child(2){background:#6FBE8F;flex:0 0 22%}
-  .mbar div:nth-child(3){background:var(--gold);flex:0 0 28%}.mbar div:nth-child(4){background:var(--clay);flex:1}
-  .mmark{position:relative;height:0}
-  .mpin{position:absolute;left:14%;transform:translateX(-50%);transition:left 1.1s var(--ease) .2s}
-  .vis.in .mpin{left:var(--at)}
-  .mpin b{display:block;background:var(--ink);color:#fff;font-size:9.5px;font-weight:600;padding:3px 7px;border-radius:6px;white-space:nowrap;transform:translateY(-26px)}
-  .mpin b::after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%) translateY(-19px);border:4px solid transparent;border-top-color:var(--ink)}
-  .mlabels{display:flex;font-size:9px;color:var(--muted);margin-top:9px}.mlabels div{flex:1;text-align:center}.mlabels div:first-child{flex:0 0 14%;text-align:left}
-  /* floating chips */
+  /* hero floating chips */
   .floatchip{position:absolute;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 14px;box-shadow:0 14px 34px rgba(21,33,30,.12);font-size:13px;font-weight:600;display:flex;align-items:center;gap:9px;z-index:5}
   .floatchip svg{width:16px;height:16px}
-  .floatchip.c1{top:40%;left:-12%;color:var(--teal-d);animation:floaty 4.4s var(--ease) infinite}
-  .floatchip.c2{top:56%;right:-10%;color:var(--clay-d);animation:floaty 4.4s var(--ease) .9s infinite}
+  .floatchip.c1{top:38%;left:-10%;color:var(--teal-d);animation:floaty 4.4s var(--ease) infinite}
+  .floatchip.c2{top:58%;right:-8%;color:var(--clay-d);animation:floaty 4.4s var(--ease) .9s infinite}
   .floatchip .dotg{width:9px;height:9px;border-radius:50%;background:var(--teal)}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
   .phonecap{text-align:center;font-size:12px;color:var(--muted);margin-top:16px}
-  /* rows */
-  .sect{position:relative;padding:clamp(64px,8vw,104px) 0;overflow:hidden}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  /* sections */
+  .sect{position:relative;padding:clamp(72px,9vw,120px) 0;overflow:hidden}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
   .row.flip .vtext{order:2}
   .vtext{max-width:480px}
   .vis{display:flex;justify-content:center;position:relative}
-  /* diverging retention chart */
-  .divcard{max-width:840px;margin:40px auto 0;background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px 30px 22px}
-  .divcard svg{width:100%;height:auto;display:block}
-  .dpath{fill:none;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:680;stroke-dashoffset:680;transition:stroke-dashoffset 2s var(--ease)}
+  .center{text-align:center}
+  .midcta{margin-top:36px}
+  /* ===== SECTION 2: MANIFESTO — big typographic statement card with ambient depth ===== */
+  .manifesto{position:relative;text-align:center;padding:clamp(80px,11vw,150px) 0}
+  .manifesto .o1{width:560px;height:560px;background:radial-gradient(circle,rgba(14,140,115,.13),rgba(14,140,115,0) 70%);top:-180px;left:-120px}
+  .manifesto .o2{width:480px;height:480px;background:radial-gradient(circle,rgba(242,114,46,.11),rgba(242,114,46,0) 70%);bottom:-180px;right:-100px}
+  .mani-in{position:relative;z-index:2;max-width:880px;margin:0 auto}
+  .mani-h{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(34px,5.4vw,62px);line-height:1.04;letter-spacing:-1.6px}
+  .mani-h em{font-style:italic;color:var(--teal)}
+  .mani-lead{font-size:clamp(17px,2vw,21px);color:var(--muted);max-width:620px;margin:30px auto 0;line-height:1.62}
+  /* ===== SECTION 3: RETENTION — oversized diverging chart ===== */
+  .bigchart{max-width:1000px;margin:48px auto 0;background:linear-gradient(180deg,#FFFFFF,#FBFDFC);border:1px solid var(--line);border-radius:28px;padding:clamp(26px,4vw,46px) clamp(22px,4vw,52px) clamp(22px,3vw,34px);box-shadow:0 36px 80px rgba(21,33,30,.10),0 8px 22px rgba(21,33,30,.05)}
+  .bigchart svg{width:100%;height:auto;display:block;overflow:visible}
+  .dpath{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1200;stroke-dashoffset:1200;transition:stroke-dashoffset 2.2s var(--ease)}
   .reveal.in .dpath{stroke-dashoffset:0}
   .dpath.coached{stroke:var(--teal)}.dpath.willpower{stroke:#C3B9A6}
-  .dlegend{display:flex;gap:24px;justify-content:center;margin-top:18px;font-size:13px;color:var(--muted);flex-wrap:wrap}
-  .dlegend b{font-family:'Fraunces',serif;font-size:17px}
-  .dleg{display:flex;align-items:center;gap:8px}.dleg .sw{width:14px;height:14px;border-radius:4px}
-  .center{text-align:center}
-  .deck{display:flex;justify-content:center;gap:24px;margin-top:48px;flex-wrap:wrap}
-  .deckitem{text-align:center}
-  .deckitem .sn{font-size:12px;font-weight:600;color:var(--clay-d);letter-spacing:.08em;margin-top:16px}
-  .deckitem .dt{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-top:4px}
-  .deckitem .dd{font-size:13px;color:var(--muted);margin-top:3px;max-width:212px}
-  .cstats{display:flex;gap:34px;margin-top:26px;flex-wrap:wrap}
-  .cstat .v{font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--clay-d);letter-spacing:-1px}
-  .cstat .k{font-size:12.5px;color:var(--muted);margin-top:2px;max-width:150px}
-  .proof{background:#fff;border:1px solid var(--line);border-radius:24px;max-width:960px;margin:0 auto;padding:38px 30px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-  .pcell .ic{color:var(--clay);display:flex;justify-content:center;margin-bottom:10px}.pcell .ic svg{width:22px;height:22px}
-  .pcell .num{font-family:'Fraunces',serif;font-size:clamp(30px,3.6vw,40px);font-weight:600;color:var(--clay-d);letter-spacing:-1.2px;line-height:1}
-  .pcell .lab{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.4}
-  .pnote{font-size:12px;color:#9aa49f;margin:18px auto 0;max-width:640px;text-align:center}
-  .midcta{margin-top:36px}
-  .final{text-align:center;padding:clamp(72px,9vw,120px) 0;position:relative;overflow:hidden}
-  .final .o1{width:520px;height:520px;background:radial-gradient(circle,rgba(14,140,115,.16),rgba(14,140,115,0) 70%);top:-160px;left:50%;transform:translateX(-50%)}
+  .darea{opacity:0;transition:opacity 1.2s var(--ease) .6s}.reveal.in .darea{opacity:1}
+  .dend{opacity:0;transform:scale(.4);transform-origin:center;transition:opacity .6s var(--ease) 1.6s,transform .6s var(--ease) 1.6s}
+  .reveal.in .dend{opacity:1;transform:scale(1)}
+  .dlegend{display:flex;gap:30px;justify-content:center;margin-top:24px;font-size:14px;color:var(--muted);flex-wrap:wrap}
+  .dlegend b{font-family:'Fraunces',serif;font-size:19px}
+  .dleg{display:flex;align-items:center;gap:9px}.dleg .sw{width:15px;height:15px;border-radius:4px}
+  /* ===== SECTION 4: HOW IT WORKS — cropped UI component cards ===== */
+  .compdeck{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:54px;align-items:start}
+  .compcard{position:relative;background:linear-gradient(180deg,#FFFFFF,#F7FBF9);border:1px solid var(--line);border-radius:24px;padding:34px 28px 30px;text-align:left;box-shadow:0 26px 60px rgba(21,33,30,.09),0 6px 16px rgba(21,33,30,.04);overflow:hidden}
+  .compcard::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 80% -10%,rgba(14,140,115,.06),transparent 60%);pointer-events:none}
+  .compstage{position:relative;height:180px;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+  .compstage .glow{position:absolute;width:200px;height:120px;border-radius:50%;filter:blur(34px);opacity:.5}
+  .glow.teal{background:rgba(14,140,115,.22)}.glow.clay{background:rgba(242,114,46,.20)}.glow.gold{background:rgba(230,169,60,.22)}
+  /* big stepper component */
+  .c-stepper{position:relative;display:flex;align-items:center;gap:22px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:20px 26px;box-shadow:0 18px 44px rgba(21,33,30,.14)}
+  .c-stepper .pm{width:54px;height:54px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font-size:28px;color:var(--ink);display:flex;align-items:center;justify-content:center;line-height:1}
+  .c-stepper .pm.plus{background:var(--clay);color:#fff;border-color:var(--clay);box-shadow:0 10px 24px rgba(242,114,46,.32)}
+  .c-stepper .cnt{font-family:'Fraunces',serif;font-size:60px;font-weight:600;color:var(--ink);min-width:54px;text-align:center;line-height:1}
+  .c-log{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);background:var(--clay);color:#fff;font-weight:600;font-size:13px;padding:9px 20px;border-radius:100px;box-shadow:0 12px 28px rgba(242,114,46,.34);white-space:nowrap}
+  /* big day-dot row */
+  .c-days{position:relative;display:flex;gap:11px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px 22px;box-shadow:0 18px 44px rgba(21,33,30,.14)}
+  .c-days .cd{text-align:center}
+  .c-days .cd .l{font-size:11px;color:var(--muted);margin-bottom:9px;font-weight:500}
+  .c-days .cd .dot{width:32px;height:32px;border-radius:50%;background:#E2EBE7;display:flex;align-items:center;justify-content:center;color:#fff}
+  .c-days .cd .dot svg{width:17px;height:17px}
+  .c-days .cd.ok .dot{background:var(--teal)}.c-days .cd.over .dot{background:var(--clay)}
+  /* big coach bubble */
+  .c-coach{position:relative;width:100%;max-width:280px}
+  .c-coach .from{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+  .c-coach .av{width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:18px;box-shadow:0 8px 20px rgba(14,140,115,.30)}
+  .c-coach .nm{font-size:13px;font-weight:600;color:var(--ink)}
+  .c-coach .bub{background:#fff;border:1px solid var(--line);border-radius:18px;border-top-left-radius:5px;padding:15px 17px;font-size:14px;color:var(--ink);line-height:1.5;box-shadow:0 16px 38px rgba(21,33,30,.12)}
+  .c-coach .chips{display:flex;gap:9px;margin-top:13px}
+  .c-coach .chip{border:1.5px solid var(--line);border-radius:100px;padding:8px 15px;font-size:12.5px;color:var(--ink);background:#fff}
+  .c-coach .chip.p{background:var(--teal);color:#fff;border-color:var(--teal);box-shadow:0 8px 20px rgba(14,140,115,.26)}
+  .compcard .sn{font-size:12px;font-weight:600;color:var(--clay-d);letter-spacing:.10em;position:relative;z-index:2}
+  .compcard .dt{font-family:'Fraunces',serif;font-size:21px;font-weight:600;margin-top:6px;position:relative;z-index:2}
+  .compcard .dd{font-size:14px;color:var(--muted);margin-top:6px;position:relative;z-index:2;line-height:1.5}
+  /* float-in animation for component cards */
+  .compcard{opacity:0;transform:translateY(40px) scale(.97);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .compdeck.in .compcard{opacity:1;transform:none}
+  .compdeck.in .compcard:nth-child(2){transition-delay:.14s}
+  .compdeck.in .compcard:nth-child(3){transition-delay:.28s}
+  /* ===== SECTION 5: WATCH IT COME DOWN — full-bleed area chart ===== */
+  .trendsect{position:relative;padding:clamp(72px,9vw,120px) 0;overflow:hidden}
+  .trendsect .o1{width:560px;height:560px;background:radial-gradient(circle,rgba(14,140,115,.12),rgba(14,140,115,0) 70%);top:10%;right:-160px}
+  .trendhead{max-width:560px}
+  .trendwrap{position:relative;z-index:2;margin-top:46px;background:linear-gradient(180deg,#FFFFFF,#FAFDFB);border:1px solid var(--line);border-radius:30px;padding:clamp(28px,4vw,48px);box-shadow:0 40px 90px rgba(21,33,30,.11),0 10px 24px rgba(21,33,30,.05)}
+  .trendwrap svg{width:100%;height:auto;display:block;overflow:visible}
+  .tarea{fill:url(#tgrad);opacity:0;transition:opacity 1.4s var(--ease) .5s}.reveal.in .tarea{opacity:1}
+  .tline{fill:none;stroke:var(--teal);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 2.4s var(--ease)}
+  .reveal.in .tline{stroke-dashoffset:0}
+  .tdot{opacity:0;transition:opacity .5s var(--ease)}.reveal.in .tdot{opacity:1}
+  .reveal.in .tdot.d1{transition-delay:.4s}.reveal.in .tdot.d2{transition-delay:1.2s}.reveal.in .tdot.dEnd{transition-delay:2.2s}
+  .tendlbl{opacity:0;transform:translateY(8px);transition:opacity .6s var(--ease) 2.3s,transform .6s var(--ease) 2.3s}
+  .reveal.in .tendlbl{opacity:1;transform:none}
+  .trendstats{display:flex;gap:48px;margin-top:8px;flex-wrap:wrap}
+  .trendstats .v{font-family:'Fraunces',serif;font-size:clamp(34px,4.6vw,48px);font-weight:600;color:var(--clay-d);letter-spacing:-1.4px;line-height:1}
+  .trendstats .k{font-size:13.5px;color:var(--muted);margin-top:6px;max-width:190px}
+  /* ===== SECTION 6: WHAT YOU GET BACK — floating overlapping win chips ===== */
+  .winscape{position:relative;height:440px;width:100%}
+  .winchip{position:absolute;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 22px;display:flex;align-items:center;gap:14px;opacity:0;transform:translateY(34px) scale(.94);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .vis.in .winchip{opacity:1;transform:none}
+  .vis.in .winchip.w2{transition-delay:.12s}.vis.in .winchip.w3{transition-delay:.24s}.vis.in .winchip.w4{transition-delay:.36s}
+  .winchip .ic{width:46px;height:46px;border-radius:13px;background:#E9F4F0;display:flex;align-items:center;justify-content:center;color:var(--teal-d);flex:0 0 46px}
+  .winchip .ic svg{width:23px;height:23px}
+  .winchip .tx .l{font-size:13px;color:var(--muted);font-weight:500}
+  .winchip .tx .v{font-family:'Fraunces',serif;font-weight:600;font-size:30px;color:var(--clay-d);line-height:1;letter-spacing:-1px;margin-top:2px}
+  .winchip.w1{top:6%;left:4%;z-index:4;box-shadow:0 32px 70px rgba(21,33,30,.16)}
+  .winchip.w2{top:30%;right:2%;z-index:3;box-shadow:0 26px 58px rgba(21,33,30,.13)}
+  .winchip.w3{bottom:24%;left:0;z-index:3;box-shadow:0 26px 58px rgba(21,33,30,.13)}
+  .winchip.w4{bottom:2%;right:8%;z-index:4;box-shadow:0 32px 70px rgba(21,33,30,.16)}
+  .winscape .glowa{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(14,140,115,.14),transparent 70%);top:18%;left:24%;filter:blur(8px)}
+  .winscape .glowb{position:absolute;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(242,114,46,.12),transparent 70%);bottom:10%;right:20%;filter:blur(8px)}
+  /* ===== SECTION 7: CANADA MOVED THE LINE — edge-to-edge spectrum band ===== */
+  .spectrumsect{position:relative;padding:clamp(72px,9vw,120px) 0;overflow:hidden}
+  .spechead{max-width:640px;margin:0 auto;text-align:center}
+  .specband{position:relative;margin:64px auto 0;max-width:1180px}
+  .specbar{position:relative;height:64px;border-radius:18px;overflow:hidden;display:flex;box-shadow:0 26px 60px rgba(21,33,30,.13)}
+  .specbar .seg{position:relative;display:flex;align-items:center;justify-content:center}
+  .specbar .seg span{font-size:13px;font-weight:600;color:#fff;letter-spacing:.02em;text-shadow:0 1px 2px rgba(0,0,0,.18)}
+  .specbar .s0{flex:0 0 12%;background:#0E8C73}
+  .specbar .s1{flex:0 0 22%;background:#6FBE8F}
+  .specbar .s2{flex:0 0 28%;background:var(--gold)}
+  .specbar .s3{flex:1;background:var(--clay)}
+  .specmark{position:absolute;top:-2px;bottom:-2px;left:12%;width:4px;background:var(--ink);border-radius:3px;box-shadow:0 0 0 3px rgba(255,255,255,.85),0 8px 20px rgba(21,33,30,.3);transition:left 1.6s var(--ease) .3s}
+  .specband.in .specmark{left:62%}
+  .specflag{position:absolute;left:12%;top:-58px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 16px;border-radius:11px;font-size:13px;font-weight:600;white-space:nowrap;box-shadow:0 14px 30px rgba(21,33,30,.26);transition:left 1.6s var(--ease) .3s;opacity:0}
+  .specband.in .specflag{left:62%;opacity:1;transition:left 1.6s var(--ease) .3s,opacity .6s var(--ease) .3s}
+  .specflag::after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:7px solid transparent;border-top-color:var(--ink)}
+  .speclabels{display:flex;margin-top:16px;font-size:13px;color:var(--muted);font-weight:500}
+  .speclabels .l0{flex:0 0 12%}.speclabels .l1{flex:0 0 22%}.speclabels .l2{flex:0 0 28%}.speclabels .l3{flex:1}
+  .speclabels b{display:block;font-family:'Fraunces',serif;color:var(--ink);font-size:15px;font-weight:600}
+  .speccap{text-align:center;font-size:15px;color:var(--muted);margin:40px auto 0;max-width:560px}
+  .speccap b{color:var(--teal-d);font-weight:600}
+  /* ===== SECTION 8: PROOF — big-type stat grid ===== */
+  .proof{max-width:1060px;margin:48px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .pcell{position:relative;padding:30px 26px;text-align:center}
+  .pcell:not(:last-child)::after{content:"";position:absolute;right:0;top:18%;bottom:18%;width:1px;background:var(--line)}
+  .pcell .ic{color:var(--clay);display:flex;justify-content:center;margin-bottom:14px}.pcell .ic svg{width:24px;height:24px}
+  .pcell .num{font-family:'Fraunces',serif;font-size:clamp(40px,5vw,58px);font-weight:600;color:var(--clay-d);letter-spacing:-1.6px;line-height:.95}
+  .pcell .lab{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.45}
+  .pnote{font-size:12.5px;color:var(--muted);margin:30px auto 0;max-width:640px;text-align:center;opacity:.85}
+  /* final */
+  .final{text-align:center;padding:clamp(82px,10vw,140px) 0;position:relative;overflow:hidden}
+  .final .o1{width:560px;height:560px;background:radial-gradient(circle,rgba(14,140,115,.16),rgba(14,140,115,0) 70%);top:-180px;left:50%;transform:translateX(-50%)}
+  .final .o2{width:420px;height:420px;background:radial-gradient(circle,rgba(242,114,46,.12),rgba(242,114,46,0) 70%);bottom:-160px;right:8%}
   footer{padding:30px 0 56px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}footer a{color:var(--muted)}
+  @media(max-width:980px){
+    .compdeck{grid-template-columns:1fr;gap:26px;max-width:460px;margin-left:auto;margin-right:auto}
+    .proof{grid-template-columns:1fr 1fr;gap:0}
+    .pcell:nth-child(2)::after{display:none}
+    .pcell{border-bottom:1px solid var(--line)}.pcell:nth-child(3),.pcell:nth-child(4){border-bottom:none}
+  }
   @media(max-width:860px){
     .hgrid{grid-template-columns:1fr;gap:30px}.hero{padding:104px 0 40px}
     .row{grid-template-columns:1fr;gap:34px}.row.flip .vtext{order:0}
     .vtext{max-width:none}.lead{max-width:none}
     .phonewrap{order:-1}.floatchip{display:none}
-    .proof{grid-template-columns:1fr 1fr}
     .par{transform:none!important}
+    .winscape{height:auto;display:flex;flex-direction:column;gap:14px;align-items:stretch}
+    .winchip{position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important}
+    .winscape .glowa,.winscape .glowb{display:none}
+    .specflag{font-size:12px;padding:7px 12px}
+    .speclabels{font-size:11px}.speclabels b{font-size:12px}
+    .trendstats{gap:28px}
   }
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important}.rot span{transition:none!important}.par{transform:none!important}.mline{stroke-dashoffset:0!important}.marea,.winrow{opacity:1!important;transform:none!important}.dpath{stroke-dashoffset:0!important}html{scroll-behavior:auto}}
+  @media(prefers-reduced-motion:reduce){
+    .reveal,.compcard{opacity:1!important;transform:none!important;transition:none!important}
+    .rot span{transition:none!important}.par{transform:none!important}
+    .tline,.dpath{stroke-dashoffset:0!important}
+    .tarea,.darea,.winchip,.tdot,.tendlbl,.dend{opacity:1!important;transform:none!important;transition:none!important}
+    .specmark,.specflag{transition:none!important}
+    .specband .specmark{left:62%!important}.specband .specflag{left:62%!important;opacity:1!important}
+    html{scroll-behavior:auto}
+  }
 </style>
 </head>
 <body>
   <nav id="nav"><div class="wrap navin"><div class="logo">Pace<span>.</span></div><a class="navcta" href="quiz.html">Find your number</a></div></nav>
   <a class="stickycta" id="sticky" href="quiz.html">Find your number</a>
 
+  <!-- ===== HERO (keeps the ONE signature phone) ===== -->
   <section class="hero">
     <div class="orb o1 par" data-speed="0.10"></div>
     <div class="orb o2 par" data-speed="0.07"></div>
@@ -214,49 +307,61 @@
     </div></div>
   </section>
 
-  <section class="sect"><div class="wrap"><div class="row">
-    <div class="vtext reveal">
-      <div class="eyebrow">Why we built Pace</div>
-      <h2 class="serif">We're not anti-alcohol.<br>We're <em>pro-you.</em></h2>
-      <p class="lead">Most of us aren't addicts. We're just done waking up foggy, spending too much, and letting the third glass make the call. Pace is for the millions in the middle the system forgot. Not rehab. Not preachy.</p>
+  <!-- ===== SECTION 2: MANIFESTO — big typographic moment ===== -->
+  <section class="manifesto">
+    <div class="orb o1 par" data-speed="0.06"></div>
+    <div class="orb o2 par" data-speed="0.05"></div>
+    <div class="mani-in">
+      <div class="eyebrow reveal" style="text-align:center">Why we built Pace</div>
+      <h2 class="mani-h reveal r-d1">We're not anti-alcohol.<br>We're <em>pro-you.</em></h2>
+      <p class="mani-lead reveal r-d2">Most of us aren't addicts. We're just done waking up foggy, spending too much, and letting the third glass make the call. Pace is for the millions in the middle the system forgot. Not rehab. Not preachy.</p>
     </div>
-    <div class="vis reveal"><div class="par" data-speed="0.05"><div class="phone appstatic">
-      <div class="notch"></div>
-      <div class="scr">
-        <div class="appscreen on">
-          <div class="app-h">This week · honestly</div>
-          <div class="app-t">More than you thought.</div>
-          <div class="daysrow">
-            <div class="day over"><div class="dd">M</div><div class="dot"></div></div>
-            <div class="day over"><div class="dd">T</div><div class="dot"></div></div>
-            <div class="day ok"><div class="dd">W</div><div class="dot"><i data-lucide="check"></i></div></div>
-            <div class="day over"><div class="dd">T</div><div class="dot"></div></div>
-            <div class="day over"><div class="dd">F</div><div class="dot"></div></div>
-            <div class="day over"><div class="dd">S</div><div class="dot"></div></div>
-            <div class="day ok"><div class="dd">S</div><div class="dot"><i data-lucide="check"></i></div></div>
-          </div>
-          <div class="app-stat"><div class="v" style="color:var(--clay-d)">11 this week</div><div class="k">most weeks slip by without a number</div></div>
-          <div class="app-foot" style="margin-top:auto">Pace makes it visible, no judgment</div>
-        </div>
-      </div>
-    </div></div></div>
-  </div></div></section>
+  </section>
 
+  <!-- ===== SECTION 3: RETENTION — oversized diverging chart ===== -->
   <section class="sect center"><div class="wrap">
     <div class="reveal">
       <div class="eyebrow">Why most cutbacks fail</div>
       <h2 class="serif">Willpower isn't the problem.</h2>
       <p class="lead" style="margin:18px auto 0">Going it alone almost never holds. A plan and a coach is what keeps it stuck past the hard months.</p>
     </div>
-    <div class="divcard reveal">
-      <svg viewBox="0 0 520 210" role="img" aria-label="Retention over six months: willpower alone falls to 19 percent, with a plan and coach holds at 84 percent">
-        <line x1="30" y1="178" x2="498" y2="178" stroke="#E2EBE7" stroke-width="1.5"/>
-        <path class="dpath coached" d="M30,30 L107,36 L183,43 L260,48 L337,51 L413,54 L490,56"/>
-        <path class="dpath willpower" d="M30,30 L107,78 L183,113 L260,136 L337,148 L413,156 L490,160"/>
-        <circle cx="490" cy="56" r="5.5" fill="#0E8C73"/>
-        <circle cx="490" cy="160" r="5.5" fill="#C3B9A6"/>
-        <text x="30" y="200" font-size="11" fill="#5C6B66" font-family="Inter">Start</text>
-        <text x="490" y="200" font-size="11" fill="#5C6B66" font-family="Inter" text-anchor="end">6 months</text>
+    <div class="bigchart reveal">
+      <svg viewBox="0 0 1000 360" role="img" aria-label="Retention over six months: with a plan and coach holds at 84 percent, willpower alone falls to 19 percent">
+        <defs>
+          <linearGradient id="cgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E8C73" stop-opacity="0.16"/><stop offset="1" stop-color="#0E8C73" stop-opacity="0"/></linearGradient>
+        </defs>
+        <!-- gridlines -->
+        <g stroke="#E2EBE7" stroke-width="1">
+          <line x1="60" y1="40" x2="940" y2="40"/>
+          <line x1="60" y1="120" x2="940" y2="120"/>
+          <line x1="60" y1="200" x2="940" y2="200"/>
+          <line x1="60" y1="280" x2="940" y2="280"/>
+          <line x1="60" y1="312" x2="940" y2="312"/>
+        </g>
+        <!-- y labels -->
+        <g font-size="13" fill="#5C6B66" font-family="Inter" text-anchor="end">
+          <text x="48" y="44">100%</text>
+          <text x="48" y="204">50%</text>
+          <text x="48" y="316">0%</text>
+        </g>
+        <!-- coached area -->
+        <path class="darea" fill="url(#cgrad)" d="M60,52 L207,58 L353,67 L500,75 L647,80 L793,85 L940,89 L940,312 L60,312 Z"/>
+        <!-- willpower path (faded) -->
+        <path class="dpath willpower" d="M60,52 L207,128 L353,184 L500,220 L647,238 L793,250 L940,256"/>
+        <!-- coached path -->
+        <path class="dpath coached" d="M60,52 L207,58 L353,67 L500,75 L647,80 L793,85 L940,89"/>
+        <!-- end markers -->
+        <g class="dend">
+          <circle cx="940" cy="89" r="7" fill="#0E8C73"/>
+          <text x="924" y="76" font-size="22" font-weight="600" fill="#0B6F5C" font-family="Fraunces" text-anchor="end">84%</text>
+        </g>
+        <g class="dend">
+          <circle cx="940" cy="256" r="7" fill="#C3B9A6"/>
+          <text x="924" y="248" font-size="22" font-weight="600" fill="#8a8275" font-family="Fraunces" text-anchor="end">19%</text>
+        </g>
+        <!-- x labels -->
+        <text x="60" y="340" font-size="13" fill="#5C6B66" font-family="Inter">Start</text>
+        <text x="940" y="340" font-size="13" fill="#5C6B66" font-family="Inter" text-anchor="end">6 months</text>
       </svg>
       <div class="dlegend">
         <div class="dleg"><span class="sw" style="background:#0E8C73"></span> With a plan and a coach <b style="color:var(--teal-d)">&nbsp;84%</b></div>
@@ -265,131 +370,164 @@
     </div>
   </div></section>
 
+  <!-- ===== SECTION 4: HOW IT WORKS — cropped UI component cards ===== -->
   <section class="sect center"><div class="wrap">
     <div class="reveal">
       <div class="eyebrow">How it works</div>
       <h2 class="serif">Three taps. That's the whole job.</h2>
     </div>
-    <div class="deck reveal">
-      <div class="deckitem"><div class="par" data-speed="0.06"><div class="phone sm appstatic">
-        <div class="notch"></div>
-        <div class="scr"><div class="appscreen on">
-          <div class="app-h">Tonight</div>
-          <div class="app-t">How many so far?</div>
-          <div class="stepper"><span class="b">&minus;</span><div class="cnt">1</div><span class="b">+</span></div>
-          <div class="app-mut">drinks today</div>
-          <div class="applog">Log it</div>
-        </div></div>
-      </div></div>
-        <div class="sn">01</div><div class="dt">Log it in two taps</div><div class="dd">A beer, a glass, a shot. Seconds, no diary.</div>
-      </div>
-      <div class="deckitem"><div class="par" data-speed="0.10"><div class="phone sm appstatic">
-        <div class="notch"></div>
-        <div class="scr"><div class="appscreen on">
-          <div class="app-h">Your week</div>
-          <div class="app-t">5 of 7 on track</div>
-          <div class="daysrow">
-            <div class="day ok"><div class="dd">M</div><div class="dot"><i data-lucide="check"></i></div></div>
-            <div class="day ok"><div class="dd">T</div><div class="dot"><i data-lucide="check"></i></div></div>
-            <div class="day ok"><div class="dd">W</div><div class="dot"><i data-lucide="check"></i></div></div>
-            <div class="day over"><div class="dd">T</div><div class="dot"></div></div>
-            <div class="day ok"><div class="dd">F</div><div class="dot"><i data-lucide="check"></i></div></div>
-            <div class="day ok"><div class="dd">S</div><div class="dot"><i data-lucide="check"></i></div></div>
-            <div class="day"><div class="dd">S</div><div class="dot"></div></div>
+    <div class="compdeck" id="compdeck">
+      <div class="compcard">
+        <div class="compstage">
+          <div class="glow clay"></div>
+          <div class="c-stepper par" data-speed="0.04">
+            <span class="pm">&minus;</span>
+            <span class="cnt">1</span>
+            <span class="pm plus">+</span>
+            <div class="c-log">Log it</div>
           </div>
-          <div class="app-stat"><div class="v">2 of 6</div><div class="k">used this week</div></div>
-        </div></div>
-      </div></div>
-        <div class="sn">02</div><div class="dt">See your week</div><div class="dd">Every drink against the number you set.</div>
+        </div>
+        <div class="sn">01</div>
+        <div class="dt">Log it in two taps</div>
+        <div class="dd">A beer, a glass, a shot. Seconds, no diary.</div>
       </div>
-      <div class="deckitem"><div class="par" data-speed="0.06"><div class="phone sm appstatic">
-        <div class="notch"></div>
-        <div class="scr"><div class="appscreen on">
-          <div class="app-h">Your coach</div>
-          <div class="app-t">Check-in</div>
-          <div class="coachfrom"><div class="coachav">P</div><div class="coachname">Pace coach</div></div>
-          <div class="coachbub">Thursdays trip you up. Want a quick plan for tonight?</div>
-          <div class="coachchips"><span class="coachchip p">Plan it</span><span class="coachchip">I'm good</span></div>
-        </div></div>
-      </div></div>
-        <div class="sn">03</div><div class="dt">Get a nudge</div><div class="dd">A coach that knows your patterns, before the hard nights.</div>
+      <div class="compcard">
+        <div class="compstage">
+          <div class="glow teal"></div>
+          <div class="c-days par" data-speed="0.06">
+            <div class="cd ok"><div class="l">M</div><div class="dot"><i data-lucide="check"></i></div></div>
+            <div class="cd ok"><div class="l">T</div><div class="dot"><i data-lucide="check"></i></div></div>
+            <div class="cd ok"><div class="l">W</div><div class="dot"><i data-lucide="check"></i></div></div>
+            <div class="cd over"><div class="l">T</div><div class="dot"></div></div>
+            <div class="cd ok"><div class="l">F</div><div class="dot"><i data-lucide="check"></i></div></div>
+            <div class="cd ok"><div class="l">S</div><div class="dot"><i data-lucide="check"></i></div></div>
+            <div class="cd"><div class="l">S</div><div class="dot"></div></div>
+          </div>
+        </div>
+        <div class="sn">02</div>
+        <div class="dt">See your week</div>
+        <div class="dd">Every drink against the number you set.</div>
+      </div>
+      <div class="compcard">
+        <div class="compstage">
+          <div class="glow gold"></div>
+          <div class="c-coach par" data-speed="0.04">
+            <div class="from"><div class="av">P</div><div class="nm">Pace coach</div></div>
+            <div class="bub">Thursdays trip you up. Want a quick plan for tonight?</div>
+            <div class="chips"><span class="chip p">Plan it</span><span class="chip">I'm good</span></div>
+          </div>
+        </div>
+        <div class="sn">03</div>
+        <div class="dt">Get a nudge</div>
+        <div class="dd">A coach that knows your patterns, before the hard nights.</div>
       </div>
     </div>
   </div></section>
 
-  <section class="sect"><div class="wrap"><div class="row flip">
-    <div class="vtext reveal">
+  <!-- ===== SECTION 5: WATCH IT COME DOWN — full-bleed area chart ===== -->
+  <section class="trendsect"><div class="wide">
+    <div class="orb o1 par" data-speed="0.06"></div>
+    <div class="trendhead reveal">
       <div class="eyebrow">The outcome</div>
       <h2 class="serif">Watch it come down.</h2>
       <p class="lead">Small, steady weeks. Not a dramatic quit you can't keep. Most people are well under their old number inside two months.</p>
-      <div class="cstats">
-        <div class="cstat"><div class="v"><span data-count="10">0</span></div><div class="k">fewer drinks a week by week eight</div></div>
-        <div class="cstat"><div class="v"><span data-count="4680" data-prefix="$">0</span></div><div class="k">back in your pocket a year</div></div>
+    </div>
+    <div class="trendwrap reveal">
+      <svg viewBox="0 0 1180 380" role="img" aria-label="Weekly drinks declining from 14 in week one to 4 in week eight">
+        <defs>
+          <linearGradient id="tgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E8C73" stop-opacity="0.20"/><stop offset="1" stop-color="#0E8C73" stop-opacity="0"/></linearGradient>
+        </defs>
+        <!-- gridlines -->
+        <g stroke="#E2EBE7" stroke-width="1">
+          <line x1="70" y1="40" x2="1130" y2="40"/>
+          <line x1="70" y1="120" x2="1130" y2="120"/>
+          <line x1="70" y1="200" x2="1130" y2="200"/>
+          <line x1="70" y1="280" x2="1130" y2="280"/>
+          <line x1="70" y1="320" x2="1130" y2="320"/>
+        </g>
+        <g font-size="13" fill="#5C6B66" font-family="Inter" text-anchor="end">
+          <text x="58" y="44">14</text>
+          <text x="58" y="124">10</text>
+          <text x="58" y="204">7</text>
+          <text x="58" y="284">3</text>
+        </g>
+        <!-- area + line: w1=14 .. w8=4 mapped across 70..1130 -->
+        <path class="tarea" d="M70,40 L221,72 L373,118 L524,164 L676,200 L827,246 L979,278 L1130,300 L1130,320 L70,320 Z"/>
+        <path class="tline" d="M70,40 L221,72 L373,118 L524,164 L676,200 L827,246 L979,278 L1130,300"/>
+        <!-- start dot -->
+        <circle class="tdot d1" cx="70" cy="40" r="6.5" fill="#0E8C73"/>
+        <!-- end dot -->
+        <circle class="tdot dEnd" cx="1130" cy="300" r="7.5" fill="#F2722E"/>
+        <!-- end label -->
+        <g class="tendlbl">
+          <text x="70" y="26" font-size="14" font-weight="600" fill="#0B6F5C" font-family="Inter">Week 1 · 14/wk</text>
+          <text x="1130" y="294" font-size="20" font-weight="600" fill="#DA5E1F" font-family="Fraunces" text-anchor="end">Week 8 · 4/wk</text>
+        </g>
+        <!-- x axis weeks -->
+        <g font-size="12" fill="#5C6B66" font-family="Inter" text-anchor="middle">
+          <text x="70" y="344">W1</text><text x="373" y="344">W3</text><text x="676" y="344">W5</text><text x="979" y="344">W7</text><text x="1130" y="344" text-anchor="end">W8</text>
+        </g>
+      </svg>
+      <div class="trendstats">
+        <div><div class="v"><span data-count="10">0</span></div><div class="k">fewer drinks a week by week eight</div></div>
+        <div><div class="v"><span data-count="4680" data-prefix="$">0</span></div><div class="k">back in your pocket a year</div></div>
       </div>
     </div>
-    <div class="vis reveal"><div class="par" data-speed="0.05"><div class="phone appstatic">
-      <div class="notch"></div>
-      <div class="scr"><div class="appscreen on">
-        <div class="app-h">Your trend · 8 weeks</div>
-        <div class="app-t">Coming down, steadily</div>
-        <div class="minichart">
-          <svg viewBox="0 0 240 130" role="img" aria-label="Weekly drinks declining from 14 to 4 over eight weeks">
-            <defs><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E8C73" stop-opacity="0.22"/><stop offset="1" stop-color="#0E8C73" stop-opacity="0"/></linearGradient></defs>
-            <path class="marea" d="M12,18 L44,26 L76,44 L108,58 L140,66 L172,82 L204,90 L228,100 L228,118 L12,118 Z"/>
-            <path class="mline" d="M12,18 L44,26 L76,44 L108,58 L140,66 L172,82 L204,90 L228,100"/>
-            <circle cx="228" cy="100" r="4.5" fill="#F2722E"/>
-          </svg>
-        </div>
-        <div class="app-stat" style="margin-top:auto"><div class="v">14 &rarr; 4 / wk</div><div class="k">your weekly number, week 1 to week 8</div></div>
-      </div></div>
-    </div></div></div>
-  </div></div></section>
+  </div></section>
 
+  <!-- ===== SECTION 6: WHAT YOU GET BACK — floating overlapping win chips ===== -->
   <section class="sect"><div class="wrap"><div class="row">
     <div class="vtext reveal">
       <div class="eyebrow">What you get back</div>
       <h2 class="serif">This was never about giving something up.</h2>
       <p class="lead">It's about everything you get in return. Pace keeps a running tally of the wins, so the payoff is impossible to miss.</p>
     </div>
-    <div class="vis reveal"><div class="par" data-speed="0.05"><div class="phone appstatic">
-      <div class="notch"></div>
-      <div class="scr"><div class="appscreen on">
-        <div class="app-h">This month</div>
-        <div class="app-t">What you got back</div>
-        <div class="winrow"><div class="wic"><i data-lucide="moon"></i></div><div class="wl">Nights slept 7+ hrs</div><div class="wv">18</div></div>
-        <div class="winrow"><div class="wic"><i data-lucide="wallet"></i></div><div class="wl">Money saved</div><div class="wv">$312</div></div>
-        <div class="winrow"><div class="wic"><i data-lucide="flame"></i></div><div class="wl">Calories cut</div><div class="wv">5,400</div></div>
-        <div class="winrow"><div class="wic"><i data-lucide="circle-check"></i></div><div class="wl">Days on track</div><div class="wv">24</div></div>
-      </div></div>
-    </div></div></div>
+    <div class="vis reveal">
+      <div class="winscape">
+        <div class="glowa par" data-speed="0.04"></div>
+        <div class="glowb par" data-speed="0.06"></div>
+        <div class="winchip w1 par" data-speed="0.05"><div class="ic"><i data-lucide="moon"></i></div><div class="tx"><div class="l">Nights slept 7+ hrs</div><div class="v">18</div></div></div>
+        <div class="winchip w2 par" data-speed="0.09"><div class="ic"><i data-lucide="wallet"></i></div><div class="tx"><div class="l">Money saved</div><div class="v">$312</div></div></div>
+        <div class="winchip w3 par" data-speed="0.08"><div class="ic"><i data-lucide="flame"></i></div><div class="tx"><div class="l">Calories cut</div><div class="v">5,400</div></div></div>
+        <div class="winchip w4 par" data-speed="0.05"><div class="ic"><i data-lucide="circle-check"></i></div><div class="tx"><div class="l">Days on track</div><div class="v">24</div></div></div>
+      </div>
+    </div>
   </div></div></section>
 
-  <section class="sect"><div class="wrap"><div class="row flip">
-    <div class="vtext reveal">
+  <!-- ===== SECTION 7: CANADA MOVED THE LINE — edge-to-edge spectrum band ===== -->
+  <section class="spectrumsect"><div class="wide">
+    <div class="spechead reveal">
       <div class="eyebrow">Why now</div>
       <h2 class="serif">Canada moved the line.</h2>
-      <p class="lead">In 2023 the guidance dropped from up to 15 drinks a week to two. Most of us are well past it. Pace shows you exactly where you sit, and gives you a number you can actually hold.</p>
-      <div class="midcta"><a class="cta" href="quiz.html">Find your number</a></div>
+      <p class="lead" style="margin:18px auto 0">In 2023 the guidance dropped from up to 15 drinks a week to two. Most of us are well past it. Pace shows you exactly where you sit, and gives you a number you can actually hold.</p>
     </div>
-    <div class="vis reveal"><div class="par" data-speed="0.05"><div class="phone appstatic">
-      <div class="notch"></div>
-      <div class="scr"><div class="appscreen on">
-        <div class="app-h">Where you sit</div>
-        <div class="app-t">You vs the guideline</div>
-        <div class="mmark"><div class="mpin" style="--at:62%"><b>you · ~8/wk</b></div></div>
-        <div class="mbar"><div></div><div></div><div></div><div></div></div>
-        <div class="mlabels"><div>0</div><div>1–2 low</div><div>3–6 mod</div><div>7+ higher</div></div>
-        <div class="app-stat" style="margin-top:auto"><div class="v">Canada low-risk</div><div class="k">1 to 2 drinks a week · less is better</div></div>
-      </div></div>
-    </div></div></div>
-  </div></div></section>
+    <div class="specband reveal" id="specband">
+      <div class="specflag">you · ~8/wk</div>
+      <div class="specbar">
+        <div class="seg s0"><span>0</span></div>
+        <div class="seg s1"><span>Low</span></div>
+        <div class="seg s2"><span>Moderate</span></div>
+        <div class="seg s3"><span>Higher risk</span></div>
+      </div>
+      <div class="specmark"></div>
+      <div class="speclabels">
+        <div class="l0"><b>0</b>none</div>
+        <div class="l1"><b>1–2</b>low risk</div>
+        <div class="l2"><b>3–6</b>moderate</div>
+        <div class="l3"><b>7+</b>higher risk</div>
+      </div>
+    </div>
+    <p class="speccap reveal">Canada's low-risk line is now <b>1 to 2 drinks a week</b>, and less is better. Most of us sit well to the right.</p>
+    <div class="center" style="margin-top:42px"><a class="cta reveal" href="quiz.html">Find your number</a></div>
+  </div></section>
 
+  <!-- ===== SECTION 8: PROOF — big-type stat grid ===== -->
   <section class="sect center"><div class="wrap">
     <div class="reveal">
       <div class="eyebrow">The proof</div>
       <h2 class="serif">The science is on your side.</h2>
     </div>
-    <div class="proof reveal" style="margin-top:40px">
+    <div class="proof reveal">
       <div class="pcell"><div class="ic"><i data-lucide="heart-pulse"></i></div><div class="num"><span data-count="-6.6" data-suffix="%" data-dec="1">0</span></div><div class="lab">blood pressure after a month off (Royal Free Hospital)</div></div>
       <div class="pcell"><div class="ic"><i data-lucide="droplet"></i></div><div class="num"><span data-count="-26" data-suffix="%">0</span></div><div class="lab">insulin resistance in the same study</div></div>
       <div class="pcell"><div class="ic"><i data-lucide="wallet"></i></div><div class="num"><span data-count="4680" data-prefix="$">0</span></div><div class="lab">a year, cutting 10 drinks a week (at $9 a drink)</div></div>
@@ -398,8 +536,10 @@
     <p class="pnote reveal">One-month-off figures from controlled studies, shown as reported. Benefits scale with how much you cut back.</p>
   </div></section>
 
+  <!-- ===== FINAL CTA ===== -->
   <section class="final">
     <div class="orb o1 par" data-speed="0.08"></div>
+    <div class="orb o2 par" data-speed="0.06"></div>
     <div class="wrap reveal" style="position:relative;z-index:2">
       <h2 class="serif" style="font-size:clamp(36px,5.4vw,54px)">Find your number.</h2>
       <p class="lead" style="margin:18px auto 0;max-width:520px">Sixty seconds to see where you actually sit, and what cutting back gives you back. Be one of the first in when Pace opens in Canada.</p>
@@ -423,7 +563,7 @@
     sticky.classList.toggle('show',scrollY>innerHeight*.95);
   },{passive:true});
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
-  document.querySelectorAll('.reveal,.vis').forEach(function(el){io.observe(el);});
+  document.querySelectorAll('.reveal,.vis,.compdeck,.specband').forEach(function(el){io.observe(el);});
   function rotator(el){var it=el.querySelectorAll('span'),i=0;
     function tick(){var c=it[i];c.classList.remove('active');c.classList.add('out');var n=(i+1)%it.length,x=it[n];x.classList.remove('out');x.classList.add('active');setTimeout(function(){c.classList.remove('out');},650);i=n;}
     if(reduce)return;setInterval(tick,2400);}

@@ -10,14 +10,15 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <!-- Lead capture: Google Apps Script web app (sheet 1G8AWBpv...). Live endpoint wired below. -->
 <style>
-  :root{--bone:#EFF5F2;--paper:#F6FAF8;--ink:#15211E;--muted:#5C6B66;--clay:#F2722E;--clay-d:#DA5E1F;--line:#E2EBE7;--gold:#E6A93C;--teal:#0E8C73;--teal-d:#0B6F5C;--ease:cubic-bezier(.22,1,.36,1)}
+  :root{--bone:#EFF5F2;--paper:#F6FAF8;--ink:#15211E;--muted:#566460;--clay:#F2722E;--clay-d:#DA5E1F;--cta:#B5420D;--cta-h:#A8430F;--line:#E2EBE7;--gold:#E6A93C;--teal:#0E8C73;--teal-d:#0B6F5C;--ease:cubic-bezier(.22,1,.36,1)}
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Inter',-apple-system,sans-serif;background:radial-gradient(120% 80% at 50% -10%,#F8FBFA,var(--bone) 60%);color:var(--ink);min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--cta);outline-offset:3px;border-radius:10px}
   .serif{font-family:'Fraunces',Georgia,serif}
   .top{position:fixed;top:0;left:0;right:0;padding:16px 20px;display:flex;align-items:center;gap:12px;background:rgba(239,245,242,.92);backdrop-filter:blur(8px);z-index:11}
   .back{border:none;background:none;color:var(--muted);cursor:pointer;padding:4px;border-radius:8px;visibility:hidden;display:flex}
   .back svg{width:22px;height:22px}.back:hover{color:var(--ink)}
-  .logo{font-family:'Fraunces',serif;font-weight:600;font-size:19px}.logo span{color:var(--clay)}
+  .logo{font-family:'Fraunces',serif;font-weight:600;font-size:19px}.logo span{color:var(--teal)}
   .bar{flex:1;height:6px;background:#DCE7E2;border-radius:6px;overflow:hidden}
   .barfill{height:100%;width:0;background:var(--teal);border-radius:6px;transition:width .5s var(--ease)}
   .livebar{position:fixed;top:54px;left:0;right:0;display:none;z-index:10;background:rgba(246,250,248,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -60,8 +61,8 @@
   .priceopt.sel{border-color:var(--teal);background:#EFF7F3;box-shadow:inset 0 0 0 1px var(--teal)}
   .priceopt .pv{font-weight:600;font-size:16px;color:var(--ink)}
   .priceopt .pk{font-size:12.5px;color:var(--muted)}
-  .btn{width:100%;background:var(--clay);color:#fff;font-size:17px;font-weight:600;border:none;border-radius:15px;padding:18px;cursor:pointer;font-family:inherit;transition:background .2s,transform .2s,box-shadow .2s;margin-top:14px;box-shadow:0 12px 30px rgba(242,114,46,.28)}
-  .btn:hover{background:var(--clay-d);transform:translateY(-1px)}
+  .btn{width:100%;background:var(--cta);color:#fff;font-size:17px;font-weight:600;border:none;border-radius:15px;padding:18px;cursor:pointer;font-family:inherit;transition:background .2s,transform .2s,box-shadow .2s;margin-top:14px;box-shadow:0 12px 30px rgba(181,66,13,.26)}
+  .btn:hover{background:var(--cta-h);transform:translateY(-1px)}
   .btn.ghost{background:transparent;color:var(--muted);font-weight:500;font-size:14px;padding:10px;margin-top:6px;box-shadow:none}
   .note{font-size:13px;color:var(--muted);margin-top:18px;text-align:center}
   input{width:100%;padding:17px;font-size:16px;border:1.5px solid var(--line);border-radius:15px;background:#fff;margin-bottom:14px;font-family:inherit;color:var(--ink)}
@@ -119,13 +120,13 @@
   .lring{width:64px;height:64px;border:5px solid #DCE7E2;border-top-color:var(--teal);border-radius:50%;margin:0 auto 22px;animation:spin 1s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
   .lstep{height:24px;transition:opacity .3s}
-  @media(max-width:480px){.q{font-size:27px}h1{font-size:33px}.cmprow span{min-width:118px}.lb-in{padding:9px 16px;font-size:11.5px}}
+  @media(max-width:480px){.q{font-size:26px}h1{font-size:32px}.cmprow span{min-width:104px}.lb-in{padding:9px 14px;font-size:11px}.stage{padding:120px 18px 64px}.opt{padding:15px 16px;font-size:16px}.pillopt{padding:12px 16px;font-size:15px}.chip{padding:12px 16px}.btn{padding:17px}.cards{gap:10px}.card{padding:18px}}
   @media(prefers-reduced-motion:reduce){.panel{animation:none}.ringfg,.miniringfg,.pin,.barfill,.cbar i{transition:none}.lring{animation:none}}
   /* immersive ad-landing intro: two-column, light tech-wellness */
   .hero0{position:fixed;inset:0;z-index:30;display:none;background:radial-gradient(70% 58% at 88% 2%,rgba(242,114,46,.16),rgba(247,250,249,0) 52%),radial-gradient(82% 70% at 4% 98%,rgba(14,140,115,.16),rgba(247,250,249,0) 55%),linear-gradient(180deg,#F8FBFA,#E9F1EE);color:#15211E;overflow-y:auto}
   .hero0.on{display:block}
   .hero0 .h0logo{position:absolute;top:20px;left:26px;font-family:'Fraunces',serif;font-weight:600;font-size:20px;letter-spacing:-.3px;color:#15211E;z-index:2}
-  .hero0 .h0logo span{color:#F2722E}
+  .hero0 .h0logo span{color:var(--teal)}
   .hero0 .h0grid{min-height:100%;max-width:1120px;margin:0 auto;padding:96px 28px 48px;display:grid;grid-template-columns:1.05fr .95fr;column-gap:56px;row-gap:22px;align-items:center;grid-template-areas:"intro card" "quiz card"}
   .hero0 .h0intro{grid-area:intro;align-self:end}
   .hero0 .h0quiz{grid-area:quiz;align-self:start}
@@ -137,7 +138,7 @@
   .hero0 .qopts{display:flex;flex-direction:column;gap:10px;max-width:450px}
   .hero0 .qopt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:#fff;border:1.5px solid #E2EBE7;border-radius:14px;padding:16px 18px;font-size:16px;font-weight:500;color:#15211E;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s,transform .15s,box-shadow .15s}
   .hero0 .qopt:hover{border-color:#0E8C73;background:#F0F8F5;transform:translateY(-1px);box-shadow:0 10px 26px rgba(14,140,115,.16)}
-  .hero0 .qopt .arw{font-size:17px;color:#F2722E;opacity:1}
+  .hero0 .qopt .arw{font-size:17px;color:var(--cta);opacity:1}
   .hero0 .h0note{font-size:12.5px;color:#5C6B66;margin-top:16px}
   /* animated Pace app mockup */
   .h0phonewrap{display:flex;flex-direction:column;align-items:center}
@@ -173,11 +174,17 @@
   .coachchip.p{background:var(--teal);color:#fff;border-color:var(--teal)}
   .phonecap{text-align:center;font-size:12px;color:var(--muted);margin-top:16px}
   @media(max-width:860px){
-    .hero0 .h0grid{grid-template-columns:1fr;grid-template-areas:"intro" "card" "quiz";row-gap:18px;padding:80px 20px 36px;align-items:start}
-    .hero0 h1{font-size:31px;letter-spacing:-1px}
+    .hero0 .h0grid{grid-template-columns:1fr;grid-template-areas:"intro" "card" "quiz";row-gap:18px;padding:80px 20px 40px;align-items:start}
+    .hero0 h1{font-size:33px;letter-spacing:-1px}
     .hero0 .h0sub{font-size:15px;margin-bottom:6px}
     .h0phone{width:236px}
     .stepper .cnt{font-size:40px}.app-t{font-size:20px}
+  }
+  @media(max-width:480px){
+    .hero0 .h0grid{padding:72px 18px 36px}
+    .hero0 h1{font-size:30px}
+    .h0phone{width:210px}
+    .hero0 .qopt{padding:15px 16px}
   }
 </style>
 </head>
@@ -301,7 +308,7 @@
 
     <div class="panel" data-step="1.5">
       <div class="eyebrow">Your week</div>
-      <div class="q serif">That's about <span id="dm-n" class="bignum" style="color:var(--clay)">—</span> a week.</div>
+      <div class="q serif">That's about <span id="dm-n" class="bignum" style="color:var(--clay-d)">—</span> a week.</div>
       <div class="contwrap" style="margin-top:18px">
         <div class="marker"><div class="pin" id="pin"><b id="pinlabel">You</b></div></div>
         <div class="contbar"><div></div><div></div><div></div><div></div></div>
@@ -441,7 +448,7 @@
           <circle cx="100" cy="100" r="75" fill="none" stroke="#DCE7E2" stroke-width="15"/>
           <circle class="ringfg" id="ringfg" cx="100" cy="100" r="75" fill="none" stroke="#0E8C73" stroke-width="15" stroke-linecap="round" transform="rotate(-90 100 100)"/>
           <text x="100" y="94" text-anchor="middle" class="serif" font-size="52" font-weight="600" fill="#15211E" id="targetN">—</text>
-          <text x="100" y="122" text-anchor="middle" font-size="13" fill="#5C6B66" font-family="Inter">drinks / week</text>
+          <text x="100" y="122" text-anchor="middle" font-size="13" fill="#566460" font-family="Inter">drinks / week</text>
         </svg>
       </div>
       <div class="q serif" style="font-size:27px" id="resultline">Your number.</div>

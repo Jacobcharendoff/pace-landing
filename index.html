@@ -242,8 +242,8 @@
       <h2 class="serif">Proof you can feel.<br>And watch.</h2>
       <p>Every week, fewer drinks and better numbers. Your sleep, your spend, and your streak all moving the right way.</p>
       <div class="outstats">
-        <div class="out-main"><div class="v"><span data-count="4680" data-prefix="$">$4,680</span></div><div class="l">back in your pocket a year</div></div>
-        <div class="out-sub"><div class="v"><span data-count="10">10</span> fewer</div><div class="l">drinks a week</div></div>
+        <div class="out-main"><div class="v">$4,680</div><div class="l">back in your pocket a year</div></div>
+        <div class="out-sub"><div class="v">10 fewer</div><div class="l">drinks a week</div></div>
       </div>
     </div>
     <div class="trendcard reveal" id="phone2"><div class="screen">
@@ -263,10 +263,10 @@
       <div class="ey reveal">The proof</div>
       <h2 class="serif reveal">The science is on your side.</h2>
       <div class="pgrid reveal">
-        <div class="pbox"><div class="num"><span data-count="-6.6" data-suffix="%" data-dec="1">-6.6%</span></div><div class="lab">blood pressure after a month off, Royal Free Hospital study</div></div>
-        <div class="pbox"><div class="num"><span data-count="-26" data-suffix="%">-26%</span></div><div class="lab">insulin resistance in the same study</div></div>
-        <div class="pbox"><div class="num"><span data-count="4680" data-prefix="$">$4,680</span></div><div class="lab">a year, cutting 10 drinks a week at $9 a drink</div></div>
-        <div class="pbox"><div class="num"><span data-count="30" data-suffix="%">30%</span></div><div class="lab">about 1 in 3 Canadian adults drink over the line</div></div>
+        <div class="pbox"><div class="num">-6.6%</div><div class="lab">blood pressure after a month off, Royal Free Hospital study</div></div>
+        <div class="pbox"><div class="num">-26%</div><div class="lab">insulin resistance in the same study</div></div>
+        <div class="pbox"><div class="num">$4,680</div><div class="lab">a year, cutting 10 drinks a week at $9 a drink</div></div>
+        <div class="pbox"><div class="num">30%</div><div class="lab">about 1 in 3 Canadian adults drink over the line</div></div>
       </div>
       <p class="pnote reveal">One-month-off figures from controlled studies, shown as reported. Benefits scale with how much you cut back.</p>
     </div>
@@ -316,14 +316,8 @@
   function rotate(el,iv){var it=el.querySelectorAll('span');var i=0;setInterval(function(){it[i].classList.remove('active');var n=(i+1)%it.length;it[n].classList.add('active');i=n;},iv);}
   rotate(document.getElementById('rot'),2300);rotate(document.getElementById('bigrot'),2000);
 
-  /* count-up animates ON TOP of the already-correct final text; never rests at 0 */
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  function fmt(s,v){var d=parseInt(s.dataset.dec||'0'),pre=s.dataset.prefix||'',suf=s.dataset.suffix||'';return pre+(d>0?v.toFixed(d):Math.round(v).toLocaleString())+suf;}
-  function countUp(s){var t=parseFloat(s.dataset.count);var st=null;function step(ts){if(!st)st=ts;var p=Math.min((ts-st)/1400,1),e=1-Math.pow(1-p,3),v=t*e;s.textContent=fmt(s,v);if(p<1)requestAnimationFrame(step);else s.textContent=fmt(s,t);}requestAnimationFrame(step);}
-  if(!reduce){
-    var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target);cio.unobserve(e.target);}});},{threshold:.5});
-    document.querySelectorAll('[data-count]').forEach(function(s){cio.observe(s);});
-  }
+  /* Proof numbers are STATIC and always correct: the final value is the HTML text.
+     No count-up, so a mid-scroll snapshot can never show a wrong or partial figure. */
 
   var cl=document.querySelector('.cline');if(cl){var L=cl.getTotalLength();cl.style.strokeDasharray=L;cl.style.strokeDashoffset=L;cl.style.transition='stroke-dashoffset 1.8s ease';var pio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cl.style.strokeDashoffset=0;pio.unobserve(e.target);}});},{threshold:.3});pio.observe(cl);}
 </script>

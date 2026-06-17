@@ -46,7 +46,7 @@
   h2 em{font-style:italic;font-weight:500;color:var(--teal)}
   .lead{font-size:clamp(17px,1.9vw,20px);color:var(--muted);line-height:1.55}
 
-  /* ===== HERO: bold mint color block, text + angled phone cluster ===== */
+  /* ===== HERO ===== */
   .hero{position:relative;background:radial-gradient(120% 100% at 85% 0%,var(--mint-2),var(--mint) 55%,#CFE6DD 100%);overflow:hidden;padding:150px 0 90px}
   .hero .ribbon{position:absolute;right:-8%;bottom:-30%;width:60%;height:120%;background:radial-gradient(circle,rgba(14,140,115,.10),transparent 62%);pointer-events:none}
   .hgrid{position:relative;z-index:2;display:grid;grid-template-columns:1.02fr .98fr;gap:50px;align-items:center}
@@ -60,7 +60,6 @@
   .hsub{font-size:19px;color:#3f4d49;max-width:500px;margin:12px 0 30px}
   .hsub b{color:var(--ink);font-weight:600}
 
-  /* phone cluster */
   .cluster{position:relative;height:560px;display:flex;align-items:center;justify-content:center}
   .ph{position:absolute;width:248px;background:#15211E;border-radius:40px;padding:11px;box-shadow:0 40px 80px rgba(15,40,32,.30)}
   .ph .scr{background:var(--paper);border-radius:30px;padding:22px 18px 18px;overflow:hidden}
@@ -88,7 +87,6 @@
   .flchip.b{bottom:9%;right:0;color:var(--cta);animation:fl 4.6s var(--ease) 1s infinite}
   @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-  /* ===== section rhythm via color blocks ===== */
   .sec{padding:clamp(76px,9vw,116px) 0}
   .sec.white{background:var(--paper)}
   .sec.mint{background:var(--mint-2)}
@@ -101,7 +99,6 @@
   .txt{max-width:480px}
   .txt .lead{margin-top:20px}
 
-  /* photo frames + overlay chips */
   .photo{position:relative;border-radius:26px;overflow:hidden;box-shadow:0 30px 70px rgba(15,40,32,.16);aspect-ratio:4/5;background:var(--mint)}
   .photo.wide{aspect-ratio:5/4}
   .photo img{width:100%;height:100%;object-fit:cover;display:block}
@@ -113,14 +110,12 @@
   .ov.solo{left:50%;bottom:18px;transform:translateX(-50%);text-align:left}
   .ov.solo .v{font-size:17px}
 
-  /* benefit list */
   .getlist{margin-top:8px}
   .getrow{display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid var(--line)}
   .getrow:last-child{border-bottom:none}
   .getrow .gd{width:9px;height:9px;border-radius:50%;background:var(--teal);flex:none}
   .getrow span{font-size:16.5px;color:var(--ink)}
 
-  /* outcome stats + trend */
   .bigrot{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(40px,5.4vw,60px);letter-spacing:-1.6px;min-height:1.3em;height:1.3em;padding-bottom:.14em;overflow:visible;position:relative;color:var(--teal)}
   .bigrot span{position:absolute;width:100%;left:0;top:0;opacity:0;transform:translateY(10px);transition:opacity .3s ease,transform .35s var(--ease)}
   .bigrot span.active{opacity:1;transform:none;transition:opacity .4s ease .26s,transform .45s var(--ease) .26s}
@@ -136,14 +131,12 @@
   .chart-cap{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:6px}
   .tc-note{background:var(--mint-2);border-radius:13px;padding:12px 14px;margin-top:14px;font-size:13px;color:var(--teal-d);font-weight:500}
 
-  /* proof big-type grid */
   .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;max-width:1000px;margin:48px auto 0;text-align:left}
   .pbox .num{font-family:'Fraunces',serif;font-size:clamp(42px,5vw,56px);font-weight:600;color:var(--clay-d);letter-spacing:-1.6px;line-height:.95}
   .pbox.gain .num{color:var(--teal-d)}
   .pbox .lab{font-size:13.5px;color:var(--muted);margin-top:12px;line-height:1.45}
   .pnote{font-size:12.5px;color:var(--muted);margin:30px auto 0;max-width:640px;text-align:center;opacity:.9}
 
-  /* canada line */
   .linebar{display:flex;height:13px;border-radius:7px;overflow:hidden;max-width:680px;margin:36px auto 0;box-shadow:inset 0 0 0 1px var(--line)}
   .linebar div{transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease)}
   .in .linebar div{transform:scaleX(1)}
@@ -162,18 +155,36 @@
   footer{padding:32px 0 80px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);background:var(--paper)}footer a{color:var(--muted)}
 
   @media(max-width:880px){
-    .hgrid,.split{grid-template-columns:1fr;gap:36px}
+    .hgrid,.split{grid-template-columns:1fr;gap:34px}
     .split.flip .txt{order:0}
     .txt{max-width:none}
-    h1{font-size:clamp(44px,11vw,60px)}
-    .cluster{height:480px;margin-top:8px}
-    .ph{width:210px}.ph.back{transform:rotate(-7deg) translate(-64px,-10px)}.ph.front{transform:rotate(5deg) translate(58px,24px)}
-    .ov.one{left:0}.ov.two{right:0}
-    .pgrid{grid-template-columns:1fr 1fr;gap:22px}
+    .hero{padding:118px 0 60px}
+    .recog,.hsub{max-width:none}
+    h1{font-size:clamp(42px,11vw,58px);letter-spacing:-1.6px}
+    .cluster{height:auto;margin-top:6px}
+    .ph{position:relative;width:266px}
+    .ph.back{display:none}
+    .ph.front{transform:none;margin:0 auto}
+    .flchip{display:none}
+    .photo,.photo.wide{aspect-ratio:4/3}
+    .ov{padding:9px 12px}
+    .ov.one{left:10px}.ov.two{right:10px}
+    .pgrid{grid-template-columns:1fr 1fr;gap:20px}
+    .pbox .num{font-size:40px}
     .sticky{display:block}
-    .outstats{gap:28px}
+    .outstats{gap:26px}
+    .sec{padding:clamp(62px,11vw,90px) 0}
   }
-  @media(max-width:480px){.ph{width:184px}.cluster{height:430px}}
+  @media(max-width:480px){
+    .wrap{padding:0 20px}
+    h1{font-size:40px}
+    h2{font-size:clamp(29px,8.5vw,36px)}
+    .tagline{font-size:21px}.hsub{font-size:17px}
+    .ph.front{width:244px}
+    .ov.one{top:10px}.ov.two{bottom:10px}
+    .getrow span{font-size:15.5px}
+    .out-main .v{font-size:44px}
+  }
 </style>
 </head>
 <body>
@@ -224,7 +235,7 @@
     </div></div>
   </section>
 
-  <!-- MANIFESTO (white) -->
+  <!-- MANIFESTO -->
   <section class="sec white center mission">
     <div class="wrap">
       <div class="ey reveal">Why we built Pace</div>
@@ -233,7 +244,7 @@
     </div>
   </section>
 
-  <!-- MOVEMENT (sand block) + friends photo -->
+  <!-- MOVEMENT -->
   <section class="sec sand">
     <div class="wrap"><div class="split">
       <div class="txt reveal">
@@ -251,7 +262,7 @@
     </div></div>
   </section>
 
-  <!-- WHAT YOU GET BACK (white) + morning photo with chips -->
+  <!-- WHAT YOU GET BACK -->
   <section class="sec white">
     <div class="wrap"><div class="split flip">
       <div class="txt reveal">
@@ -275,7 +286,7 @@
     </div></div>
   </section>
 
-  <!-- WATCH IT COME DOWN (mint block) -->
+  <!-- WATCH IT COME DOWN -->
   <section class="sec mint">
     <div class="wrap"><div class="split">
       <div class="txt reveal">
@@ -302,7 +313,7 @@
     </div></div>
   </section>
 
-  <!-- PROOF (sand block) -->
+  <!-- PROOF -->
   <section class="sec sand center">
     <div class="wrap">
       <div class="ey reveal">The proof</div>
@@ -317,7 +328,7 @@
     </div>
   </section>
 
-  <!-- CANADA (white) -->
+  <!-- CANADA -->
   <section class="sec white center">
     <div class="wrap">
       <div class="ey reveal">Why now</div>
@@ -328,7 +339,7 @@
     </div>
   </section>
 
-  <!-- FELT + FINAL (mint block) -->
+  <!-- FELT + FINAL -->
   <section class="sec mint center finalsec">
     <div class="wrap">
       <div class="felt reveal" style="margin-bottom:54px"><p>What it feels like: a Tuesday you actually remember.</p></div>

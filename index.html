@@ -45,8 +45,8 @@
   .kick{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--teal-d);background:rgba(14,140,115,.10);padding:6px 13px;border-radius:100px;margin-bottom:22px}
   h1{font-family:'Fraunces',serif;font-weight:500;font-size:74px;line-height:.98;letter-spacing:-2.2px}
   .rot{display:block;color:var(--clay-d);min-height:1.18em;height:1.18em;padding-bottom:.12em;overflow:visible;position:relative}
-  .rot span{display:block;font-style:italic;position:absolute;width:100%;left:0;top:0;opacity:0;transform:translateY(8px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
-  .rot span.active{opacity:1;transform:translateY(0)}
+  .rot span{display:block;font-style:italic;position:absolute;width:100%;left:0;top:0;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .35s var(--ease)}
+  .rot span.active{opacity:1;transform:translateY(0);transition:opacity .4s ease .28s,transform .45s var(--ease) .28s}
   .tagline{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:25px;color:var(--teal-d);margin:24px 0 8px}
   .hsub{font-size:20px;color:var(--muted);max-width:520px;margin:14px 0 32px}
   .hsub b{color:var(--ink);font-weight:600}
@@ -94,8 +94,8 @@
   .split .left{text-align:left}
   .split .left .ey{margin-bottom:18px}
   .bigrot{font-family:'Fraunces',serif;font-weight:500;font-size:56px;letter-spacing:-1.5px;min-height:1.3em;height:1.3em;padding-bottom:.14em;overflow:visible;position:relative}
-  .bigrot span{position:absolute;width:100%;left:0;top:0;opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease);color:var(--teal)}
-  .bigrot span.active{opacity:1;transform:translateY(0)}
+  .bigrot span{position:absolute;width:100%;left:0;top:0;opacity:0;transform:translateY(10px);transition:opacity .3s ease,transform .35s var(--ease);color:var(--teal)}
+  .bigrot span.active{opacity:1;transform:translateY(0);transition:opacity .4s ease .28s,transform .45s var(--ease) .28s}
   .split .left p{font-size:18px;color:var(--muted);margin-top:22px;max-width:400px}
   .getcard{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:34px;box-shadow:0 24px 56px rgba(21,33,30,.08)}
   .getrow{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
@@ -312,9 +312,9 @@
   var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target);}});},{threshold:.2});
   ['phone1','phone2'].forEach(function(id){var p=document.getElementById(id);if(p)io2.observe(p);});
 
-  /* Rotators: opacity-led, only one active */
+  /* Rotators: staggered crossfade so only one phrase is visible at a time */
   function rotate(el,iv){var it=el.querySelectorAll('span');var i=0;setInterval(function(){it[i].classList.remove('active');var n=(i+1)%it.length;it[n].classList.add('active');i=n;},iv);}
-  rotate(document.getElementById('rot'),2300);rotate(document.getElementById('bigrot'),2000);
+  rotate(document.getElementById('rot'),2600);rotate(document.getElementById('bigrot'),2300);
 
   /* Proof numbers are STATIC and always correct: the final value is the HTML text.
      No count-up, so a mid-scroll snapshot can never show a wrong or partial figure. */

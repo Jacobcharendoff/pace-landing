@@ -27,6 +27,8 @@
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none}}
 
+  a:focus-visible,button:focus-visible{outline:3px solid var(--cta);outline-offset:3px;border-radius:8px}
+
   nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);background:rgba(246,250,248,.72);border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
   nav.solid{background:rgba(246,250,248,.94);border-bottom:1px solid var(--line)}
   .navin{display:flex;justify-content:space-between;align-items:center;padding:15px 0}
@@ -70,18 +72,17 @@
   .coach p{font-size:13.5px}
 
   .moment{padding:94px 0;text-align:center}
-  .moment.dark{background:var(--ink);color:#EDF3F0}
   .ey{font-size:13px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--clay-d);margin-bottom:16px}
-  .dark .ey{color:var(--gold)}
   .moment h2{font-family:'Fraunces',serif;font-weight:500;font-size:48px;line-height:1.02;letter-spacing:-1.3px;margin-bottom:18px}
-  .moment p{font-size:19px;color:var(--muted);max-width:600px;margin:0 auto}.moment.dark p{color:#AEBDB7}
-  .mission h2{font-size:54px;max-width:840px;margin:0 auto 18px}.mission em{font-style:italic;color:var(--teal)}.dark.mission em{color:var(--gold)}
+  .moment p{font-size:19px;color:var(--muted);max-width:600px;margin:0 auto}
+  .mission h2{font-size:54px;max-width:840px;margin:0 auto 18px}.mission em{font-style:italic;color:var(--teal)}
 
   /* Movement section with dot grid */
   .crowd{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;padding:94px 0}
   .crowd .txt{text-align:left}
   .crowd h2{font-family:'Fraunces',serif;font-weight:500;font-size:46px;line-height:1.02;letter-spacing:-1.2px;margin-bottom:16px}
-  .crowd p{font-size:18px;color:var(--muted);max-width:430px}
+  .crowd h2 em{font-style:italic;color:var(--teal)}
+  .crowd p{font-size:18px;color:var(--muted);max-width:440px}
   .dotcard{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:36px 34px;box-shadow:0 24px 56px rgba(21,33,30,.08)}
   .dotgrid{display:grid;grid-template-columns:repeat(10,1fr);gap:14px;margin-bottom:22px}
   .dotgrid i{display:block;aspect-ratio:1;border-radius:50%;background:#D7E4DF}
@@ -120,13 +121,14 @@
   .cline{fill:none;stroke:var(--teal);stroke-width:3.5;stroke-linecap:round}
   .carea{opacity:0;transition:opacity 1.4s ease .4s}.in .carea{opacity:1}
 
-  /* Proof grid */
+  /* Proof grid (light) */
   .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:940px;margin:46px auto 0;text-align:left}
-  .pbox .num{font-family:'Fraunces',serif;font-size:50px;font-weight:500;color:var(--gold);letter-spacing:-1.4px;line-height:1}
-  .pbox .lab{font-size:13.5px;color:#AEBDB7;margin-top:10px}
-  .pnote{font-size:12px;color:#8a958f;margin-top:32px}
+  .pbox .num{font-family:'Fraunces',serif;font-size:50px;font-weight:600;color:var(--clay-d);letter-spacing:-1.4px;line-height:1}
+  .pbox.gain .num{color:var(--teal-d);font-size:58px}
+  .pbox .lab{font-size:13.5px;color:var(--muted);margin-top:10px}
+  .pnote{font-size:12px;color:var(--muted);margin-top:32px;opacity:.85}
 
-  /* Spectrum / line moved */
+  /* Spectrum / line */
   .linebar{display:flex;height:11px;border-radius:6px;overflow:hidden;max-width:640px;margin:34px auto 0;box-shadow:inset 0 0 0 1px var(--line)}
   .linebar div{transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease)}
   .in .linebar div{transform:scaleX(1)}
@@ -167,6 +169,7 @@
 <body>
   <nav id="nav"><div class="wrap navin"><div class="logo">Pace<span>.</span></div><a class="cta sm" href="quiz.html">Find your number</a></div></nav>
 
+  <main id="main">
   <section class="hero">
     <div class="ghost serif" aria-hidden="true">2</div>
     <div class="wrap"><div class="inner">
@@ -185,7 +188,7 @@
     <div class="phone reveal" id="phone1"><div class="screen">
       <div class="sc-top"><b>This week</b><span>Mon to Sun</span></div>
       <div class="ring">
-        <svg width="186" height="186" viewBox="0 0 190 190">
+        <svg width="186" height="186" viewBox="0 0 190 190" role="img" aria-label="Four of six drinks this week, two left, on pace">
           <circle cx="95" cy="95" r="78" fill="none" stroke="#E4EEEA" stroke-width="14"/>
           <circle class="ringfg" cx="95" cy="95" r="78" fill="none" stroke="#0E8C73" stroke-width="14" stroke-linecap="round" transform="rotate(-90 95 95)"/>
           <text x="95" y="90" text-anchor="middle" class="serif" font-size="46" font-weight="600" fill="#15211E">4</text>
@@ -201,7 +204,7 @@
     </div></div>
   </div>
 
-  <div class="moment dark mission">
+  <div class="moment mission">
     <div class="wrap">
       <div class="ey reveal">Why we built Pace</div>
       <h2 class="serif reveal">We're not anti-alcohol.<br>We're <em>pro-you.</em></h2>
@@ -211,9 +214,10 @@
 
   <div class="wrap crowd">
     <div class="txt reveal">
-      <div class="ey">The millions in the middle</div>
-      <h2 class="serif">You're in good company.</h2>
-      <p>This isn't a fringe thing. It's most of the room. Normal, capable people choosing to drink a little less, out loud, the grown-up way.</p>
+      <div class="ey">A movement, not a program</div>
+      <h2 class="serif">The middle, <em>finally seen.</em></h2>
+      <p>Not a fringe thing, it's most of the room. The world built a free app that does nothing and a recovery world you'd never walk into. Pace is the third door, for capable people choosing to drink a little less, out loud, the grown-up way.</p>
+      <div class="kick" style="margin-top:22px">Early-access members get in first</div>
     </div>
     <div class="dotcard reveal">
       <div class="dotgrid" id="dotgrid" aria-hidden="true"></div>
@@ -248,7 +252,7 @@
     </div>
     <div class="trendcard reveal" id="phone2"><div class="screen">
       <div class="sc-top"><b>Your trend</b><span>8 weeks</span></div>
-      <svg width="100%" height="180" viewBox="0 0 260 180" preserveAspectRatio="none">
+      <svg width="100%" height="180" viewBox="0 0 260 180" preserveAspectRatio="none" role="img" aria-label="Weekly drinks trending down from 14 to 4 over eight weeks">
         <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E8C73" stop-opacity=".20"/><stop offset="1" stop-color="#0E8C73" stop-opacity="0"/></linearGradient></defs>
         <path class="carea" d="M0,40 L37,55 L74,70 L111,86 L148,104 L185,120 L222,138 L260,150 L260,180 L0,180 Z" fill="url(#g)"/>
         <path class="cline" d="M0,40 L37,55 L74,70 L111,86 L148,104 L185,120 L222,138 L260,150"/>
@@ -258,14 +262,14 @@
     </div></div>
   </div>
 
-  <div class="moment dark">
+  <div class="moment">
     <div class="wrap">
       <div class="ey reveal">The proof</div>
       <h2 class="serif reveal">The science is on your side.</h2>
       <div class="pgrid reveal">
         <div class="pbox"><div class="num">-6.6%</div><div class="lab">blood pressure after a month off, Royal Free Hospital study</div></div>
         <div class="pbox"><div class="num">-26%</div><div class="lab">insulin resistance in the same study</div></div>
-        <div class="pbox"><div class="num">$4,680</div><div class="lab">a year, cutting 10 drinks a week at $9 a drink</div></div>
+        <div class="pbox gain"><div class="num">$4,680</div><div class="lab">a year, cutting 10 drinks a week at $9 a drink</div></div>
         <div class="pbox"><div class="num">30%</div><div class="lab">about 1 in 3 Canadian adults drink over the line</div></div>
       </div>
       <p class="pnote reveal">One-month-off figures from controlled studies, shown as reported. Benefits scale with how much you cut back.</p>
@@ -289,21 +293,22 @@
     <p class="reveal">Sixty seconds. See where your week sits, and what a little less gives back. Be early in Canada.</p>
     <div class="reveal"><a class="cta" href="quiz.html">Find your number</a></div>
   </div>
+  </main>
 
   <div class="sticky"><a class="cta" href="quiz.html">Find your number</a></div>
 
   <div class="wrap"><footer>
     Pace · Early access in Canada · For people who want to drink a little less and get a lot back.<br><br>
     Sources: <a href="https://www.ccsa.ca/en/guidance-tools-resources/substance-use-and-addiction/alcohol/canadas-guidance-alcohol-and-health">CCSA 2023</a> ·
-    <a href="https://www150.statcan.gc.ca/n1/daily-quotidien/index-eng.htm">Statistics Canada 2023</a> ·
+    <a href="https://www150.statcan.gc.ca/n1/daily-quotidien/241002/t001a-eng.htm">Statistics Canada (CCHS 2023)</a> ·
     <a href="https://pubmed.ncbi.nlm.nih.gov/29730627/">Royal Free Hospital (BMJ Open)</a>.
   </footer></div>
 
 <script>
   var nav=document.getElementById('nav');
-  addEventListener('scroll',function(){nav.classList.toggle('solid',scrollY>window.innerHeight*.55);});
+  addEventListener('scroll',function(){nav.classList.toggle('solid',scrollY>window.innerHeight*.55);},{passive:true});
 
-  /* Build the 30-dot population grid: 10 filled (clay), 20 neutral */
+  /* 30-dot population grid: 10 filled (clay), 20 neutral */
   (function(){var g=document.getElementById('dotgrid');if(!g)return;for(var i=0;i<30;i++){var d=document.createElement('i');if(i%3===0)d.className='on';g.appendChild(d);}})();
 
   /* fast reveals, low threshold, fully opaque once in */
@@ -312,12 +317,11 @@
   var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target);}});},{threshold:.2});
   ['phone1','phone2'].forEach(function(id){var p=document.getElementById(id);if(p)io2.observe(p);});
 
-  /* Rotators: staggered crossfade so only one phrase is visible at a time */
-  function rotate(el,iv){var it=el.querySelectorAll('span');var i=0;setInterval(function(){it[i].classList.remove('active');var n=(i+1)%it.length;it[n].classList.add('active');i=n;},iv);}
+  /* Rotators: staggered crossfade so only one phrase shows at a time */
+  function rotate(el,iv){if(!el)return;var it=el.querySelectorAll('span');var i=0;setInterval(function(){it[i].classList.remove('active');var n=(i+1)%it.length;it[n].classList.add('active');i=n;},iv);}
   rotate(document.getElementById('rot'),2600);rotate(document.getElementById('bigrot'),2300);
 
-  /* Proof numbers are STATIC and always correct: the final value is the HTML text.
-     No count-up, so a mid-scroll snapshot can never show a wrong or partial figure. */
+  /* Proof numbers are STATIC HTML text and always correct: no count-up, so no mid-scroll wrong value. */
 
   var cl=document.querySelector('.cline');if(cl){var L=cl.getTotalLength();cl.style.strokeDasharray=L;cl.style.strokeDashoffset=L;cl.style.transition='stroke-dashoffset 1.8s ease';var pio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cl.style.strokeDashoffset=0;pio.unobserve(e.target);}});},{threshold:.3});pio.observe(cl);}
 </script>

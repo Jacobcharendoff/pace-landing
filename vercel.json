@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/Free_Quiz", "destination": "/quiz.html" },
+    { "source": "/free-quiz", "destination": "/quiz.html" },
+    { "source": "/free_quiz", "destination": "/quiz.html" },
+    { "source": "/quiz", "destination": "/quiz.html" }
+  ]
+}

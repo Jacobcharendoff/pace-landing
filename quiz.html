@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Find your number — Pace</title>
 <meta name="description" content="60 seconds. See where your week sits against Canada's guidance, and what a little less gives back." />
-<meta name="theme-color" content="#F6FAF8" />
+<meta name="theme-color" content="#E7F2EC" />
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -16,16 +16,16 @@
     --mint:#DCEDE6;--mint-2:#E7F2EC;--sand:#FBF1E6;--peach:#FCE9DD;
     --ease:cubic-bezier(.22,1,.36,1)}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--paper);line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:radial-gradient(135% 70% at 50% 0%,#E7F2EC 0%,#DCEDE6 55%,#CFE6DD 100%) fixed;min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
   .serif{font-family:'Fraunces',Georgia,serif}
   button{font-family:inherit;cursor:pointer}
   button:focus-visible,input:focus-visible{outline:3px solid var(--cta);outline-offset:2px}
 
-  .bar{position:sticky;top:0;z-index:20;background:rgba(246,250,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 18px calc(12px + env(safe-area-inset-top))}
+  .bar{position:sticky;top:0;z-index:20;background:rgba(231,242,236,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 18px calc(12px + env(safe-area-inset-top))}
   .barrow{display:flex;align-items:center;gap:12px;max-width:520px;margin:0 auto}
   .back{border:none;background:none;font-size:24px;line-height:1;color:var(--muted);width:26px;height:26px;flex:none;visibility:hidden}
   .logo{font-family:'Fraunces',serif;font-weight:600;font-size:21px;color:var(--ink)}.logo span{color:var(--teal)}
-  .track{flex:1;height:5px;background:var(--mint);border-radius:99px;overflow:hidden}
+  .track{flex:1;height:5px;background:#CDE4DB;border-radius:99px;overflow:hidden}
   .fill{height:100%;width:6%;background:var(--teal);border-radius:99px;transition:width .45s var(--ease)}
   .status{max-width:520px;margin:8px auto 0;font-size:11.5px;color:var(--muted);display:flex;gap:8px;align-items:center}
   .status b{color:var(--teal-d);font-weight:600}.status .you{margin-left:auto;color:var(--clay-d);font-weight:600}
@@ -34,7 +34,7 @@
   .panel{display:none;animation:up .45s var(--ease)}
   .panel.on{display:block}
   @keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  @media(prefers-reduced-motion:reduce){.panel{animation:none}.fill{transition:none}}
+  @media(prefers-reduced-motion:reduce){.panel{animation:none}.fill{transition:none}.wrot b{transition:none}}
 
   .ey{font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--teal-d);margin-bottom:12px}
   .q{font-family:'Fraunces',serif;font-weight:600;font-size:30px;line-height:1.06;letter-spacing:-.8px;color:var(--ink)}
@@ -57,6 +57,22 @@
   .field{width:100%;font-size:16px;padding:15px 16px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);margin-top:10px}
   .field::placeholder{color:#9aa6a1}
   .err{color:var(--clay-d);font-size:13px;margin-top:10px;display:none}
+
+  .wkick{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);background:rgba(255,255,255,.78);border:1px solid var(--line);padding:7px 13px;border-radius:99px}
+  .whead{font-family:'Fraunces',serif;font-weight:600;font-size:40px;line-height:1;letter-spacing:-1.6px;color:var(--ink);margin-top:22px}
+  .wrot{display:block;height:44px;position:relative;margin-top:6px}
+  .wrot b{display:block;font-style:italic;font-weight:500;font-size:36px;letter-spacing:-1px;white-space:nowrap;color:var(--clay-d);position:absolute;left:0;top:0;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .45s var(--ease)}
+  .wrot b.on{opacity:1;transform:none}
+  .wtag{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:18px;color:var(--teal-d);margin-top:18px}
+  .wsub{font-size:14px;color:#3f4d49;margin-top:10px;line-height:1.5}.wsub b{color:var(--ink);font-weight:600}
+  .wviz{position:relative;margin-top:18px}
+  .wtw{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px 13px;box-shadow:0 16px 36px rgba(15,40,32,.10)}
+  .wtwt{display:flex;justify-content:space-between;align-items:center}.wtwt b{font-family:'Fraunces',serif;color:var(--ink);font-size:14.5px;font-weight:600}.wtwt span{font-size:11.5px;color:var(--muted)}
+  .wtwr{display:flex;align-items:center;gap:15px;margin-top:9px}
+  .wcap{font-size:12.5px;color:var(--teal-d);font-weight:600}
+  .wweek{display:flex;gap:6px;margin-top:7px}
+  .wday{font-size:9.5px;color:var(--muted);text-align:center}.wday i{display:block;width:19px;height:19px;border-radius:6px;background:#E4EEEA;margin-top:4px;font-style:normal}.wday i.on{background:var(--teal)}.wday i.tdy{box-shadow:0 0 0 2px var(--clay-d)}
+  .wchip{position:absolute;right:-4px;bottom:-11px;background:#fff;border-radius:12px;padding:7px 12px;font-size:11.5px;font-weight:600;color:var(--cta);box-shadow:0 14px 30px rgba(15,40,32,.16)}
 
   .scale{margin-top:18px}
   .scaletrack{height:11px;border-radius:99px;background:linear-gradient(90deg,var(--teal) 0 18%,#5FB89C 18% 40%,var(--gold) 40% 66%,var(--clay) 66% 100%);position:relative}
@@ -95,12 +111,22 @@
   <div class="stage">
 
     <section class="panel on" data-step="welcome">
-      <div class="ey">Early access · Canada</div>
-      <h1 class="q">Pace helps you drink <em>a little less.</em></h1>
-      <p class="sub">Not quitting, not rehab. Just a realistic number, and a simple way to actually hold it.</p>
-      <div class="note">Answer a few quick questions and you'll see where your week lands against Canada's guideline, plus a number to aim for.</div>
-      <p class="micro" style="margin-top:16px">60 seconds. Private. No email until the end.</p>
-      <button class="cta" onclick="go('drinks')" style="margin-top:18px">Find my number</button>
+      <span class="wkick">Early access · Canada</span>
+      <h1 class="whead">Drink less.<span class="wrot" id="wrot"><b class="on">Sleep deeper.</b><b>Think sharper.</b><b>Feel stronger.</b><b>$4,680 a year.</b></span></h1>
+      <div class="wtag">The grown-up way to drink less.</div>
+      <p class="wsub">Not a label. Not willpower. Just <b>your number</b>, a week you can see, and a coach who knows your patterns.</p>
+      <div class="wviz">
+        <div class="wtw">
+          <div class="wtwt"><b>This week</b><span>Mon to Sun</span></div>
+          <div class="wtwr">
+            <svg width="90" height="90" viewBox="0 0 190 190" aria-hidden="true"><circle cx="95" cy="95" r="67" fill="none" stroke="#E4EEEA" stroke-width="14"/><circle cx="95" cy="95" r="67" fill="none" stroke="#0E8C73" stroke-width="14" stroke-linecap="round" stroke-dasharray="421" stroke-dashoffset="140" transform="rotate(-90 95 95)"/><text x="95" y="91" text-anchor="middle" font-family="Fraunces,serif" font-size="46" font-weight="600" fill="#15211E">4</text><text x="95" y="116" text-anchor="middle" font-size="13" fill="#566460" font-family="Inter">of 6</text></svg>
+            <div><div class="wcap">2 left. You're on pace.</div><div class="wweek"><div class="wday">M<i class="on"></i></div><div class="wday">T<i></i></div><div class="wday">W<i class="on"></i></div><div class="wday">T<i></i></div><div class="wday">F<i class="tdy"></i></div><div class="wday">S<i></i></div><div class="wday">S<i></i></div></div></div>
+          </div>
+        </div>
+        <div class="wchip">+$312 this month</div>
+      </div>
+      <button class="cta" onclick="go('drinks')" style="margin-top:24px">Find my number</button>
+      <p class="micro" style="margin-top:13px">60 seconds. Private. No email until the end.</p>
     </section>
 
     <section class="panel" data-step="drinks">
@@ -256,6 +282,8 @@
       go('result');
     },1300);
   }
+
+  (function(){var r=document.getElementById('wrot');if(r){var wb=r.querySelectorAll('b');var wi=0;setInterval(function(){wb[wi].classList.remove('on');wi=(wi+1)%wb.length;wb[wi].classList.add('on');},2600);}})();
   beacon('welcome');
 </script>
 </body>

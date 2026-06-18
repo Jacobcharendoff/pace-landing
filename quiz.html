@@ -26,7 +26,7 @@
   .back{border:none;background:none;font-size:24px;line-height:1;color:var(--muted);width:26px;height:26px;flex:none;visibility:hidden}
   .logo{font-family:'Fraunces',serif;font-weight:600;font-size:21px;color:var(--ink)}.logo span{color:var(--teal)}
   .track{flex:1;height:5px;background:var(--mint);border-radius:99px;overflow:hidden}
-  .fill{height:100%;width:14%;background:var(--teal);border-radius:99px;transition:width .45s var(--ease)}
+  .fill{height:100%;width:16%;background:var(--teal);border-radius:99px;transition:width .45s var(--ease)}
   .status{max-width:520px;margin:8px auto 0;font-size:11.5px;color:var(--muted);display:flex;gap:8px;align-items:center}
   .status b{color:var(--teal-d);font-weight:600}.status .you{margin-left:auto;color:var(--clay-d);font-weight:600}
 
@@ -54,25 +54,23 @@
 
   .cta{display:block;width:100%;text-align:center;font-size:17px;font-weight:600;color:#fff;background:var(--cta);border:none;padding:17px;border-radius:99px;margin-top:26px}
   .cta:active{background:var(--cta-h)}
-  .cta[disabled]{opacity:.45}
   .field{width:100%;font-size:16px;padding:15px 16px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);margin-top:10px}
   .field::placeholder{color:#9aa6a1}
   .err{color:var(--clay-d);font-size:13px;margin-top:10px;display:none}
 
-  .scale{margin-top:22px}
+  .scale{margin-top:18px}
   .scaletrack{height:11px;border-radius:99px;background:linear-gradient(90deg,var(--teal) 0 18%,#5FB89C 18% 40%,var(--gold) 40% 66%,var(--clay) 66% 100%);position:relative}
   .marker{position:absolute;top:-5px;width:4px;height:21px;border-radius:3px;background:var(--ink);box-shadow:0 0 0 3px var(--paper)}
   .scalelab{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:8px}
-  .twocard{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+  .twocard{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
   .stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px}
   .stat .v{font-family:'Fraunces',serif;font-weight:600;font-size:26px;color:var(--clay-d);letter-spacing:-.5px}
   .stat .l{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.35}
+  .lbl{font-size:13px;font-weight:600;color:var(--ink);margin-top:20px}
   .note{background:var(--mint-2);border-radius:14px;padding:14px 15px;margin-top:18px;font-size:13.5px;color:var(--teal-d);line-height:1.5}
 
-  .ring{display:flex;justify-content:center;margin:6px 0 4px}
-  .big{font-family:'Fraunces',serif;font-weight:600;font-size:64px;line-height:1;letter-spacing:-2px;color:var(--ink);text-align:center}
+  .big{font-family:'Fraunces',serif;font-weight:600;font-size:66px;line-height:1;letter-spacing:-2px;color:var(--ink);text-align:center;margin-top:6px}
   .biglab{text-align:center;font-size:14px;color:var(--muted);margin-top:6px}
-  .rgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
   .conf{background:var(--mint-2);border-radius:16px;padding:18px;margin-top:22px;text-align:center;font-size:14.5px;color:var(--teal-d);font-weight:500;line-height:1.5}
   .how{margin-top:22px}
   .howrow{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
@@ -109,21 +107,6 @@
       <p class="micro">A beer, a glass of wine, a shot. Each one counts as a drink.</p>
     </section>
 
-    <section class="panel" data-step="reveal">
-      <div class="ey">Your week</div>
-      <h1 class="q serif">That's about <em id="rvnum">5</em> a week.</h1>
-      <div class="scale">
-        <div class="scaletrack"><div class="marker" id="marker" style="left:50%"></div></div>
-        <div class="scalelab"><span>0</span><span>1–2 low</span><span>3–6 mod</span><span>7+ higher</span></div>
-      </div>
-      <div class="twocard">
-        <div class="stat"><div class="v" id="rvspend">$2,500</div><div class="l">a year on alcohol</div></div>
-        <div class="stat"><div class="v" id="rvcal">40,000</div><div class="l">calories a year from drinks</div></div>
-      </div>
-      <div class="note">Canada's guidance is simple now: less is better. About 1 in 3 Canadian adults are over the low-risk line too, you're in good company.</div>
-      <button class="cta" onclick="go('province')">Keep going</button>
-    </section>
-
     <section class="panel" data-step="province">
       <div class="ey">Quick one</div>
       <h1 class="q">Where are you?</h1>
@@ -156,7 +139,7 @@
       <p class="sub">Where should we send it? Your number and early access, nothing else. No spam.</p>
       <input class="field" id="fname" type="text" autocomplete="given-name" placeholder="First name (optional)" />
       <input class="field" id="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" />
-      <p class="sub" style="margin-top:20px;font-weight:500;color:var(--ink)">If Pace worked, what would it be worth a month?</p>
+      <p class="lbl" style="margin-top:20px">If Pace worked, what would it be worth a month?</p>
       <div class="opts" id="pricelist" style="margin-top:12px">
         <button class="opt" onclick="pickPrice(this,'40plus')">$40+ <span class="arr" style="color:var(--muted);font-size:13px">still less than a night out</span></button>
         <button class="opt" onclick="pickPrice(this,'20-40')">$20–40 <span class="arr" style="color:var(--muted);font-size:13px">about 3 drinks out</span></button>
@@ -175,10 +158,25 @@
       <div class="ey">Your number</div>
       <div class="big" id="resnum">3</div>
       <div class="biglab">drinks a week — your pace</div>
-      <div class="rgrid">
+
+      <div class="scale">
+        <div class="scaletrack"><div class="marker" id="resmarker" style="left:50%"></div></div>
+        <div class="scalelab"><span>0</span><span>1–2 low</span><span>3–6 mod</span><span>7+ higher</span></div>
+      </div>
+
+      <div class="lbl">Where you are now</div>
+      <div class="twocard">
+        <div class="stat"><div class="v" id="resspend">$2,500</div><div class="l">a year on alcohol</div></div>
+        <div class="stat"><div class="v" id="rescal">40,000</div><div class="l">calories a year from drinks</div></div>
+      </div>
+
+      <div class="lbl">If you hold your number</div>
+      <div class="twocard">
         <div class="stat"><div class="v" style="color:var(--teal-d)" id="ressave">$1,400</div><div class="l">back in your pocket a year</div></div>
         <div class="stat"><div class="v" style="color:var(--teal-d)" id="resfewer">150</div><div class="l">fewer drinks a year</div></div>
       </div>
+
+      <div class="note">Canada's low-risk line is 1–2 a week, and about 1 in 3 adults are over it. Less is better, wherever you start.</div>
       <div class="conf">You're on the early-access list.<br>We'll email when Pace opens in Canada. Thanks for helping us build the right thing.</div>
       <div class="how">
         <div class="howrow"><span class="gd"></span><span>Set your number. Log a drink in two taps.</span></div>
@@ -196,8 +194,7 @@
   function sid(){try{var s=sessionStorage.getItem('pace_sid');if(!s){s=Date.now().toString(36)+Math.random().toString(36).slice(2,8);sessionStorage.setItem('pace_sid',s);}return s;}catch(e){return 'na';}}
   var SID=sid();
   var A={drinks:'',current:0,province:'',goalLabel:'',factor:.7,target:0,drivers:[],fname:'',email:'',price:''};
-  var ORDER=['drinks','reveal','province','goal','why','email','loader','result'];
-  var PCT={drinks:14,reveal:28,province:45,goal:62,why:80,email:92,loader:97,result:100};
+  var PCT={drinks:16,province:38,goal:58,why:80,email:92,loader:97,result:100};
   var hist=[];
 
   function beacon(step){try{var fd=new FormData();fd.append('type','step');fd.append('sid',SID);fd.append('step',step);fd.append('src',SRC);fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:fd});}catch(e){}}
@@ -213,14 +210,7 @@
   }
   document.getElementById('back').onclick=function(){var p=hist.pop();if(p)go(p,true);};
 
-  function pickDrinks(label,mid){A.drinks=label;A.current=mid;document.getElementById('youwk').textContent='You: ~'+Math.round(mid)+'/wk';renderReveal();go('reveal');}
-  function renderReveal(){
-    var c=A.current;
-    document.getElementById('rvnum').textContent=Math.round(c);
-    document.getElementById('rvspend').textContent='$'+Math.round(c*52*9).toLocaleString();
-    document.getElementById('rvcal').textContent=Math.round(c*52*150).toLocaleString();
-    document.getElementById('marker').style.left=Math.min(c/12*100,95)+'%';
-  }
+  function pickDrinks(label,mid){A.drinks=label;A.current=mid;document.getElementById('youwk').textContent='You: ~'+Math.round(mid)+'/wk';go('province');}
   function pickGoal(label,f){A.goalLabel=label;A.factor=f;A.target=Math.max(1,Math.round(A.current*f));go('why');}
   function pickPrice(el,v){A.price=v;document.querySelectorAll('#pricelist .opt').forEach(function(o){o.classList.remove('sel');});el.classList.add('sel');}
 
@@ -247,9 +237,13 @@
     }catch(e){}
     go('loader');
     setTimeout(function(){
-      document.getElementById('resnum').textContent=A.target;
-      document.getElementById('ressave').textContent='$'+Math.round((A.current-A.target)*52*9).toLocaleString();
-      document.getElementById('resfewer').textContent=Math.round((A.current-A.target)*52).toLocaleString();
+      var c=A.current,t=A.target;
+      document.getElementById('resnum').textContent=t;
+      document.getElementById('resspend').textContent='$'+Math.round(c*52*9).toLocaleString();
+      document.getElementById('rescal').textContent=Math.round(c*52*150).toLocaleString();
+      document.getElementById('ressave').textContent='$'+Math.round((c-t)*52*9).toLocaleString();
+      document.getElementById('resfewer').textContent=Math.round((c-t)*52).toLocaleString();
+      document.getElementById('resmarker').style.left=Math.min(c/12*100,95)+'%';
       go('result');
     },1300);
   }

@@ -26,7 +26,7 @@
   .back{border:none;background:none;font-size:24px;line-height:1;color:var(--muted);width:26px;height:26px;flex:none;visibility:hidden}
   .logo{font-family:'Fraunces',serif;font-weight:600;font-size:21px;color:var(--ink)}.logo span{color:var(--teal)}
   .track{flex:1;height:5px;background:var(--mint);border-radius:99px;overflow:hidden}
-  .fill{height:100%;width:16%;background:var(--teal);border-radius:99px;transition:width .45s var(--ease)}
+  .fill{height:100%;width:6%;background:var(--teal);border-radius:99px;transition:width .45s var(--ease)}
   .status{max-width:520px;margin:8px auto 0;font-size:11.5px;color:var(--muted);display:flex;gap:8px;align-items:center}
   .status b{color:var(--teal-d);font-weight:600}.status .you{margin-left:auto;color:var(--clay-d);font-weight:600}
 
@@ -94,7 +94,16 @@
 
   <div class="stage">
 
-    <section class="panel on" data-step="drinks">
+    <section class="panel on" data-step="welcome">
+      <div class="ey">Early access · Canada</div>
+      <h1 class="q">Pace helps you drink <em>a little less.</em></h1>
+      <p class="sub">Not quitting, not rehab. Just a realistic number, and a simple way to actually hold it.</p>
+      <div class="note">Answer a few quick questions and you'll see where your week lands against Canada's guideline, plus a number to aim for.</div>
+      <p class="micro" style="margin-top:16px">60 seconds. Private. No email until the end.</p>
+      <button class="cta" onclick="go('drinks')" style="margin-top:18px">Find my number</button>
+    </section>
+
+    <section class="panel" data-step="drinks">
       <div class="ey">Early access · Canada</div>
       <h1 class="q">How much do you drink in a typical week?</h1>
       <p class="sub">Sixty seconds. No judgment, and no email until the end.</p>
@@ -194,7 +203,7 @@
   function sid(){try{var s=sessionStorage.getItem('pace_sid');if(!s){s=Date.now().toString(36)+Math.random().toString(36).slice(2,8);sessionStorage.setItem('pace_sid',s);}return s;}catch(e){return 'na';}}
   var SID=sid();
   var A={drinks:'',current:0,province:'',goalLabel:'',factor:.7,target:0,drivers:[],fname:'',email:'',price:''};
-  var PCT={drinks:16,province:38,goal:58,why:80,email:92,loader:97,result:100};
+  var PCT={welcome:6,drinks:16,province:38,goal:58,why:80,email:92,loader:97,result:100};
   var hist=[];
 
   function beacon(step){try{var fd=new FormData();fd.append('type','step');fd.append('sid',SID);fd.append('step',step);fd.append('src',SRC);fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:fd});}catch(e){}}
@@ -204,7 +213,7 @@
     if(cur&&!noHist)hist.push(cur.getAttribute('data-step'));
     document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('on',p.getAttribute('data-step')===step);});
     document.getElementById('fill').style.width=(PCT[step]||0)+'%';
-    document.getElementById('back').style.visibility=(step==='drinks'||step==='loader'||step==='result')?'hidden':'visible';
+    document.getElementById('back').style.visibility=(step==='welcome'||step==='drinks'||step==='loader'||step==='result')?'hidden':'visible';
     window.scrollTo(0,0);
     beacon(step);
   }
@@ -247,7 +256,7 @@
       go('result');
     },1300);
   }
-  beacon('drinks');
+  beacon('welcome');
 </script>
 </body>
 </html>

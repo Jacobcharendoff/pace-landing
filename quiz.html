@@ -182,8 +182,7 @@
     <section class="panel" data-step="email">
       <div class="ey">Last step</div>
       <h1 class="q">Your number's ready.</h1>
-      <p class="sub">Where should we send it? Your number and early access, nothing else. No spam.</p>
-      <input class="field" id="fname" type="text" autocomplete="given-name" placeholder="First name (optional)" />
+      <p class="sub">Where should we send it? Just your number and early access. No spam.</p>
       <input class="field" id="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" />
       <p class="lbl" style="margin-top:20px">If Pace worked, what would it be worth a month?</p>
       <div class="opts" id="pricelist" style="margin-top:12px">
@@ -274,10 +273,10 @@
     var email=document.getElementById('email').value.trim();
     var ok=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
     if(!ok||!A.price){document.getElementById('err').style.display='block';return;}
-    A.fname=document.getElementById('fname').value.trim();A.email=email;
+    A.email=email;
     try{
       var fd=new FormData();
-      fd.append('first_name',A.fname);fd.append('email',A.email);fd.append('fair_price',A.price);
+      fd.append('first_name','');fd.append('email',A.email);fd.append('fair_price',A.price);
       fd.append('age','');fd.append('gender','');fd.append('province',A.province);
       fd.append('drinks',A.drinks);fd.append('when',A.costLabel);fd.append('tried','');
       fd.append('goal',A.goalLabel);fd.append('drivers',A.drivers.join(', '));fd.append('source',SRC);

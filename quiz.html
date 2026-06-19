@@ -27,7 +27,7 @@
   .logo{font-family:'Fraunces',serif;font-weight:600;font-size:21px;color:var(--ink)}.logo span{color:var(--teal)}
   .track{flex:1;height:5px;background:#CDE4DB;border-radius:99px;overflow:hidden}
   .fill{height:100%;width:6%;background:var(--teal);border-radius:99px;transition:width .45s var(--ease)}
-  .status{max-width:520px;margin:8px auto 0;font-size:11.5px;color:var(--muted);display:flex;gap:8px;align-items:center}
+  .status{max-width:520px;margin:8px auto 0;font-size:11.5px;color:var(--muted);display:none;gap:8px;align-items:center}
   .status b{color:var(--teal-d);font-weight:600}.status .you{margin-left:auto;color:var(--clay-d);font-weight:600}
 
   .stage{max-width:520px;margin:0 auto;padding:26px 20px 48px;min-height:calc(100vh - 86px)}
@@ -142,6 +142,17 @@
       <p class="micro">A beer, a glass of wine, a shot. Each one counts as a drink.</p>
     </section>
 
+    <section class="panel" data-step="cost">
+      <div class="ey">Quick one</div>
+      <h1 class="q">Where do most of your drinks happen?</h1>
+      <p class="sub">So we can put a real dollar figure on your week.</p>
+      <div class="opts">
+        <button class="opt" onclick="pickCost('Mostly at home',3)">Mostly at home <span class="arr" style="color:var(--muted);font-size:13px">about $3 a drink</span></button>
+        <button class="opt" onclick="pickCost('A mix of both',6)">A mix of both <span class="arr" style="color:var(--muted);font-size:13px">about $6 a drink</span></button>
+        <button class="opt" onclick="pickCost('Mostly out',11)">Mostly out <span class="arr" style="color:var(--muted);font-size:13px">about $11 a drink</span></button>
+      </div>
+    </section>
+
     <section class="panel" data-step="province">
       <div class="ey">Quick one</div>
       <h1 class="q">Where are you?</h1>
@@ -228,8 +239,8 @@
   var SRC=(new URLSearchParams(location.search)).get('src')||'direct';
   function sid(){try{var s=sessionStorage.getItem('pace_sid');if(!s){s=Date.now().toString(36)+Math.random().toString(36).slice(2,8);sessionStorage.setItem('pace_sid',s);}return s;}catch(e){return 'na';}}
   var SID=sid();
-  var A={drinks:'',current:0,province:'',goalLabel:'',factor:.7,target:0,drivers:[],fname:'',email:'',price:''};
-  var PCT={welcome:6,drinks:16,province:38,goal:58,why:80,email:92,loader:97,result:100};
+  var A={drinks:'',current:0,cost:6,costLabel:'',province:'',goalLabel:'',factor:.7,target:0,drivers:[],fname:'',email:'',price:''};
+  var PCT={welcome:6,drinks:16,cost:27,province:42,goal:60,why:80,email:92,loader:97,result:100};
   var hist=[];
 
   function beacon(step){try{var fd=new FormData();fd.append('type','step');fd.append('sid',SID);fd.append('step',step);fd.append('src',SRC);fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:fd});}catch(e){}}
@@ -240,12 +251,14 @@
     document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('on',p.getAttribute('data-step')===step);});
     document.getElementById('fill').style.width=(PCT[step]||0)+'%';
     document.getElementById('back').style.visibility=(step==='welcome'||step==='drinks'||step==='loader'||step==='result')?'hidden':'visible';
+    var st=document.querySelector('.status');if(st)st.style.display=(step==='welcome'||step==='drinks'||step==='loader')?'none':'flex';
     window.scrollTo(0,0);
     beacon(step);
   }
   document.getElementById('back').onclick=function(){var p=hist.pop();if(p)go(p,true);};
 
-  function pickDrinks(label,mid){A.drinks=label;A.current=mid;document.getElementById('youwk').textContent='You: ~'+Math.round(mid)+'/wk';go('province');}
+  function pickDrinks(label,mid){A.drinks=label;A.current=mid;document.getElementById('youwk').textContent='You: ~'+Math.round(mid)+'/wk';go('cost');}
+  function pickCost(label,c){A.costLabel=label;A.cost=c;go('province');}
   function pickGoal(label,f){A.goalLabel=label;A.factor=f;A.target=Math.max(1,Math.round(A.current*f));go('why');}
   function pickPrice(el,v){A.price=v;document.querySelectorAll('#pricelist .opt').forEach(function(o){o.classList.remove('sel');});el.classList.add('sel');}
 
@@ -266,7 +279,7 @@
       var fd=new FormData();
       fd.append('first_name',A.fname);fd.append('email',A.email);fd.append('fair_price',A.price);
       fd.append('age','');fd.append('gender','');fd.append('province',A.province);
-      fd.append('drinks',A.drinks);fd.append('when','');fd.append('tried','');
+      fd.append('drinks',A.drinks);fd.append('when',A.costLabel);fd.append('tried','');
       fd.append('goal',A.goalLabel);fd.append('drivers',A.drivers.join(', '));fd.append('source',SRC);
       fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:fd});
     }catch(e){}
@@ -274,9 +287,9 @@
     setTimeout(function(){
       var c=A.current,t=A.target;
       document.getElementById('resnum').textContent=t;
-      document.getElementById('resspend').textContent='$'+Math.round(c*52*9).toLocaleString();
+      document.getElementById('resspend').textContent='$'+Math.round(c*52*A.cost).toLocaleString();
       document.getElementById('rescal').textContent=Math.round(c*52*150).toLocaleString();
-      document.getElementById('ressave').textContent='$'+Math.round((c-t)*52*9).toLocaleString();
+      document.getElementById('ressave').textContent='$'+Math.round((c-t)*52*A.cost).toLocaleString();
       document.getElementById('resfewer').textContent=Math.round((c-t)*52).toLocaleString();
       document.getElementById('resmarker').style.left=Math.min(c/12*100,95)+'%';
       go('result');
